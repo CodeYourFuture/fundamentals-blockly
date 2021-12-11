@@ -157,7 +157,7 @@ BlocklyTest = {
     this.tests[name] = test;
   },
   findElement: function (selectors) {
-    let prefix = this.currentTestName;
+    let prefix = "blocklyOutput" + this.currentTestName;
     return selectors
       .map((selector) => document.querySelector(`#${prefix} ${selector}`))
       .find((element) => element !== null && element !== undefined);
@@ -166,7 +166,7 @@ BlocklyTest = {
     let prefix = this.currentTestName;
     let code = document.querySelector(`#${prefix} .generatedJsTextarea`).value;
     try {
-      return JSON.parse(code.match(/data: (\[.*\])}/)[1].replaceAll("'", '"'));
+      return JSON.parse(code.match(/(\[.*\]);/)[1].replaceAll("'", '"'));
     } catch (e) {
       return [];
     }
@@ -217,9 +217,10 @@ BlocklyTest = {
   getOrCreateNotYetPassing: function (index, message) {
     const checkId = `${this.currentTestName}_${index}`;
     let $li = document.getElementById(checkId);
-    let $span = $li.querySelector("span");
+    let $span = $li.querySelector("span.test-checkbox");
     if (!$span) {
       $span = document.createElement("span");
+      $span.setAttribute("class", "test-checkbox");
       $span.innerHTML = "&check;&nbsp;";
       $li.insertBefore($span, $li.firstChild);
     }

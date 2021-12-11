@@ -47,36 +47,89 @@
     <div id="exercises">
       <div class="exercise">
       <h2>Introduction</h2>
-      <p>This is only information (not yet very good information). There is nothing for you to do. You can move straight to the first exercise ("Modifying html dynamically: setting colours").</p>
+      <p>In this series of exercises, you will use <em>block-based programming</em>, 
+        similar to what you used on code.org, to create javascript that dynamically modifies the html on a web page 
+        ("dynamically" means that as the program executes, the initial html will be modified).
+      </p>
+      <p>In this "Introduction", there is nothing for you to do, only information. You can move to the first exercise whenever you're ready.</p>
       <ul>
-        <li>Static html can be written in the html textarea</li>
-        <li>Any dynamic html or code can be written in blockly</li>
         <li>
-          Clicking "run" will place the html in the browser below and then execute
-          the blockly code
+          Static html can be written in the html textarea ("static" means this is the original state, 
+          before the programe).
         </li>
         <li>
-          These exercises are intended as a progression during a revised version
-          of fundamentals after having completed code.org blockly exercises
+          Code to modify the html can be written with blocks.
+        </li>
+        <li>
+          The blocks directly translate to javascript code. You can look at the resulting code in the 
+          generated javascript textarea.
+        </li>
+        <li>
+          Clicking "run" will place the html in the space just below the textarea and execute 
+          the generated code.
+        </li>
+        <li>
+          These exercises assume you are familiar with using the block-based programming environment, 
+          based on having done the code.org exercises. In particular, you should be familiar with if blocks
+          and loops.
+        </li>
+        <li>
+          There are some differences with code.org. In particular, you are free to move to the next exercise 
+          whenever you feel ready. At some point, grey checkmarks will indicate that your current code doesn't
+          appear to solve all the instructions, and green checkmarks will indicate that it does.
         </li>
         <li>
           The end goal is to be able to copy paste the genreated code into a
-          single .js file and add it, and the appropriate html, to the landing
-          page created during the application process
+          single .js file and add it, and the appropriate html, to the an html page 
+          created during the fundamentals module.
         </li>
         <li>
-          All these exercises build up to a) understanding how to use the
-          blockly blocks in the toolbox b) be able to break down solving the
-          final problem into steps
+          The way the blocks work (and the code they generate) is deliberately similar to what you will learn
+          in the upcoming javascript modules. There are also some differences, intended to make it easier as
+          a first programming experience.
         </li>
-        <li>
-          Long term, each exercise would maybe have some html pre-created and a
-          toolbox with only the blocks that are currently known/being introduced
-        </li>
-        <li>The list API is deliberately different from usual javascript arrays (is it simpler though?)</li>
-        <li>The HTML/DOM API is deliberately different from the dom (more embedding, less variables)</li>
+      </ul>
+      <h3>Definitions</h3>
+      Some of the following may need a definition:
+      <ul>
+        <li>static vs dynamic</li>
+        <li>block based programming</li>
+        <li>html elements</li>
+        <li>html attributes</li>
+        <li>variable</li>
       </ul>
       </div>
+      <div class="exercise" id="exercise_change_text">
+      <h2>Modifying html dynamically: changing text</h2>
+      <script>
+      BlocklyTest.registerTest("exercise_change_text", () => {
+        let p = BlocklyTest.findElement(["#paragraph", "p"]);
+        BlocklyTest.expect(1, "text was changed", p, (p) => {
+          return p.innerText.toLowerCase().startsWith("hello world");
+        });
+      });
+    </script>
+      <p>
+        This exercise introduces the <b>Html blocks</b> to find and modify the text of html elements.
+      </p>
+        <ol>
+            <li>Let's start with a simple piece of html that represents three paragraphs.
+                <ol>
+                    <li>for example: <code id="start_exercise_change_text">&lt;p&gt;First paragraph.&lt;/p&gt;<br>&lt;p id="paragraph"&gt;Second paragraph&lt;/p&gt;<br>&lt;p&gt;Third paragraph.&lt;/p&gt;</code></li>
+                    <li>you can click "run" to see the output</li>
+                </ol>
+            <li>Let's modify the contents of the second paragraph to read "Hello World!" instead. (This is typically the first programme that every programmer writes in any new language, so we'll honour tradition and do that here.)</li>
+                <ol>
+                    <li>Add an <span class="blockname">"at the start"</span> block</li>
+                    <li>Inside this block, add a <span class="blockname">"find the element using css selector"</span> block using the css selector for the id of the second paragraph &lt;p&gt; element (<code>#paragraph</code>)</li>
+                    <li>Inside this block, add a <span class="blockname">"set the text content to"</span> block</li>
+                    <li>Set the value for the text of this block :<code>Hello World!</code></li>
+                    <li id="exercise_change_text_1">Click "run" to check the content of the second paragraph has changed.</li>
+                </ol>
+            </li>
+        </ol>
+      </div>
+
       <div class="exercise" id="exercise_set_colours">
       <h2>Modifying html dynamically: setting colours</h2>
       <script>
@@ -98,21 +151,21 @@
       });
     </script>
       <p>
-        This exercise introduces the <b>Html blocks</b> to find html elements and modify their attributes.
+        Not only can we modify the contents of html elements, we can also change their properties, such as their colour. Different kinds of <b>Values blocks</b> provide ways of setting texts, numbers and colours.
       </p>
         <ol>
             <li>Let's start with an html list of our favourite fruit in the "Static html" 
                 <ol>
-                    <li>each html list item (<code>&lt;li&gt;</code>) has a different id attribute so that we can refer to it from Blockly</li>
-                    <li>for example: <code id="start_exercise_set_colours">&lt;ul&gt;&lt;li id="banana"&gt;Banana&lt;/li&gt;&lt;li id="orange"&gt;Orange&lt;/li&gt;&lt;/ul&gt;</code></li>
+                    <li>each html list item (<code>&lt;li&gt;</code>) has a different id attribute so that we can refer to it using a css selector</li>
+                    <li>for example: <code id="start_exercise_set_colours">&lt;ul&gt;<br>&lt;li id="banana"&gt;Banana&lt;/li&gt;<br>&lt;li id="orange"&gt;Orange&lt;/li&gt;<br>&lt;/ul&gt;</code></li>
                     <li>you can click "run" to see the output</li>
                 </ol>
             <li>Color the banana yellow</li>
                 <ol>
-                    <li>Add an "at the start" block</li>
-                    <li>Inside this block, add a "find the element using css selector" block using the selector for the &lt;li&gt; element for Banana (<code>#banana</code>)</li>
-                    <li id="exercise_set_colours_1">Inside this block, add a "set the attribute" block, pick "color" and set the value to an appropriate colour using the colour picker</li>
-                    <li id="exercise_set_colours_2">The colour for a banana is probably not easy to see against a white background. Add a second "set the attribute" block and set a dark color for the background</li>
+                    <li>Add an <span class="blockname">"at the start"</span> block</li>
+                    <li>Inside this block, add a <span class="blockname">"find the element using css selector"</span> block using the id selector for the &lt;li&gt; element for Banana (<code>#banana</code>)</li>
+                    <li id="exercise_set_colours_1">Inside this block, add a <span class="blockname">set the attribute"</span>" block, pick "color" and set the value to any yellow colour using the <span class="blockname">colour picker</span> (you can find a color picker block in the "Values" menu).</li>
+                    <li id="exercise_set_colours_2">The colour for a banana is probably not easy to see against a white background. Add a second <span class="blockname">"set the attribute"</span> block and set a dark color for the background.</li>
                     <li>Click "run" to check the output looks like
                         <ul style="background-color: azure;">
                             <li style="color:rgb(233, 233, 22);background-color: darkgrey;">Banana</li>
@@ -121,7 +174,7 @@
                     </li>
                 </ol>
             </li>
-            <li id="exercise_set_colours_3">Repeat the process above to colour each of the fruit (hint: you can add multiple "find the element using css selector" blocks one after the other). You can also change the background color if you like</li> 
+            <li id="exercise_set_colours_3">Repeat the process above to colour each of the fruit (hint: you can add multiple <span class="blockname">"find the element using css selector"</span> blocks one after the other). You can also change the background color if you like</li> 
         </ol>
       </div>
       <div class="exercise" id="exercise_add_fruit">
@@ -143,20 +196,20 @@
         });
       </script>
       <p>
-        This exercise introduces some the HTML/DOM blocks to add elements and set their contents.
+        Not only can we modify existing html elements, we can also create new ones and set their text and properties.
       </p>
         <ol>
             <li>Let's start with an html list with a single apple in the "Static html" 
                 <ol>
-                    <li>Note the list has an id ("list") so that we can refer to it from blockly</li>
-                    <li>for example: <code id="start_exercise_add_fruit">&lt;ul id="list"&gt;&lt;li&gt;Apple&lt;/li&gt;&lt;/ul&gt;</code></li>
+                    <li>Note the list has an id ("list") so that we can refer to it using a css selector.</li>
+                    <li>for example: <code id="start_exercise_add_fruit">&lt;ul id="list"&gt;<br>&lt;li&gt;Apple&lt;/li&gt;<br>&lt;/ul&gt;</code></li>
                 </ol>
             <li>Add one more fruit dynamically</li>
                 <ol>
-                    <li>Add an "at the start" block</li>
-                    <li>Inside this block, add a "find the element using css selector" block using the id for the ul element (<code>#list</code>)</li>
-                    <li>Inside this block, add a "create a new ... element" block and select "&lt;li&gt;"</li>
-                    <li>Inside this block, add a "set the text content" block and set the value to "Banana"</li>
+                    <li>Add an <span class="blockname">"at the start"</span> block</li>
+                    <li>Inside this block, add a <span class="blockname">"find the element using css selector"</span> block using the id for the ul element (<code>#list</code>)</li>
+                    <li>Inside this block, add a <span class="blockname">"create a new ... element"</span> block and select "&lt;li&gt;"</li>
+                    <li>Inside this block, add a <span class="blockname">"set the text content"</span> block and set the value to "Banana"</li>
                     <li id="exercise_add_fruit_1">Click "run" to check the output looks like
                         <ul style="background-color: azure;">
                             <li>Apple</li>
@@ -165,7 +218,7 @@
                     </li>
                 </ol>
             </li>
-            <li id="exercise_add_fruit_2">Repeat the process above to add two more of your favourite fruit (hint: you can add multiple "create a new ... element" blocks one after the other)</li> 
+            <li id="exercise_add_fruit_2">Repeat the process above to add two more of your favourite fruit (hint: you can add multiple <span class="blockname">"create a new ... element"</span> blocks one after the other)</li> 
         </ol>
       </div>
       <div class="exercise" id="exercise_list_links">
@@ -191,8 +244,10 @@
             <li>Dynamically add your favourite links to the html list</li>
                 <ol>
                     <li>Find the urls of your three favourite websites (they look something like: <code>http://www.codeyourfuture.io</code>)</li>
-                    <li>Use the blocks we have seen so far ("at the start", "find the element using css selector", "create a new ... element", "set the attribute", "set the text content")</li>
-                    <li>Hint: you will need to create an <code>&lt;a&gt;</code> inside each block to create an <code>&lt;li&gt;</code></li>
+                    <li>Use the blocks we have seen so far ("at the start", "find the element using css selector", "create a new ... element", "set the attribute", "set the text content", and the Values blocks)</li>
+                    <li>Hint: you will need to create an <code>&lt;a&gt;</code> inside of each <code>&lt;li&gt;</code></li>
+                    <li>Hint: remember that to set the target of an <code>&lt;a&gt;</code> you can use the <code>&lt;href&gt;</code> attribute. Without this attribute, your link will not <i>look</i> like a link</li>
+                    <li>Note about problem solving: The less blocks you add before clicking "run", the more you can be sure the code you have so far does what you expect. How could you break your solution down into small chunks where you can test at each stage by clicking "run"?</li>
                     <li id="exercise_list_links_1">Click "run" to check the output looks something like
                         <ul style="background-color: azure;">
                             <li><a href="http://www.codeyourfuture.io">Code your future</a></li>
@@ -209,7 +264,8 @@
       <script>
         BlocklyTest.registerTest("exercise_button_add", () => {
           let ul = BlocklyTest.findElement(["#list", "ul", "ol"]);
-          let button = BlocklyTest.findElement(["#button", "button"]);
+          let button = BlocklyTest.findElement(["#button", "button:nth-of-type(1)"]);
+          let button2 = BlocklyTest.findElement(["#button2", "button:nth-of-type(2)"]);
 
           BlocklyTest.expectAfterClick(1, "The button adds an apple", button, 
           () => {
@@ -222,11 +278,12 @@
             return (addsExactlyOneChild && lastLi.innerText.toLowerCase() == "apple");
           });
 
-          BlocklyTest.expect(2, "There are at least 3 apples and 3 bananas", ul, (ul) => {
-            var lis = Array.from(ul.querySelectorAll("li"));
-            return (lis.filter((li) => li.innerText.toLowerCase() == "apple").length >= 3 
-                && lis.filter((li) => li.innerText.toLowerCase() == "banana").length >= 3);
-          });
+          BlocklyTest.expectAfterClick(2, "The second button removes all apples", button2, 
+          () => {
+            let count = ul ? ul.children.length : 0;
+            return count;
+          },
+          (countBefore, countAfter) => countBefore > 0 && countAfter == 0);
         });
       </script>
       <p>
@@ -235,31 +292,22 @@
         <ol>
             <li>Start with an empty unordered html list (<code>&lt;ul&gt;</code>) and a button to add apples to the list (<code>&lt;button&gt;</code>) in the static html.
                 <ol>
-                    <li>note there is with an id for each element ("list") and ("button") so that we can refer to them from Blockly</li>
-                    <li>for example: <code id="start_exercise_button_add">&lt;ul id="list"&gt;&lt;/ul&gt;&lt;button id="button"&gt;add an apple&lt;/button&gt;</code></li>
+                    <li>for example: <code id="start_exercise_button_add">&lt;ul id="list"&gt;&lt;/ul&gt;<br>&lt;button id="button"&gt;add an apple&lt;/button&gt;</code></li>
                 </ol>
             <li>When we click on the "add an apple" button, let's add an apple to the list</li>
                 <ol>
-                    <li>Add a "when the element with id ... is clicked" block (it doesn't need to be connected to any other blocks)</li>
+                    <li>Add a <span class="blockname">"when the element with id ... is clicked"</span> block (it doesn't need to be connected to any other blocks)</li>
                     <li id="exercise_button_add_1">Inside this block, add the blocks necessary to find the "list" element, create a new "li" element and set the content to "apple" (you know how to do this from previous exercises)</li>
                 </ol>
             </li> 
-            <li id="exercise_button_add_2">Can you add a second button (in the static html) that adds bananas when clicked? Check that you (as the user) can now add both apples and bananas depending on which button you click. Click "run" and press the buttons to add at least 3 of each fruit, so the output looks something like
-                <ul style="background-color: azure;">
-                    <li>Apple</li>
-                    <li>Banana</li>
-                    <li>Apple</li>
-                    <li>Apple</li>
-                    <li>Banana</li>
-                    <li>Banana</li>
-                </ul>
+            <li id="exercise_button_add_2">Can you add a second button (in the static html, with a different id) that removes all the apples (you can do this by using the <span class="blockname">"remove the contents of the element"</span> block).              
             </li>
         </ol>
       </div>
       <div class="exercise" id="exercise_button_consolidation">
       <h2>Buttons and clicks consolidation</h2>
       <p>
-        Anything that we could do previously as soon as run is pressed, we can now do as a response to clicking.
+        Anything that we could do previously as soon as run is clicked, we can now do as a response to clicking the buttons in our generated html.
       </p>
         <ol>
             <li id="exercise_button_consolidation_1">Can you create two buttons that respectively change an html list to "day mode" (dark text on a light background) and "night mode" (light text on a dark background)</li>
@@ -267,46 +315,62 @@
             <li id="exercise_button_consolidation_3">Can you create an image that changes when it is clicked?</li>
         </ol>
       </div>
-      <div class="exercise" id="exercise_lists">
-      <h2>Lists and html lists</h2>
+      <div class="exercise" id="exercise_arrays">
+      <h2>Arrays and loops</h2>
       <script>
-        BlocklyTest.registerTest("exercise_lists", () => {
+        BlocklyTest.registerTest("exercise_arrays", () => {
           let ul = BlocklyTest.findElement(["#list", "ul", "ol"]);
           let list = BlocklyTest.findArrayValues(); // first of the arrays is the one we want
 
-          BlocklyTest.expect(1, "All the elements in the list are in the html list", ul, (ul) => {
+          BlocklyTest.expect(1, "One element is shown", ul, (ul) => {
             var lis = Array.from(ul.querySelectorAll("li"));
-            return lis.length == list.length && lis.every((li, index) => li.innerText == list[index]);
+            return lis.length > 0 && lis[0].innerText == list[0];
+          });
+
+          BlocklyTest.expect(2, "As many elements are shown as there are items in the array", ul, (ul) => {
+            var lis = Array.from(ul.querySelectorAll("li"));
+            return lis.length == list.length;
+          });
+
+          BlocklyTest.expect(3, "All the elements in the array (at least 3) are in the html list", ul, (ul) => {
+            var lis = Array.from(ul.querySelectorAll("li"));
+            return list.length >= 3 && lis.length == list.length && lis.every((li, index) => li.innerText == list[index]);
+          });
+
+          BlocklyTest.expect(4, "All the elements in the array (at least 4) are in the html list", ul, (ul) => {
+            var lis = Array.from(ul.querySelectorAll("li"));
+            return list.length >= 4 && lis.length == list.length && lis.every((li, index) => li.innerText == list[index]);
           });
         });
       </script>
-      <p>In this series of exercises, we have so far created unordered html lists (<code>&lt;ul&gt;</code>) containing html list items (<code>&lt;li&gt;</code>). 
-        We will now introduce a different kind of list, that is used for representing a list of data (typically numbers or texts) in javascript. Such a list can be created and used from the Blockly "Lists" menu but does not automatically convert to an html list.
-        This kind of list is not often used in javascript programming, but will simplify the Blockly code we need to write for the upcoming series of exercises.
+      <p>In this series of exercises, we have so far used one <span class="blockname">"create a new ... element"</span> for each <code>&lt;li&gt;</code> we want to create. 
+        We will now introduce a data structure called an <b>Array</b>, that represents of list of data (typically numbers or texts) in javascript. 
+        They can be created and used from the "Arrays" menu. We often use an array when we want to do the same thing with each element in an array (for example, create a <code>&lt;li&gt;</code>).
       </p>
       <ol>
-          <li>Start with an empty unordered html list with the id "list" (<code id="start_exercise_list">&lt;ul id="list"&gt;&lt;/ul&gt;</code>) in the static html.</li>
-          <li>In Blockly, add an "at the start" block"</li>
-          <li>We'll now create a list of fruit and assign it to a variable <ol>
-              <li>From the "Lists" menu, add a "Set ... to, create list with" block to the "at the start" block</li>
-              <li>Rename the variable "item" to "fruits"</li>
-              <li>Add at least 3 fruit text values to this list</li>
+          <li>Start with an empty unordered html list with the id "list" (<code id="start_exercise_arrays">&lt;ul id="list"&gt;&lt;/ul&gt;</code>) in the static html.</li>
+          <li>Add an <span class="blockname">"at the start"</span> block"</li>
+          <li>We'll now create a array of fruits and assign it to a variable <ol>
+              <li>From the "Arrays" menu, add a <span class="blockname">"Set ... to, create array with" block to the <span class="blockname">"at the start"</span> block</li>
+              <li>Rename the variable <span class="variablename">"array"</span> to "fruits"</li>
+              <li>Add at least 3 fruit text values to this array</li>
               <li>Note: You can click on the gear menu to add and remove slots for values</li>
           </ol></li>
-          <li>Let's do the first steps of converting this list to an html list<ol>
-              <li>Add the blocks necessary to add an html list item (<code>&lt;li&gt;</code>) with the content "apple" to the html list with id "list" (you know how to do this from previous exercises)</li>
-              <li>Remove the "apple" text value block and replace it with a "get current item from list" block</li>
-              <li>Select the "fruits" variable in the dropdown</li>
-              <li>This kind of list has a current item. As you can see, the current item starts off being the first item in the list</li>
+          <li>Let's do the first steps to convert the first entry in this array into <code>&lt;li&gt;</code><ol>
+              <li>You already know how to do most of the steps (find the element with id list, create an li, set its text content)</li>
+              <li>The thing we will do differently is to set the text content to a <span class="blockname">get the first item from the array</span> block, selecting the "fruits" array in the dropdown.</li>
+              <li id="exercise_arrays_1">Click "run" to check you are displaying a list with one fruit</li>
           </ol></li>
-          <li>Changing the current item...<ol>
-              <li>Before the "create a new ... element" block, insert a "select next item for list" block</li>
-              <li>Again, select the "fruits" variable in the dropdown (you will have to do this every time)</li>
-              <li>As you can see by pressing "run", the current item has changed and is now the second item in the list</li>
-              <li>What do you think will happen if you change "next" to "last" (try it out to find out if you were right)</li>
-              <li>What do you think will happen if you change "next" to "previous" (try it out to find out if you were right)</li>
+          <li>Let's use this same code to show all the fruits<ol>
+              <li>At the beginning of the <span class="blockname">"find the element using css selector"</span> block, insert a <span class="blockname">"for each item in array"</span> block. Select the fruits array in the dropdown.</li>
+              <li>Move all of the <span class="blockname">"create a new ... element"</span> blok inside the for <span class="blockname">"for each item in array"</span> block</li>
+              <li id="exercise_arrays_2">As you can see by clicking "run", you now have a list with multiple items - but they are all the first item in the array</li>
+              <li>Inside the loop, you have a variable available called <span class="variablename">"item"</span>. Each time through the loop, this variable will take on the value of the next fruit in the array</li>
+              <li>Replace the <span class="blockname">get the first item from the array</span> block with a "item" variable block (you can find it in the Variables menu)</li>
+              <li id="exercise_arrays_3">Check by clicking run that you now have a list with each item of fruit in your array.</li>
+              <li>If you have an array called "fruits", it's good practice to rename the loop "item" variable to "fruit".</li>
           </ol></li>
-          <li id="exercise_lists_1">Alternate "create a new ... element" and "select next item for list" blocks to display all the items in your fruits list</li>
+          <li id="exercise_arrays_4">Add another fruit to your array and check that all your fruits are still shown.</li>
       </ol>
       </div>
       <div class="exercise" id="exercise_list_loops">
@@ -324,7 +388,7 @@
       </script>
       <p>So far we have worked with a list where we knew exactly the number of items there would be. But what happens if that number is changeable?</p>
       <ol>
-          <li>Starting with recreating the result of the previous exercise, then add a new fruit item to your list. Does it display if you press "run"?</li>
+          <li>Starting with recreating the result of the previous exercise, then add a new fruit item to your list. Does it display if you click "run"?</li>
           <li>Currently, you have just as many "create a new ... element" blocks as there are items in the list, instead, we are going to use the "list ... has current element" block, combined with a loop</li>
           <li>If you use enough "select next item for list" blocks, you run off the end and the current item no longer exists. In this case, "list ... has current element" returns the value false</li>
           <li>We can use this as the condition in a "repeat while" loop <ol>
@@ -437,7 +501,7 @@
       </div>
       <div class="exercise" id="exercise_list_consolidation">
       <h2>List consolidation</h2>
-      <p>Repeat the exercise to show a list of your favourite links. Use a loop so that there are only two "create a ... element" blocks (one for the &lt;li&gt;, one for the &lt;a&gt;). Outline what your solution needs to look like, and implement it step by step, pressing "run" at each iteration to check your work</p>
+      <p>Repeat the exercise to show a list of your favourite links. Use a loop so that there are only two "create a ... element" blocks (one for the &lt;li&gt;, one for the &lt;a&gt;). Outline what your solution needs to look like, and implement it step by step, clicking "run" at each iteration to check your work</p>
       </div>
       <div class="exercise" id="exercise_lists_buttons">
       <h2>Lists and buttons</h2>
@@ -447,7 +511,7 @@
           let button = BlocklyTest.findElement(["#button", "button"]);
           let listToBeRevealed = BlocklyTest.findArrayValues(); // first of the arrays is the one we want
 
-          BlocklyTest.expectAfterClick(1, "Each press of the button reveals a fruit", button, 
+          BlocklyTest.expectAfterClick(1, "Each click of the button reveals a fruit", button, 
           () => {
             let count = ul ? ul.children.length : 0;
             return count;
@@ -467,8 +531,8 @@
       <p>One way to do something with all the items in a list is to use a loop. Instead, let's look at each item one by one as the user clicks on a button</p>
       <ol>
           <li>Create an empty unordered html list (as usual) and a "reveal next fruit" button (<code id="start_exercise_lists_buttons">&lt;ul id="list"&gt;&lt;/ul&gt;&lt;button id="button"&gt;reveal next fruit&lt;/button&gt;</code>)</li>
-          <li>In blockly, create a list of your favourite fruit in an "at the start" block</li>
-          <li id="exercise_lists_buttons_1">Each time the user clicks on the button, the next fruit should be added to the list (yes, you can do things with the list of fruit from the blocks in a "when the element with id ... is clicked")</li>
+          <li>Create a list of your favourite fruit inside an <span class="blockname">"at the start"</span> block</li>
+          <li id="exercise_lists_buttons_1">Each time the user clicks on the button, the next fruit should be added to the list (yes, you can do things with the list of fruit from the blocks in a <span class="blockname">"when the element with id ... is clicked"</span>)</li>
           <li>As a stretch goal, when there are no more fruits to be revealed, clicking the button should do nothing - or the button should no longer be visible</li>
       </ol>
       </div>
@@ -488,7 +552,7 @@
       </p>
       <ul>
         <li>
-          A list of at least 3 image urls should be defined in blockly (you can
+          A list of at least 3 image urls should be defined in an array (you can
           use public urls from stock photograph websites, or copy the image link from a google search result)
         </li>
         <li>
@@ -556,6 +620,15 @@
     <xml id="toolbox" style="display: none">
       <category name="Loops" colour="120">
         <block type="controls_whileUntil"></block>
+        <block type="arrays_forEach">
+          <field name="VAR">item</field>
+          </value>
+          <value name="LIST">
+            <block type="variables_get">
+                <field name="VAR">array</field>
+            </block>
+          </value>
+        </block>
         <block type="controls_for"></block>
       </category>
       <category name="Logic" colour="210">
@@ -584,7 +657,58 @@
         <block type="element_clicked_current"></block>
         <block type="with_elements_by_selector"></block>
       </category>
-      <category name="Lists" colour="%{BKY_LISTS_HUE}"" >
+      <category name="Arrays" colour="%{BKY_LISTS_HUE}"" >
+        <block type="variables_set">
+          <field name="VAR">array</field>
+          <value name="VALUE">
+            <block type="lists_create_with">
+              <!--
+              would be nice but the shadow blocks don't know what to do with themselves when the list
+              is mutated -> https://github.com/google/blockly/issues/4939
+              <value name="ADD0">
+                <shadow type="text"> </shadow>
+              </value>
+              <value name="ADD1">
+                <shadow type="text"> </shadow>
+              </value>
+              <value name="ADD2">
+                <shadow type="text"> </shadow>
+              </value>-->
+            </block>
+          </value>
+        </block>
+        <block type="arrays_getFirst">
+          <value name="VALUE">
+            <block type="variables_get">
+                <field name="VAR">array</field>
+            </block>
+          </value>
+        </block>
+        <block type="arrays_push">
+          <value name="LIST">
+            <block type="variables_get">
+                <field name="VAR">array</field>
+            </block>
+          </value>
+        </block>
+        <block type="lists_isEmpty">
+          <value name="VALUE">
+            <block type="variables_get">
+                <field name="VAR">array</field>
+            </block>
+          </value>
+        </block>
+        <block type="arrays_forEach">
+          <field name="VAR">item</field>
+          </value>
+          <value name="LIST">
+            <block type="variables_get">
+                <field name="VAR">array</field>
+            </block>
+          </value>
+        </block>
+      </category>
+      <!--<category name="Lists" colour="%{BKY_LISTS_HUE}"" >
         <block type="variables_set">
           <field name="VAR">list</field>
           <value name="VALUE">
@@ -626,7 +750,7 @@
             </block>
           </value>
         </block>
-      </category>
+      </category>-->
       <category name="Variables" colour="330" custom="VARIABLE"></category>
       <category name="Functions" colour="290" custom="PROCEDURE"></category>
     </xml>
