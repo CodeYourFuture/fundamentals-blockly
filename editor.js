@@ -7,7 +7,10 @@ Blockly.JavaScript.INFINITE_LOOP_TRAP =
 function BlocklyDomEditor(root, id) {
   this.root = root;
   this.id = id;
-  this.toolbox = document.getElementById("toolbox");
+  this.toolbox = document.querySelector(`#${id} .toolbox`);
+  if (!this.toolbox) {
+    this.toolbox = document.getElementById("toolbox");
+  }
   this.blocklyHtml = this.getElementId("blocklyHtml");
   this.htmlTab = this.getElementId("htmlTab");
   this.jsTab = this.getElementId("jsTab");
@@ -15,6 +18,7 @@ function BlocklyDomEditor(root, id) {
   this.generatedJsTextarea = this.getElementId("generatedJsTextarea");
   this.blocklyOutput = this.getElementId("blocklyOutput");
   this.blocklyDiv = this.getElementId("blocklyDiv");
+  this.blocklyArea = this.getElementId("blocklyArea");
   this.runButton = this.getElementId("runButton");
 }
 
@@ -24,8 +28,12 @@ BlocklyDomEditor.prototype.getElementId = function (elementId) {
 
 BlocklyDomEditor.prototype.init = function (initHtml) {
   // keep <ul id="list"></ul> as default value in text area for most exercises
+  this.root.setAttribute(
+    "style",
+    "display:grid;grid-template-columns: 1fr 2fr;grid-template-rows: auto 1fr;"
+  );
   this.root.innerHTML = `
-    <div id="${this.blocklyHtml}" class="blocklyHtml" style="float: left">
+    <div id="${this.blocklyHtml}" class="blocklyHtml">
       <ul>
         <li id="${this.htmlTab}" class="current">Static html</li>
         <li id="${this.jsTab}" class="notcurrent">Generated code</li>
@@ -36,14 +44,49 @@ BlocklyDomEditor.prototype.init = function (initHtml) {
       <textarea id="${this.generatedJsTextarea}" class="generatedJsTextarea" cols="50" rows="10"></textarea>
       <button id="${this.runButton}" class="btn">run</button>
     </div>
-    <div id="${this.blocklyOutput}" style="float: left; clear: left"></div>
-    <div id="${this.blocklyDiv}" style="height: 480px; width: 1300px"></div>
+    <div id="${this.blocklyArea}" style="height:400px;resize:vertical; overflow:auto; grid-row-end: span 2;"></div>
+    <div id="${this.blocklyOutput}"></div>
+    <div id="${this.blocklyDiv}" style="position:absolute"></div>
   `;
+
+  let $blocklyArea = document.getElementById(this.blocklyArea);
+  let $blocklyDiv = document.getElementById(this.blocklyDiv);
+  let id = this.id;
+
   this.workspace = Blockly.inject(this.blocklyDiv, {
     toolbox: this.toolbox,
   });
   let workspace = this.workspace;
-  let id = this.id;
+
+  this.onresize = function (e) {
+    if (
+      window.getComputedStyle($blocklyArea).display !== "block" ||
+      $blocklyArea.offsetWidth === 0
+    ) {
+      // don't resize if the area is invisible or has a width of 0
+      return;
+    }
+    // Compute the absolute coordinates and dimensions of blocklyArea.
+    var element = $blocklyArea;
+
+    var x = 0;
+    var y = 0;
+    do {
+      x += element.offsetLeft;
+      y += element.offsetTop;
+      element = element.offsetParent;
+    } while (element);
+    // Position blocklyDiv over blocklyArea.
+    $blocklyDiv.style.left = x + "px";
+    $blocklyDiv.style.top = y + "px";
+    $blocklyDiv.style.width = $blocklyArea.offsetWidth - 10 + "px";
+    $blocklyDiv.style.height = $blocklyArea.offsetHeight - 10 + "px";
+    Blockly.svgResize(workspace);
+  };
+  resizeObserver = new ResizeObserver(this.onresize);
+  resizeObserver.observe($blocklyArea);
+  this.onresize();
+  //Blockly.svgResize(workspace);
 
   let $generatedJsTextarea = document.getElementById(this.generatedJsTextarea);
   let $htmlTextarea = document.getElementById(this.htmlTextarea);
@@ -56,9 +99,14 @@ BlocklyDomEditor.prototype.init = function (initHtml) {
   }
 
   setTimeout(() => {
-    BlocklyDomEditor.restoreBlocks(workspace, $htmlTextarea, id);
-    // don't register backup unless we successfully restored blocks to avoid losing data
-    BlocklyDomEditor.backupOnUnload(workspace, $htmlTextarea, id);
+    try {
+      BlocklyDomEditor.restoreBlocks(workspace, $htmlTextarea, id);
+      // don't register backup unless we successfully restored blocks to avoid losing data
+      BlocklyDomEditor.backupOnUnload(workspace, $htmlTextarea, id);
+    } catch (e) {
+      console.log("couldn't restore blocks for " + id);
+      throw e;
+    }
   }, 0);
 
   let code = "";
@@ -102,7 +150,7 @@ BlocklyDomEditor.prototype.hide = function () {
 };
 
 BlocklyDomEditor.prototype.show = function () {
-  // do we need to do anything?
+  //this.onresize();
 };
 
 /**
@@ -162,11 +210,13 @@ BlocklyTest = {
       .map((selector) => document.querySelector(`#${prefix} ${selector}`))
       .find((element) => element !== null && element !== undefined);
   },
-  findArrayValues: function () {
+  findArrayValues: function (n) {
     let prefix = this.currentTestName;
     let code = document.querySelector(`#${prefix} .generatedJsTextarea`).value;
     try {
-      return JSON.parse(code.match(/(\[.*\]);/)[1].replaceAll("'", '"'));
+      return JSON.parse(
+        [...code.matchAll(/(\[.*\]);/g)][n][1].replaceAll("'", '"')
+      );
     } catch (e) {
       return [];
     }
