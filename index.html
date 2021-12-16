@@ -2,12 +2,30 @@
   <head>
     <style type="text/css">
 
+      #toc ul {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left:0;
+        justify-content: flex-start;
+        background-color: darkslateblue;
+        padding:0
+      }
+
       #toc li {
-        display:inline-block;
+        height: 1em;
         list-style:none;
-        padding:5px;
-        border:1px solid black;
+        padding:10px;
+        background-color: darkslateblue;
+        color: white;
         cursor:pointer;
+      }
+
+      #toc li:current {
+        background-color: slateblue;
+      }
+
+      #toc li:hover {
+        background-color: slateblue;
       }
 
       .blocklyHtml li {
@@ -37,17 +55,34 @@
       .generatedJsTextarea {
         display: none;
       }
+
+      body {
+        font-family: Helvetica, Arial, sans-serif;
+      }
+
+      .instructions {
+        margin-top:3em;
+        margin-left:2em;
+        max-width:50em;
+        font-size: 1.2em;
+        line-height: 1.5em;
+      }
+
+      .instructions li {
+        margin-top:0.8em;
+      }
     </style>
   </head>
   <body>
     <script src="https://unpkg.com/blockly/blockly.min.js"></script>
     <script src="blockly-dom.js"></script>
+    <script src="blockly-cyf.js"></script>
     <script src="editor.js"></script>
     <div id="toc"></div>
     <div id="exercises">
       <div class="exercise" id="introduction">
       <h2>Introduction</h2>
-      <p>In this series of exercises, you will use <em>block-based programming</em>, 
+      <div class="instructions"><p>In this series of exercises, you will use <em>block-based programming</em>, 
         similar to what you used on code.org, to create javascript that dynamically modifies the html on a web page 
         ("dynamically" means that as the program executes, the initial html will be modified).
       </p>
@@ -99,7 +134,7 @@
         <li>variable</li>
         <li>array</li>
       </ul>
-      </div>
+      </div></div>
       <div class="exercise" id="exercise_change_text">
       <h2>Modifying html dynamically: changing text</h2>
       <script>
@@ -110,6 +145,7 @@
         });
       });
     </script>
+      <div class="instructions">
       <p>
         This exercise introduces the <b>Html blocks</b> to find and modify the text of html elements.
       </p>
@@ -119,7 +155,7 @@
                     <li>for example: <code id="start_exercise_change_text">&lt;p&gt;First paragraph.&lt;/p&gt;<br>&lt;p id="paragraph"&gt;Second paragraph&lt;/p&gt;<br>&lt;p&gt;Third paragraph.&lt;/p&gt;</code></li>
                     <li>you can click "run" to see the output</li>
                 </ol>
-            <li>Let's modify the contents of the second paragraph to read "Hello World!" instead. (This is typically the first programme that every programmer writes in any new language, so we'll honour tradition and do that here.)</li>
+            <li>Let's modify the contents of the second paragraph to read "Hello World!" instead. (This is typically the first programme that every programmer writes in any new language, so we'll honour tradition and do that here.)
                 <ol>
                     <li>Add an <span class="blockname">"at the start"</span> block</li>
                     <li>Inside this block, add a <span class="blockname">"find the element using css selector"</span> block using the css selector for the id of the second paragraph &lt;p&gt; element (<code>#paragraph</code>)</li>
@@ -129,17 +165,16 @@
                 </ol>
             </li>
         </ol>
-        <xml class="toolbox" style="display: none">
+       </div>
+       <xml class="toolbox" style="display: none">
           <category name="Html" colour="%{BKY_COLOUR_HUE}">
             <block type="on_start"></block>
             <block type="with_element_by_selector"></block>
-            <block type="add_element"></block>
             <block type="set_content">
               <value name="VALUE">
                 <shadow type="text"> </shadow>
               </value>
             </block>
-            <block type="set_attribute"></block>
           </category>
         </xml>
       </div>
@@ -164,6 +199,7 @@
         }
       });
     </script>
+      <div class="instructions">
       <p>
         Not only can we modify the contents of html elements, we can also change their properties, such as their colour. Different kinds of <b>Values blocks</b> provide ways of setting texts, numbers and colours.
       </p>
@@ -174,7 +210,7 @@
                     <li>for example: <code id="start_exercise_set_colours">&lt;ul&gt;<br>&lt;li id="banana"&gt;Banana&lt;/li&gt;<br>&lt;li id="orange"&gt;Orange&lt;/li&gt;<br>&lt;/ul&gt;</code></li>
                     <li>you can click "run" to see the output</li>
                 </ol>
-            <li>Color the banana yellow</li>
+            <li>Color the banana yellow
                 <ol>
                     <li>Add an <span class="blockname">"at the start"</span> block</li>
                     <li>Inside this block, add a <span class="blockname">"find the element using css selector"</span> block using the id selector for the &lt;li&gt; element for Banana (<code>#banana</code>)</li>
@@ -190,7 +226,8 @@
             </li>
             <li id="exercise_set_colours_3">Repeat the process above to colour each of the fruit (hint: you can add multiple <span class="blockname">"find the element using css selector"</span> blocks one after the other). You can also change the background color if you like</li> 
         </ol>
-        <xml class="toolbox" style="display: none">
+       </div>
+       <xml class="toolbox" style="display: none">
           <category name="Values" colour='%{BKY_TEXTS_HUE}'>
             <block type="math_number"></block>
             <block type="text"></block>
@@ -227,6 +264,7 @@
           })
         });
       </script>
+      <div class="instructions">
       <p>
         Not only can we modify existing html elements, we can also create new ones and set their text and properties.
       </p>
@@ -236,7 +274,7 @@
                     <li>Note the list has an id ("list") so that we can refer to it using a css selector.</li>
                     <li>for example: <code id="start_exercise_add_fruit">&lt;ul id="list"&gt;<br>&lt;li&gt;Apple&lt;/li&gt;<br>&lt;/ul&gt;</code></li>
                 </ol>
-            <li>Add one more fruit dynamically</li>
+            <li>Add one more fruit dynamically
                 <ol>
                     <li>Add an <span class="blockname">"at the start"</span> block</li>
                     <li>Inside this block, add a <span class="blockname">"find the element using css selector"</span> block using the id for the ul element (<code>#list</code>)</li>
@@ -252,7 +290,8 @@
             </li>
             <li id="exercise_add_fruit_2">Repeat the process above to add two more of your favourite fruit (hint: you can add multiple <span class="blockname">"create a new ... element"</span> blocks one after the other)</li> 
         </ol>
-        <xml class="toolbox" style="display: none">
+       </div>
+       <xml class="toolbox" style="display: none">
           <category name="Values" colour='%{BKY_TEXTS_HUE}'>
             <block type="math_number"></block>
             <block type="text"></block>
@@ -287,12 +326,13 @@
           })
         });
       </script>
+      <div class="instructions">
       <p>
         This exercise consolidates the use of the blocks we learned about in the previous exercises.
       </p>
         <ol>
             <li>Start with an empty unordered html list (<code id="start_exercise_list_links">&lt;ul id="list"&gt;&lt;/ul&gt;</code>) in the static html.
-            <li>Dynamically add your favourite links to the html list</li>
+            <li>Dynamically add your favourite links to the html list
                 <ol>
                     <li>Find the urls of your three favourite websites (they look something like: <code>http://www.codeyourfuture.io</code>)</li>
                     <li>Use the blocks we have seen so far ("at the start", "find the element using css selector", "create a new ... element", "set the attribute", "set the text content", and the Values blocks)</li>
@@ -309,7 +349,8 @@
                 </ol>
             </li> 
         </ol>
-        <xml class="toolbox" style="display: none">
+       </div>
+       <xml class="toolbox" style="display: none">
           <category name="Values" colour='%{BKY_TEXTS_HUE}'>
             <block type="math_number"></block>
             <block type="text"></block>
@@ -356,6 +397,7 @@
           (countBefore, countAfter) => countBefore > 0 && countAfter == 0);
         });
       </script>
+      <div class="instructions">
       <p>
         A lot of javascript is run responsively to the user interacting with the page (clicking, scrolling, etc.). Let's make it so every time we (as a "user") click on an "add an apple" button, it adds an apple to the list.
       </p>
@@ -364,7 +406,7 @@
                 <ol>
                     <li>for example: <code id="start_exercise_button_add">&lt;ul id="list"&gt;&lt;/ul&gt;<br>&lt;button id="button"&gt;add an apple&lt;/button&gt;</code></li>
                 </ol>
-            <li>When we click on the "add an apple" button, let's add an apple to the list</li>
+            <li>When we click on the "add an apple" button, let's add an apple to the list
                 <ol>
                     <li>Add a <span class="blockname">"when the element with id ... is clicked"</span> block (it doesn't need to be connected to any other blocks)</li>
                     <li id="exercise_button_add_1">Inside this block, add the blocks necessary to find the "list" element, create a new "li" element and set the content to "apple" (you know how to do this from previous exercises)</li>
@@ -373,7 +415,8 @@
             <li id="exercise_button_add_2">Can you add a second button (in the static html, with a different id) that removes all the apples (you can do this by using the <span class="blockname">"remove the contents of the element"</span> block).              
             </li>
         </ol>
-        <xml class="toolbox" style="display: none">
+       </div>
+       <xml class="toolbox" style="display: none">
           <category name="Values" colour='%{BKY_TEXTS_HUE}'>
             <block type="math_number"></block>
             <block type="text"></block>
@@ -405,7 +448,8 @@
             <li id="exercise_button_consolidation_2">Place a button in the static html. Can you add blocks so it changes colour when it is clicked (note: in the interest of simplifying these exercises, this is one block more complicated than it would be in regular javascript)?
             <li id="exercise_button_consolidation_3">Place an image in the static html. Can you add blocks so it changes when it is clicked?</li>
         </ol>
-        <xml class="toolbox" style="display: none">
+       </div>
+       <xml class="toolbox" style="display: none">
           <category name="Values" colour='%{BKY_TEXTS_HUE}'>
             <block type="math_number"></block>
             <block type="text"></block>
@@ -455,6 +499,7 @@
           });
         });
       </script>
+      <div class="instructions">
       <p>In this series of exercises, we have so far used one <span class="blockname">"create a new ... element"</span> for each <code>&lt;li&gt;</code> we want to create. 
         We will now introduce a data structure called an <b>Array</b>, that represents of list of data (typically numbers or texts) in javascript. 
         They can be created and used from the "Arrays" menu. We often use an array when we want to do the same thing with each element in an array (for example, create a <code>&lt;li&gt;</code>).
@@ -463,7 +508,7 @@
           <li>Start with an empty unordered html list with the id "list" (<code id="start_exercise_arrays">&lt;ul id="list"&gt;&lt;/ul&gt;</code>) in the static html.</li>
           <li>Add an <span class="blockname">"at the start"</span> block"</li>
           <li>We'll now create an array of fruits and assign it to a variable <ol>
-              <li>From the "Arrays" menu, add a <span class="blockname">"Set ... to, create array with" block to the <span class="blockname">"at the start"</span> block</li>
+              <li>From the "Arrays" menu, add a <span class="blockname">"Set ... to, create array with"</span> block to the <span class="blockname">"at the start"</span> block</li>
               <li>Rename the variable <span class="variablename">"array"</span> to "fruits"</li>
               <li>Add at least 3 fruit text values to this array</li>
               <li>Note: You can click on the gear icon at the top left of the <span class="blockname">"create array with"</span> block to add and remove slots for values</li>
@@ -484,6 +529,7 @@
           </ol></li>
           <li id="exercise_arrays_4">Add another fruit to your array and check that all your fruits are still shown.</li>
       </ol>
+      </div>
       <xml class="toolbox" style="display: none">
         <category name="Values" colour='%{BKY_TEXTS_HUE}'>
           <block type="math_number"></block>
@@ -506,7 +552,7 @@
           <block type="element_clicked_current"></block>
           <block type="with_elements_by_selector"></block>
         </category>
-        <category name="Arrays" colour="%{BKY_LISTS_HUE}"" >
+        <category name="Arrays" colour="%{BKY_LISTS_HUE}">
           <block type="variables_set">
             <field name="VAR">array</field>
             <value name="VALUE">
@@ -548,7 +594,7 @@
         <category name="Variables" colour="330" custom="VARIABLE"></category>
       </xml>
       </div>
-            <div class="exercise" id="exercise_arrays_buttons">
+      <div class="exercise" id="exercise_arrays_buttons">
       <h2>Arrays and buttons</h2>
       <script>
         BlocklyTest.registerTest("exercise_arrays_buttons", () => {
@@ -593,16 +639,17 @@
           });
         });
       </script>
-      <p>The most common something with all the items in an array is to use a loop, as we saw in the previous exercise. Sometimes, a loop just doesn't do what we need, for example if we wanted to make the list of fruit appear gradually.</p>
+      <div class="instructions">
+        <p>The most common something with all the items in an array is to use a loop, as we saw in the previous exercise. Sometimes, a loop just doesn't do what we need, for example if we wanted to make the list of fruit appear gradually.</p>
       <ol>
           <li>Create an empty unordered html list (as usual) and a "reveal next fruit" button (<code id="start_exercise_arrays_buttons">&lt;ul id="list"&gt;&lt;/ul&gt;<br>&lt;button id="button"&gt;reveal next fruit&lt;/button&gt;</code>)</li>
           <li>Create an array of your favourite fruit inside an <span class="blockname">"at the start"</span> block</li>
-          <li>We'll now make it so each click of the button reveals the next fruit.</li>
+          <li>We'll now make it so each click of the button reveals the next fruit.
           <ul>
             <li id="exercise_arrays_buttons_1">Add a <span class="blockname">"when the element with id ... is clicked"</span> block. Make it add an <code>&lt;li&gt;</code> with the text "fruit" for now (and check it works)</li>
             <li>As we did at the start of the previous exercise, we can use the <span class="blockname">get the first item from the array</span> block instead of the "fruit" text (your fruits array is accessible from inside the <span class="blockname">"when the element with id ... is clicked"</span> block). Now each time you click the button, a new <code>&lt;li&gt;</code> with the name of the first fruit will appear.</li>
             <li id="exercise_arrays_buttons_2">Change "get the first item" to "<em>get and remove</em> the first item". This will remove the first item from the array, so that the new first item is the old second item: if it was previously <code>["apple", "banana", "cherry"]</code>, it is now <code>["banana", "cherry"]</code></li>
-          </ul> 
+          </ul></li>
           <li>As you can see, after all of the elements in the array have been removed, new <code>&lt;li&gt;</code>s with the text "undefined" are created. Let's fix that!</li>
           <ul>
             <li>We want the behaviour to be different once the array is empty. So we use an <span class="blockname">"if"</span> block from the Logic menu.</li>
@@ -611,6 +658,7 @@
             <li id="exercise_arrays_buttons_3">Now we can move our <code>&lt;li&gt;</code> creating blocks inside the <span class="blockname">"if"</span> block. In the other case (when the list is empty) we want to do nothing. And that's exactly what will happen.</li>
           </ul> 
       </ol>
+      </div>
       <xml class="toolbox" style="display: none">
         <category name="Logic" colour="210">
           <block type="controls_if"></block>
@@ -704,6 +752,7 @@
           });
         });
       </script>
+      <div class="instructions">
       <p>Using the blocks from the previous exercise and a different kind of loop gives us an alternative way to loop through all the items of an array. Let's see a case where it might be useful.</p>
       <ol>
           <li>Start with an empty unordered html list with the id "list" (<code id="start_exercise_arrays">&lt;ul id="list"&gt;&lt;/ul&gt;</code>) in the static html.</li>
@@ -728,6 +777,7 @@
               <li id="exercise_array_while_loops_3">Check that all your fruit are now displaying with a the right emoji next to them</li>
           </ol></li>
       </ol>
+      </div>
       <xml class="toolbox" style="display: none">
         <category name="Loops" colour="120">
         <block type="controls_whileUntil"></block>
@@ -824,11 +874,12 @@
           });
         });
       </script>
+      <div class="instructions">
       <p>Another reason we might not want to use a <span class="blockname">"for each item in array"</span> block is if we want to output elements in a different order.</p>
       <ol>
           <li id="exercise_array_reverse_1">Using the blocks we have seen so far (using "get and remove the last" instead of "get and remove the first"), create an html list with the fruit in reverse order</li>
       </ol>
-      </div>
+      </div></div>
       <div class="exercise" id="exercise_array_foreach_loops_more">
       <h2>Using two loops</h2>
       <script>
@@ -856,6 +907,7 @@
           });
         });
       </script>
+      <div class="instructions">
       <p>Other times, the <span class="blockname">"for each item in array"</span> block is just what we need, but we can use two of them.</p>
       <ol>
           <li>Let's suppose we want to take an array of fruit and show the apples first. So for the array <code>["apple", "banana", "apple", "cherry", "apple"]</code>, we should show<ul>
@@ -873,7 +925,7 @@
           </ol></li>
           <li id="exercise_array_foreach_loops_more_1">Can you implement this solution?</li>
       </ol>
-      </div>
+      </div></div>
       <div class="exercise" id="exercise_train_stops">
       <h2>Listing train stops</h2>
       <script>
@@ -901,6 +953,7 @@
           });
         });
       </script>
+      <div class="instructions">
       <p>The fast train between Glasgow and Edinburgh stops at Falkirk High and Haymarket. Let's display some html lists of stops</p>
       <ol>
           <li>Create a list named "stops" to represent all the stops, with the values: Glasgow Queen Street, Falkirk High, Haymarket, Edinburgh Waverly. Do the following tasks without changing the values in this list</li>
@@ -933,9 +986,11 @@
           </li>
       </ol>
       </div>
+      </div>
       <div class="exercise" id="exercise_train_stops_east_west">
       <h2>Adding elements to a list: Make the train change direction</h2>
-      <p>Some problems can be more easily solved with a second array in which we add elements [note: this also needs a current for a nice easy implementation, so is not a great introduction to this block]</p>
+      <div class="instructions">
+        <p>Some problems can be more easily solved with a second array in which we add elements [note: this also needs a current for a nice easy implementation, so is not a great introduction to this block]</p>
       <ol>
           <li>Create a list named "stops" to represent all the stops, with the values: Glasgow Queen Street, Falkirk High, Haymarket, Edinburgh Waverly. Do the following tasks without changing the values in this list</li>
           <li>How could we display the current stop and have two buttons, instructing the train to go west (towards Glasgow) or go east (towards Edinburgh)?<ol>
@@ -949,21 +1004,24 @@
           <li>Using the <span>add ... at the start/end of the array</span> block as the "put a plate on top of the stack" operation, and two arrays (one for each of our stacks), can you implement this solution?</li>
       </ol>
       </div>
+      </div>
       <div class="exercise" id="exercise_list_consolidation">
       <h2>Project: List of links</h2>
-      <p>Repeat the exercise to show a list of your favourite links. Use a loop so that there are only two "create a ... element" blocks (one for the &lt;li&gt;, one for the &lt;a&gt;). Outline what your solution needs to look like, and implement it step by step, clicking "run" at each iteration to check your work</p>
+      <div class="instructions">
+        <p>Repeat the exercise to show a list of your favourite links. Use a loop so that there are only two "create a ... element" blocks (one for the &lt;li&gt;, one for the &lt;a&gt;). Outline what your solution needs to look like, and implement it step by step, clicking "run" at each iteration to check your work</p>
+      </div>
       </div>
       <div class="exercise" id="exercise_story_book">
       <h2>Project: Create a story book</h2>
-      <p>The great thing about story books is that you never know what will happen when you turn the page!</p>
+      <div class="instructions"><p>The great thing about story books is that you never know what will happen when you turn the page!</p>
       <ol>
           <li>Create a simple story book "experience" where you click on a button and something new happens</li>
           <li>Make the story a bit more complicated. Maybe the user has choices? Maybe an image appears at the end?</li>
       </ol>
-      </div>
+      </div></div>
       <div class="exercise" id="exercise_image_carousel">
       <h2>Project: Build an image carousel</h2>
-      <p>
+      <div class="instructions"><p>
         An image carousel has an image with two buttons ("previous" and "next")
         that allow the user to cycle through a list of images.
       </p>
@@ -986,10 +1044,12 @@
         You should first break down this problem into steps, then outline how
         each step will probably be solved (and how you can test that it does what you think it does), before creating any blocks
       </p>
-    </div>
+    </div></div>
     <div class="exercise" id="exercise_projects">
       <h2>Some more "projects"</h2>
-      <p>Here are some additional ideas of projects that can be accomplished with the current blocks 
+      <div class="instructions">
+        <p>
+        Here are some additional ideas of projects that can be accomplished with the current blocks 
         (some newer blocks haven't been properly introduced yet) and might be suitable/adaptable as 
         landing page enhancements. They all fit generally into the "add some button or event handlers 
         that add or modify some html" category.
@@ -1033,6 +1093,7 @@
           <li>Stretch goal: combine with the exercise above</li>
         </ol></li>
       </ul>
+      </div>
     </div>
     <xml id="toolbox" style="display: none">
       <category name="Loops" colour="120">
@@ -1058,6 +1119,7 @@
         <block type="text"></block>
         <block type="colour_picker"></block>
         <block type="logic_boolean"></block>
+        <block type="get_randomWord"></block>
       </category>
       <category name="Html" colour="%{BKY_COLOUR_HUE}">
         <block type="on_start"></block>

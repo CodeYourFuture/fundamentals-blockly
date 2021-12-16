@@ -30,7 +30,7 @@ BlocklyDomEditor.prototype.init = function (initHtml) {
   // keep <ul id="list"></ul> as default value in text area for most exercises
   this.root.setAttribute(
     "style",
-    "display:grid;grid-template-columns: 1fr 2fr;grid-template-rows: auto 1fr;"
+    "margin-left:2em; display:grid;grid-template-columns: 1fr 2fr;grid-template-rows: auto 1fr;"
   );
   this.root.innerHTML = `
     <div id="${this.blocklyHtml}" class="blocklyHtml">

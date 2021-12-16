@@ -5,7 +5,11 @@ let currentExercise = null;
 setupToc(exercises);
 addDomElements(exercises);
 exercises.forEach(hideExercise);
-selectExercise(exercises[0]);
+let exerciseIdFromUrl = window.location.hash.substring(1);
+let initialExercise =
+  exercises.find((exercise) => exercise.id === exerciseIdFromUrl) ||
+  exercises[0];
+selectExercise(initialExercise);
 
 function findExercises() {
   let $exercises = [...document.querySelectorAll(".exercise")];
@@ -35,6 +39,7 @@ function addDomElements(exercises) {
   for (let i = 0; i < exercises.length; i++) {
     let exercise = exercises[i];
     let $nav = document.createElement("div");
+    $nav.setAttribute("class", "nav-buttons");
     if (i > 0) {
       $nav.appendChild(createNavElement("previous exercise", exercises[i - 1]));
     }
@@ -80,17 +85,20 @@ function selectExercise(exercise) {
     hideExercise(currentExercise);
   }
   showExercise(exercise);
+  window.location.hash = exercise.id;
   currentExercise = exercise;
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
 
 function hideExercise(exercise) {
   exercise.$exercise.style.display = "none";
-  exercise.$li.style.backgroundColor = "#fff";
+  exercise.$li.style.backgroundColor = "darkslateblue";
   exercise.blocklyDomEditor.hide();
 }
 
 function showExercise(exercise) {
   exercise.$exercise.style.display = "block";
-  exercise.$li.style.backgroundColor = "#ccc";
+  exercise.$li.style.backgroundColor = "slateblue";
   exercise.blocklyDomEditor.show();
 }

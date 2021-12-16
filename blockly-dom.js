@@ -134,6 +134,7 @@ WITH_CONTEXTS = [
   "with_element_by_id",
   "with_element_by_selector",
   "with_elements_by_selector",
+  "element_clicked",
 ];
 
 function validateInWithContext(_e) {
@@ -409,7 +410,11 @@ Blockly.JavaScript["arrays_forEach"] = function (block) {
 
 Blockly.JavaScript["element_clicked"] = function (block) {
   var text_id = block.getFieldValue("ID");
+
+  //let branch = Blockly.JavaScript.statementToCodeNoIndent(block, "STACK");
+  Blockly.JavaScript.pushWithContextVariable("event.target");
   var statements_handler = Blockly.JavaScript.statementToCode(block, "HANDLER");
+  Blockly.JavaScript.popWithContextVariable();
   // TODO: Assemble JavaScript into code variable.
   var code = `
 document.getElementById('${text_id}').addEventListener('click', (event) => {
