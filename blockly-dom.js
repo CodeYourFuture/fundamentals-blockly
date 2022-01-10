@@ -290,6 +290,13 @@ Blockly.defineBlocksWithJsonArray([
     extensions: ["validate_in_with_context"],
   },
   {
+    type: "get_value",
+    message0: "get the <input> element's value",
+    output: "String",
+    colour: 60,
+    extensions: ["validate_in_with_context"],
+  },
+  {
     type: "remove_contents",
     message0: "remove the contents of the element",
     args0: [],
@@ -603,6 +610,11 @@ Blockly.JavaScript["set_content"] = function (block) {
   return withContextVariable + ".innerText = " + value + ";\n";
 };
 
+Blockly.JavaScript["get_value"] = function (block) {
+  let withContextVariable = Blockly.JavaScript.getWithContextVariable();
+  return [withContextVariable + ".value", Blockly.JavaScript.ORDER_MEMBER];
+};
+
 Blockly.JavaScript["remove_contents"] = function (block) {
   let withContextVariable = Blockly.JavaScript.getWithContextVariable();
   return withContextVariable + ".replaceChildren();\n";
@@ -625,6 +637,7 @@ Blockly.Blocks["add_element"] = {
           ["<img>", "img"],
           ["<div>", "div"],
           ["<span>", "span"],
+          ["<input>", "input"],
         ]),
         "ELEMENT"
       )

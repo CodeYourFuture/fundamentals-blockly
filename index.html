@@ -71,6 +71,15 @@
       .instructions li {
         margin-top:0.8em;
       }
+
+      .blockname {
+        background-color: lightgrey;
+      }
+
+      .runButton {
+       border: 1px dashed;
+      }
+
     </style>
   </head>
   <body>
@@ -80,6 +89,7 @@
     <script src="editor.js"></script>
     <div id="toc"></div>
     <div id="exercises">
+      
       <div class="exercise" id="introduction">
       <h2>Introduction</h2>
       <div class="instructions"><p>In this series of exercises, you will use <em>block-based programming</em>, 
@@ -90,14 +100,10 @@
       <ul>
         <li>
           Static html can be written in the html textarea ("static" means this is the original state, 
-          before the programe).
+          before the program).
         </li>
         <li>
           Code to modify the html can be written with blocks.
-        </li>
-        <li>
-          The blocks directly translate to javascript code. You can look at the resulting code in the 
-          generated javascript textarea.
         </li>
         <li>
           Clicking "run" will place the html in the space just below the textarea and execute 
@@ -105,8 +111,8 @@
         </li>
         <li>
           These exercises assume you are familiar with using the block-based programming environment, 
-          based on having done the code.org exercises. In particular, you should be familiar with if blocks
-          and loops.
+          based on having done the code.org exercises. You should be familiar with if
+          and loop blocks.
         </li>
         <li>
           There are some differences with code.org. In particular, you are free to move to the next exercise 
@@ -114,7 +120,11 @@
           appear to solve all the instructions, and green checkmarks will indicate that it does.
         </li>
         <li>
-          The end goal is to be able to copy paste the genreated code into a
+          The blocks directly translate to javascript code. You can look at the resulting code in the 
+          generated javascript textarea. It's not intended that you be able to understand this code at this point in the curriculum.
+        </li>
+        <li>
+          The end goal is to be able to copy paste the generated code into a
           single .js file and add it, and the appropriate html, to the an html page 
           created during the fundamentals module.
         </li>
@@ -133,15 +143,31 @@
         <li>html attributes</li>
         <li>variable</li>
         <li>array</li>
+        <li>function</li>
+        <li>function call</li>
+        <li>event handler? - not used, but would be convenient</li>
       </ul>
       </div></div>
+      
       <div class="exercise" id="exercise_change_text">
       <h2>Modifying html dynamically: changing text</h2>
       <script>
       BlocklyTest.registerTest("exercise_change_text", () => {
-        let p = BlocklyTest.findElement(["#paragraph", "p"]);
-        BlocklyTest.expect(1, "text was changed", p, (p) => {
-          return p.innerText.toLowerCase().startsWith("hello world");
+        let noun1 = BlocklyTest.findElement(["#noun1"]);
+        let noun2 = BlocklyTest.findElement(["#noun2"]);
+        let verb = BlocklyTest.findElement(["#verb"]);
+        let adjective = BlocklyTest.findElement(["#adjective"]);
+        BlocklyTest.expect(1, "first noun was changed", noun1, (noun1) => {
+          return noun1.innerText.toLowerCase() !== "dog";
+        });
+
+        BlocklyTest.expect(2, "all words were changed", noun1, (noun1) => {
+          return (
+            noun1.innerText.toLowerCase() !== "dog" &&
+            noun2.innerText.toLowerCase() !== "cat" &&
+            adjective.innerText.toLowerCase() !== "white" &&
+            verb.innerText.toLowerCase() !== "saw"
+          )
         });
       });
     </script>
@@ -150,23 +176,28 @@
         This exercise introduces the <b>Html blocks</b> to find and modify the text of html elements.
       </p>
         <ol>
-            <li>Let's start with a simple piece of html that represents three paragraphs.
+            <li>Let's start with the html below in the static html area. It represents a sentence with holes (also known as <a href="https://en.wikipedia.org/wiki/Mad_Libs">Mad Libs</a>).
                 <ol>
-                    <li>for example: <code id="start_exercise_change_text">&lt;p&gt;First paragraph.&lt;/p&gt;<br>&lt;p id="paragraph"&gt;Second paragraph&lt;/p&gt;<br>&lt;p&gt;Third paragraph.&lt;/p&gt;</code></li>
+                    <li><code class="start_code">&lt;p&gt;The &lt;u id="noun1"&gt;dog&lt;/u&gt; &lt;u id="verb"&gt;saw&lt;/u&gt; the &lt;u id="adjective"&gt;white&lt;/u&gt; &lt;u id="noun2"&gt;cat&lt;/u&gt;&lt;/p&gt;</code></li>
                     <li>you can click "run" to see the output</li>
                 </ol>
-            <li>Let's modify the contents of the second paragraph to read "Hello World!" instead. (This is typically the first programme that every programmer writes in any new language, so we'll honour tradition and do that here.)
+            <li>Let's modify the contents of the first <code>&lt;u&gt;</code> element to contain the word "mouse" instead of "dog".
                 <ol>
                     <li>Add an <span class="blockname">"at the start"</span> block</li>
-                    <li>Inside this block, add a <span class="blockname">"find the element using css selector"</span> block using the css selector for the id of the second paragraph &lt;p&gt; element (<code>#paragraph</code>)</li>
+                    <li>Inside this block, add a <span class="blockname">"find the element using css selector"</span> block using the css selector for the id of the first &lt;u&gt; element (<code>#noun1</code>)</li>
                     <li>Inside this block, add a <span class="blockname">"set the text content to"</span> block</li>
-                    <li>Set the value for the text of this block :<code>Hello World!</code></li>
-                    <li id="exercise_change_text_1">Click "run" to check the content of the second paragraph has changed.</li>
+                    <li>Set the value for the text of this block: <code>mouse</code></li>
+                    <li id="exercise_change_text_1">Click "run" to check the content has changed.</li>
                 </ol>
             </li>
+            <li id="exercise_change_text_2">Can you modify the contents of the other three <code>&lt;u&gt;</code> elements? If you can't think of some words, you can use the <span class="blockname">"get a random word"</span> block from the Values menu</li>
         </ol>
        </div>
        <xml class="toolbox" style="display: none">
+          <category name="Values" colour='%{BKY_TEXTS_HUE}'>
+            <block type="text"></block>
+            <block type="get_randomWord"></block>
+          </category>
           <category name="Html" colour="%{BKY_COLOUR_HUE}">
             <block type="on_start"></block>
             <block type="with_element_by_selector"></block>
@@ -179,6 +210,7 @@
         </xml>
       </div>
 
+      
       <div class="exercise" id="exercise_set_colours">
       <h2>Modifying html dynamically: setting colours</h2>
       <script>
@@ -207,14 +239,14 @@
             <li>Let's start with an html list of our favourite fruit in the "Static html" 
                 <ol>
                     <li>each html list item (<code>&lt;li&gt;</code>) has a different id attribute so that we can refer to it using a css selector</li>
-                    <li>for example: <code id="start_exercise_set_colours">&lt;ul&gt;<br>&lt;li id="banana"&gt;Banana&lt;/li&gt;<br>&lt;li id="orange"&gt;Orange&lt;/li&gt;<br>&lt;/ul&gt;</code></li>
+                    <li>for example: <code class="start_code">&lt;ul&gt;<br>&lt;li id="banana"&gt;Banana&lt;/li&gt;<br>&lt;li id="apple"&gt;Apple&lt;/li&gt;<br>&lt;li id="strawberry"&gt;Strawberry&lt;/li&gt;<br>&lt;/ul&gt;</code></li>
                     <li>you can click "run" to see the output</li>
                 </ol>
             <li>Color the banana yellow
                 <ol>
                     <li>Add an <span class="blockname">"at the start"</span> block</li>
                     <li>Inside this block, add a <span class="blockname">"find the element using css selector"</span> block using the id selector for the &lt;li&gt; element for Banana (<code>#banana</code>)</li>
-                    <li id="exercise_set_colours_1">Inside this block, add a <span class="blockname">set the attribute"</span>" block, pick "color" and set the value to any yellow colour using the <span class="blockname">colour picker</span> (you can find a color picker block in the "Values" menu).</li>
+                    <li id="exercise_set_colours_1">Inside this block, add a <span class="blockname">"set the attribute"</span> block, pick "color" and set the value to any yellow colour using the <span class="blockname">colour picker</span> (you can find a color picker block in the "Values" menu).</li>
                     <li id="exercise_set_colours_2">The colour for a banana is probably not easy to see against a white background. Add a second <span class="blockname">"set the attribute"</span> block and set a dark color for the background.</li>
                     <li>Click "run" to check the output looks like
                         <ul style="background-color: azure;">
@@ -246,6 +278,7 @@
           </category>
         </xml>
       </div>
+      
       <div class="exercise" id="exercise_add_fruit">
       <h2>Creating html dynamically: lists of fruit</h2>
       <script>
@@ -272,7 +305,7 @@
             <li>Let's start with an html list with a single apple in the "Static html" 
                 <ol>
                     <li>Note the list has an id ("list") so that we can refer to it using a css selector.</li>
-                    <li>for example: <code id="start_exercise_add_fruit">&lt;ul id="list"&gt;<br>&lt;li&gt;Apple&lt;/li&gt;<br>&lt;/ul&gt;</code></li>
+                    <li>for example: <code class="start_code">&lt;ul id="list"&gt;<br>&lt;li&gt;Apple&lt;/li&gt;<br>&lt;/ul&gt;</code></li>
                 </ol>
             <li>Add one more fruit dynamically
                 <ol>
@@ -311,6 +344,7 @@
           </category>
         </xml>
       </div>
+      
       <div class="exercise" id="exercise_list_links">
       <h2>Creating html dynamically: lists of links</h2>
       <script>
@@ -331,10 +365,10 @@
         This exercise consolidates the use of the blocks we learned about in the previous exercises.
       </p>
         <ol>
-            <li>Start with an empty unordered html list (<code id="start_exercise_list_links">&lt;ul id="list"&gt;&lt;/ul&gt;</code>) in the static html.
+            <li>Start with an empty unordered html list (<code class="start_code">&lt;ul id="list"&gt;&lt;/ul&gt;</code>) in the static html.
             <li>Dynamically add your favourite links to the html list
                 <ol>
-                    <li>Find the urls of your three favourite websites (they look something like: <code>http://www.codeyourfuture.io</code>)</li>
+                    <li>Find the URLs of your three favourite websites (they look something like: <code>http://www.codeyourfuture.io</code>)</li>
                     <li>Use the blocks we have seen so far ("at the start", "find the element using css selector", "create a new ... element", "set the attribute", "set the text content", and the Values blocks)</li>
                     <li>Hint: you will need to create an <code>&lt;a&gt;</code> inside of each <code>&lt;li&gt;</code></li>
                     <li>Hint: remember that to set the target of an <code>&lt;a&gt;</code> you can use the <code>&lt;href&gt;</code> attribute. Without this attribute, your link will not <i>look</i> like a link</li>
@@ -370,6 +404,7 @@
           </category>
         </xml>
       </div>
+      
       <div class="exercise" id="exercise_button_add">
       <h2>Buttons and clicks: A button to add apples</h2>
       <script>
@@ -399,12 +434,12 @@
       </script>
       <div class="instructions">
       <p>
-        A lot of javascript is run responsively to the user interacting with the page (clicking, scrolling, etc.). Let's make it so every time we (as a "user") click on an "add an apple" button, it adds an apple to the list.
+        Javascript is often "event-driven". This means it is run in when the user interacts with the page (clicking, typing, etc.). Let's make it so every time we (as a "user") click on an "add an apple" button, it adds an apple to the list.
       </p>
         <ol>
             <li>Start with an empty unordered html list (<code>&lt;ul&gt;</code>) and a button to add apples to the list (<code>&lt;button&gt;</code>) in the static html.
                 <ol>
-                    <li>for example: <code id="start_exercise_button_add">&lt;ul id="list"&gt;&lt;/ul&gt;<br>&lt;button id="button"&gt;add an apple&lt;/button&gt;</code></li>
+                    <li>for example: <code class="start_code">&lt;ul id="list"&gt;&lt;/ul&gt;<br>&lt;button id="button"&gt;add an apple&lt;/button&gt;</code></li>
                 </ol>
             <li>When we click on the "add an apple" button, let's add an apple to the list
                 <ol>
@@ -438,14 +473,72 @@
           </category>
         </xml>
       </div>
+      
+      <div class="exercise" id="exercise_button_input">
+        <h2>Inputs and clicks: say something</h2>
+        <div class="instructions">
+        <p>
+          We can also get user input when a button is clicked. Let's have the browser say a word or sentence that the user enters.
+        </p>
+        <ol>
+            <li>Start with a text input box list (<code>&lt;input /&gt;</code>) and a button to that says "speak" in the static html.
+                <ol>
+                    <li>for example: <code class="start_code">&lt;input id="text" /&gt;<br>&lt;button id="button"&gt;speak&lt;/button&gt;</code></li>
+                </ol>
+            </li>
+            <li>We want to do two things in order when the button is clicked. First we get the value entered by the user, then we pass it to a block that will say it out loud. A common strategy in problem solving for programming is to solve the visible (or in this case, audible) thing first: have the browser say something. 
+                <ol>
+                    <li>Add a <span class="blockname">"when the element with id ... is clicked"</span> block</li>
+                    <li>Inside this block, add a <span class="blockname">"say"</span> block from the Values menu</li>
+                    <li>As input to this block, connect a <span class="blockname">"get a random word"</span> block</li>
+                    <li>Check that a random word gets said when you click "speak"</li>
+                </ol>
+            </li>
+            <li>Now that we know a word gets said out loud when we click the button, we can make it be the one from the input box. 
+                <ol>
+                    <li>Inside the <span class="blockname">"when the element with id ... is clicked"</span> block, add a <span class="blockname">"find the element using css selector"</span> block to find the input (<code>#text</code>)</li>
+                    <li>Move the <span class="blockname">"say"</span> block inside this new block</li>
+                    <li>Replace the <span class="blockname">"get a random word"</span> block with a <span class="blockname">"get the &lt;input&gt; element's value"</span> block</li>
+                    <li>Check that whatever word you write in the input box gets said when you click "speak"</li>
+                </ol>
+            </li>
+            <li>Do you see why it was useful to solve this problem in reverse order?</li>
+        </ol>
+       </div>
+       <xml class="toolbox" style="display: none">
+          <category name="Values" colour='%{BKY_TEXTS_HUE}'>
+            <block type="math_number"></block>
+            <block type="text"></block>
+            <block type="colour_picker"></block>
+            <block type="logic_boolean"></block>
+            <block type="text_to_speech"></block>
+          </category>
+          <category name="Html" colour="%{BKY_COLOUR_HUE}">
+            <block type="on_start"></block>
+            <block type="element_clicked"></block>
+            <block type="with_element_by_selector"></block>
+            <block type="add_element"></block>
+            <block type="set_content">
+              <value name="VALUE">
+                <shadow type="text"> </shadow>
+              </value>
+            </block>
+            <block type="set_attribute"></block>
+            <block type="remove_contents"></block>
+          </category>
+        </xml>
+      </div>
+      
       <div class="exercise" id="exercise_button_consolidation">
         <h2>Buttons and clicks consolidation</h2>
+        <div class="instructions">
         <p>
           Anything that we could do previously as soon as run is clicked, we can now do as a response to clicking buttons or other elements in the static html.
         </p>
         <ol>
+            <li id="exercise_button_consolidation_4">Place the sentence from the first exercise in the static html, but this time with &lt;button&gt; elements around the words to be filled in (<code class="start_code">&lt;p&gt;The &lt;button id="noun1"&gt;dog&lt;/button&gt; &lt;button id="verb"&gt;saw&lt;/button&gt; the &lt;button id="adjective"&gt;white&lt;/button&gt; &lt;button id="noun2"&gt;cat&lt;/button&gt;&lt;/p&gt;</code>). Make it so each button's text gets set to a random word when it is clicked?</li>
             <li id="exercise_button_consolidation_1">Place two buttons ("day mode" and "night mode") and an html list in the static html. Can you add blocks so that when the buttons are clicked, the html list changes to "day mode" (dark text on a light background) and "night mode" (light text on a dark background)?</li>
-            <li id="exercise_button_consolidation_2">Place a button in the static html. Can you add blocks so it changes colour when it is clicked (note: in the interest of simplifying these exercises, this is one block more complicated than it would be in regular javascript)?
+            <li id="exercise_button_consolidation_2">Place a button in the static html. Can you add blocks so it changes colour when it is clicked?</li>
             <li id="exercise_button_consolidation_3">Place an image in the static html. Can you add blocks so it changes when it is clicked?</li>
         </ol>
        </div>
@@ -470,11 +563,222 @@
             <block type="remove_contents"></block>
           </category>
         </xml>
+      </div>      
+      
+      <div class="exercise" id="exercise_button_variables_state">
+        <h2>Variables: keeping track of the number of clicks</h2>
+        <div class="instructions">
+        <p>
+          A variable is a name into which a value can be stored. There are several reasons for which we might want to do this. The first is when we want to keep track of a value that changes over time. Let's keep track of the number of times a button is clicked.
+        </p>
+        <ol>
+            <li>Start with a button (<code>&lt;button&gt;</code>) that has been clicked 0 times in the static html. <code class="start_code">&lt;button id="button"&gt;0&lt;/button&gt;</code></li>
+            <li>Add an <span class="blockname">"at the start"</span> block. Inside we are going to add a variable that will keep track of the number of times the button was clicked.</li>
+                <ol>
+                    <li>In the Variables menu, click "create variable..." to create a variable called <code>click_count</code></li>
+                    <li>From the Variables menu, create a <span class="blockname">"set click_count to"</span> block and place it inside the <span class="blockname">"at the start"</span></li>
+                    <li>Set the value to 0 (from the Values menu)</li>
+                </ol>
+            </li>
+            <li>When the button is clicked, we are going to do two things: increase the value of <code>click_count</code> by 1; and change the text of the button to the new value of click_count.</li>
+                <ol>
+                    <li>Add an <span class="blockname">"when the element with id ... is clicked"</span> block. </li>
+                    <li>Inside this block, add a <span class="blockname">"change click_count by 1"</span> block from the Variables menu.</li>
+                    <li>Add the necessary blocks to set the text content of the button to the value of <code>click_count</code>. (You can get this value by selecting the <span class="blockname">"click_count"</span> block from the Variables menu)</li>
+                </ol>
+            </li>
+        </ol>
+        <p>Note that it will be a common pattern that you first set a variable in the <span class="blockname">"at the start"</span> block and then modify it in at <span class="blockname">"when the element with id ... is clicked"</span> block. This first setting of the variable is called</p>
+       </div>
+       <xml class="toolbox" style="display: none">
+          <category name="Values" colour='%{BKY_TEXTS_HUE}'>
+            <block type="math_number"></block>
+            <block type="text"></block>
+            <block type="colour_picker"></block>
+            <block type="logic_boolean"></block>
+          </category>
+          <category name="Html" colour="%{BKY_COLOUR_HUE}">
+            <block type="on_start"></block>
+            <block type="element_clicked"></block>
+            <block type="with_element_by_selector"></block>
+            <block type="add_element"></block>
+            <block type="set_content">
+              <value name="VALUE">
+                <shadow type="text"> </shadow>
+              </value>
+            </block>
+            <block type="set_attribute"></block>
+            <block type="remove_contents"></block>
+            <block type="get_value"></block>
+          </category>
+         <category name="Variables" colour="330" custom="VARIABLE"></category>
+        </xml>
       </div>
-      <div class="exercise" id="exercise_arrays">
+      
+      <div class="exercise" id="exercise_button_variables_store">
+        <h2>Variables: keeping track of the number of clicks</h2>
+        <div class="instructions">
+        <p>
+          Another reason for which we might want to use a variable is when we want to do things with multiple html elements at the same time.
+          For example take the value from an <code>&lt;input&gt;</code> element and set it as the text of a new &lt;li&gt; element. We're going to create a list of things to do.
+        </p>
+        <ol>
+            <li>Start with an empty list, an input, and a button "add Todo Item" in the static html. <code class="start_code">&lt;p&gt;Things to do:&lt;/p&gt;<br>&lt;ul id="list"&gt;&lt;/ul&gt;<br>&lt;input id="text" /&gt;<br>&lt;button id="button"&gt;add Todo Item&lt;/button&gt;</code></li>
+            <li>When the button is clicked, we are going to do two things: get the value of the input box and store it in a variable; and add a new <code>&lt;li&gt;</code> with that value to the list. To do the visible outcome first, we're going to do these in reverse order.</li>
+                <ol>
+                    <li>Add an <span class="blockname">"when the element with id ... is clicked"</span> block.</li>
+                    <li>First find the list element (<code>#list</code>) and add a new <code>&lt;li&gt;</code> with an arbitrary text value (for example "do cyf homework"). Check that this works.</li>
+                    <li>In the Variables menu, click "create variable..." to create a variable called <code>new_todo</code></li>
+                    <li>Before the code to add the new &lt;li&gt;, add code to find the text input element and set the <code>new_todo</code> variable to the content of this input.</li>
+                    <li>Last, replace the arbitrary content of the new <code>&lt;li&gt;</code> with the value of the variable.</li>
+                </ol>
+            </li>
+        </ol>
+        <p>The last (but most important) reason to have variables is that their names are often very useful to help us understand what our code is doing.</p>
+       </div>
+       <xml class="toolbox" style="display: none">
+          <category name="Values" colour='%{BKY_TEXTS_HUE}'>
+            <block type="math_number"></block>
+            <block type="text"></block>
+            <block type="colour_picker"></block>
+            <block type="logic_boolean"></block>
+          </category>
+          <category name="Html" colour="%{BKY_COLOUR_HUE}">
+            <block type="on_start"></block>
+            <block type="element_clicked"></block>
+            <block type="with_element_by_selector"></block>
+            <block type="add_element"></block>
+            <block type="set_content">
+              <value name="VALUE">
+                <shadow type="text"> </shadow>
+              </value>
+            </block>
+            <block type="set_attribute"></block>
+            <block type="remove_contents"></block>
+            <block type="get_value"></block>
+          </category>
+         <category name="Variables" colour="330" custom="VARIABLE"></category>
+        </xml>
+      </div>
+      
+      <div class="exercise" id="exercise_button_variables_consolidation">
+        <h2>Variables consolidation: counting sheep</h2>
+        <div class="instructions">
+        <p>
+          Let's put our different uses of variables together. We would like to track how many times the user adds the word "sheep" and how many times they add any other word.
+        </p>
+        <ol>
+            <li>Let's start with the following static html. <code class="start_code">&lt;p&gt;There have been &lt;span id="sheep_count"&gt;0&lt;/span&gt; sheep 🐑 and &lt;span id="other_count"&gt;0&lt;/span&gt; others.&lt;/p&gt;<br>&lt;input id="text" /&gt;<br>&lt;button id="button"&gt;add animal&lt;/button&gt;</code></li>
+            <li>The following things should happen (use variables where necessary to keep track of various values, and the blocks you need from the Logic menu). Don't forget to break down your implementation into steps where you first add blocks that make a visible difference and test that it works.</li>
+                <ol>
+                    <li>When the user clicks "add animal", if the word in the text input is "sheep", the number of sheep displayed in the <code>&lt;span&gt</code> with id <code>sheep_count</code> should increase by one.</li>
+                    <li>When the user clicks "add animal", if the word in the text input is not sheep, the number displayed in the <code>&lt;span&gt</code> with id <code>other_count</code> should increase by one.</li>
+                    <li>(we don't have any way currently to check if the word in the text input is actually an animal - we'll fix this in a few exercises)</li>
+                </ol>
+            </li>
+        </ol>
+       </div>
+       <xml class="toolbox" style="display: none">
+          <category name="Logic" colour="210">
+            <block type="controls_if"></block>
+            <block type="logic_negate"></block>
+            <block type="logic_compare"></block>
+          </category>
+          <category name="Values" colour='%{BKY_TEXTS_HUE}'>
+            <block type="math_number"></block>
+            <block type="text"></block>
+            <block type="colour_picker"></block>
+            <block type="logic_boolean"></block>
+          </category>
+          <category name="Html" colour="%{BKY_COLOUR_HUE}">
+            <block type="on_start"></block>
+            <block type="element_clicked"></block>
+            <block type="with_element_by_selector"></block>
+            <block type="add_element"></block>
+            <block type="set_content">
+              <value name="VALUE">
+                <shadow type="text"> </shadow>
+              </value>
+            </block>
+            <block type="set_attribute"></block>
+            <block type="remove_contents"></block>
+            <block type="get_value"></block>
+          </category>
+         <category name="Variables" colour="330" custom="VARIABLE"></category>
+        </xml>
+      </div>
+
+      
+      <div class="exercise" id="exercise_arrays_random">
+      <h2>Arrays: Mad Libs revisited</h2>
+      <div class="instructions">
+      <p>When we did the first Mad Libs exercise, we weren't able to make our own list of words to choose from but could only pick a category (noun, adjective, verb). 
+        We will now introduce a data structure called an <b>Array</b>, that represents a list of data (typically numbers or texts) in javascript. 
+        They can be created and used from the "Arrays" menu. Let's create our own list of words to select from.
+      </p>
+      <ol>
+          <li>Start with a Mad Libs sentence similar to before (<code class="start_code">&lt;p&gt;The &lt;u id="noun"&gt;man&lt;/u&gt; &lt;u id="verb"&gt;saw&lt;/u&gt; the &lt;u id="adjective"&gt;white&lt;/u&gt; &lt;u id="animal"&gt;cat&lt;/u&gt;&lt;/p&gt;</code></li>
+          <li>Add an <span class="blockname">"at the start"</span> block</li>
+          <li>We'll now create an array of animals and assign it to a variable <ol>
+              <li>From the "Arrays" menu, add a <span class="blockname">"Set ... to, create array with"</span> block to the <span class="blockname">"at the start"</span> block</li>
+              <li>Rename the variable <span class="variablename">"array"</span> to "animals"</li>
+              <li>Add at least 3 animal text values to this array</li>
+              <li>Note: You can click on the gear icon at the top left of the <span class="blockname">"create array with"</span> block to add and remove slots for values</li>
+          </ol></li>
+          <li>Let's set the text of the <code>&lt;u id="animal"&gt;</code> to a random animal.<ol>
+              <li>You already know how to do most of the steps (find the element with id animal, set its text content)</li>
+              <li>The thing we will do differently is to set the text content to a <span class="blockname">get a random item from array</span> block, selecting the "animals" array in the dropdown.</li>
+              <li>Click "run" several times to check you get a random animal from your array each time.</li>
+          </ol></li>
+          <li>Create additional arrays from which to select random words for each slot to be filled and share the result with your cohort.</li>
+      </ol>
+      </div>
+      <xml class="toolbox" style="display: none">
+        <category name="Values" colour='%{BKY_TEXTS_HUE}'>
+          <block type="math_number"></block>
+          <block type="text"></block>
+          <block type="colour_picker"></block>
+          <block type="logic_boolean"></block>
+        </category>
+        <category name="Html" colour="%{BKY_COLOUR_HUE}">
+          <block type="on_start"></block>
+          <block type="element_clicked"></block>
+          <block type="with_element_by_selector"></block>
+          <block type="add_element"></block>
+          <block type="set_content">
+            <value name="VALUE">
+              <shadow type="text"> </shadow>
+            </value>
+          </block>
+          <block type="set_attribute"></block>
+          <block type="remove_contents"></block>
+          <block type="element_clicked_current"></block>
+          <block type="with_elements_by_selector"></block>
+        </category>
+        <category name="Arrays" colour="%{BKY_LISTS_HUE}">
+          <block type="variables_set">
+            <field name="VAR">array</field>
+            <value name="VALUE">
+              <block type="lists_create_with">
+              </block>
+            </value>
+          </block>
+          <block type="get_randomMember">
+          <value name="ARRAY">
+            <block type="variables_get">
+                <field name="VAR">array</field>
+            </block>
+          </value>
+        </block>
+        </category>
+        <category name="Variables" colour="330" custom="VARIABLE"></category>
+      </xml>
+      </div>
+
+      <div class="exercise" id="exercise_arrays_foreach">
       <h2>Arrays and loops</h2>
       <script>
-        BlocklyTest.registerTest("exercise_arrays", () => {
+        BlocklyTest.registerTest("exercise_arrays_foreach", () => {
           let ul = BlocklyTest.findElement(["#list", "ul", "ol"]);
           let list = BlocklyTest.findArrayValues(0); // first of the arrays is the one we want
 
@@ -501,33 +805,31 @@
       </script>
       <div class="instructions">
       <p>In this series of exercises, we have so far used one <span class="blockname">"create a new ... element"</span> for each <code>&lt;li&gt;</code> we want to create. 
-        We will now introduce a data structure called an <b>Array</b>, that represents of list of data (typically numbers or texts) in javascript. 
-        They can be created and used from the "Arrays" menu. We often use an array when we want to do the same thing with each element in an array (for example, create a <code>&lt;li&gt;</code>).
+        Another use for an array is when we want to do the same thing with each element in an array (for example, create a <code>&lt;li&gt;</code>).
       </p>
       <ol>
-          <li>Start with an empty unordered html list with the id "list" (<code id="start_exercise_arrays">&lt;ul id="list"&gt;&lt;/ul&gt;</code>) in the static html.</li>
-          <li>Add an <span class="blockname">"at the start"</span> block"</li>
+          <li>Start with an empty unordered html list with the id "list" (<code class="start_code">&lt;ul id="list"&gt;&lt;/ul&gt;</code>) in the static html.</li>
+          <li>Add an <span class="blockname">"at the start"</span> block</li>
           <li>We'll now create an array of fruits and assign it to a variable <ol>
               <li>From the "Arrays" menu, add a <span class="blockname">"Set ... to, create array with"</span> block to the <span class="blockname">"at the start"</span> block</li>
               <li>Rename the variable <span class="variablename">"array"</span> to "fruits"</li>
               <li>Add at least 3 fruit text values to this array</li>
-              <li>Note: You can click on the gear icon at the top left of the <span class="blockname">"create array with"</span> block to add and remove slots for values</li>
           </ol></li>
           <li>Let's do the first steps to convert the first entry in this array into <code>&lt;li&gt;</code><ol>
               <li>You already know how to do most of the steps (find the element with id list, create an li, set its text content)</li>
               <li>The thing we will do differently is to set the text content to a <span class="blockname">get the first item from the array</span> block, selecting the "fruits" array in the dropdown.</li>
-              <li id="exercise_arrays_1">Click "run" to check you are displaying a list with one fruit</li>
+              <li id="exercise_arrays_foreach_1">Click "run" to check you are displaying a list with one fruit</li>
           </ol></li>
           <li>Let's use this same code to show all the fruits<ol>
               <li>At the beginning of the <span class="blockname">"find the element using css selector"</span> block, insert a <span class="blockname">"for each item in array"</span> block. Select the fruits array in the dropdown.</li>
               <li>Move all of the <span class="blockname">"create a new ... element"</span> block inside the for <span class="blockname">"for each item in array"</span> block</li>
-              <li id="exercise_arrays_2">As you can see by clicking "run", you now have a list with multiple items - but they are all the first item in the array</li>
+              <li id="exercise_arrays_foreach_2">As you can see by clicking "run", you now have a list with multiple items - but they are all the first item in the array</li>
               <li>Inside the loop, you have a variable available called <span class="variablename">"item"</span>. Each time through the loop, this variable will take on the value of the next fruit in the array</li>
               <li>Replace the <span class="blockname">get the first item from the array</span> block with a "item" variable block (you can find it in the Variables menu)</li>
-              <li id="exercise_arrays_3">Check by clicking run that you now have a list with each item of fruit in your array.</li>
+              <li id="exercise_arrays_foreach_3">Check by clicking run that you now have a list with each item of fruit in your array.</li>
               <li>If you have an array called "fruits", it's good practice to rename the loop "item" variable to "fruit".</li>
           </ol></li>
-          <li id="exercise_arrays_4">Add another fruit to your array and check that all your fruits are still shown.</li>
+          <li id="exercise_arrays_foreach_4">Add another fruit to your array and check that all your fruits are still shown.</li>
       </ol>
       </div>
       <xml class="toolbox" style="display: none">
@@ -590,10 +892,182 @@
               </block>
             </value>
           </block>
+          <block type="get_sum">
+            <value name="ARRAY">
+              <block type="variables_get">
+                  <field name="VAR">array</field>
+              </block>
+            </value>
+          </block>
         </category>
         <category name="Variables" colour="330" custom="VARIABLE"></category>
       </xml>
       </div>
+
+      <div class="exercise" id="exercise_arrays_sum">
+      <h2>Arrays: Don't go higher than 11!</h2>
+      <div class="instructions">
+      <p>[A simpler version of this exercise is needed to learn only adding/pushing and summing, maybe with values from the input box, and this can come later as the first "project". When this change is made a lot of instructions can be simplified to remove the detailed scaffolding]</p><p>We are now going to learn how to add items to (and remove items from) an array, and how to calculate the sum of an array of numbers. We're going to create a game where you roll dice and your goal is to not total more than 11.
+      </p>
+      <ol>
+          <li>Start with an empty list (where we will display our rolls), a place to put a total, and a few buttons (<code class="start_code">&lt;p&gt;So far you have rolled:&lt;/p&gt;<br>&lt;ul id="list"&gt;&lt;/ul&gt;<br>&lt;button id="button_roll"&gt;Roll the dice&lt;/button&gt;<br>&lt;p&gt;Total: &lt;span id="total"&gt;0&lt;/span&gt;. &lt;span id="info"&gt;Keep playing!&lt;/span&gt;&lt;/p&gt;<br>&lt;button id="button_remove"&gt;Remove the last roll&lt;/button&gt;<br>&lt;button id="button_restart"&gt;Start again&lt;/button&gt;</code></li>
+          <li>The game has the following requirements. Before reading further, how would you break down and implement these requirements into steps? Think through what steps need to happen after each button click. In what order would you implement these steps so as to test each step as early as possible?<ul>
+            <li>When "roll the dice" is clicked, a new random number between 1 and 6 should be generated and added</li>
+            <li>If the total of all the dice rolls is exactly 11, display "You won" in the <code>&lt;span id="info"&gt;</code></li>
+            <li>If the total of all the dice rolls is over 11, display "You lost" in the <code>&lt;span id="info"&gt;</code></li>
+            <li>When "remove the last roll" is clicked, we should undo the last roll (this is a cheat button so that we can always win!)</li>
+            <li>The list should display all the rolls so far</li>
+            <li>The total so far should be displayed in the <code>&lt;span id="total"&gt;</code></li>
+            <li>When "start again" is clicked, we should return to the initial state</li>
+          </ul></li>
+          <li>
+            The following steps are needed. Notice that some of them repeat, some of them are similar, and that the game has a "state" which is the array of dice rolls. <ul>
+            <li>At the beginning: <ol>
+              <li>Display each roll in the array (there are currently no rolls)</li>
+              <li>Display the total of all rolls (it is currently 0)</li>
+            </ol></li>
+            <li>When "roll the dice" is clicked: <ol>
+              <li>Pick a random number between 1 and 6</li>
+              <li>Add that number to the array of rolls</li>
+              <li>Display each roll in the array</li>
+              <li>Calculate the total of all rolls<ul>
+                <li>If it is greater than 11, display "You lost"</li>
+                <li>If it is equal to 11, display "You won"</li>
+              </ul></li>
+              <li>Display the total of all rolls</li>
+            </ol></li>
+            <li>When "Start again" is clicked: (this is the same as at the beginning)<ol>
+              <li>Display each roll in the array (there are currently no rolls)</li>
+              <li>Display the total of all rolls (it is currently 0)</li>
+            </ol></li>
+            <li>When "Remove the last roll" is clicked: <ol>
+              <li>Remove the last roll from the array of rolls</li>
+              <li>Display each roll in the array</li>
+              <li>Calculate the total of all rolls<ul>
+                <li>If it is greater than 11, display "You lost"</li>
+                <li>If it is equal to 11, display "You won"</li>
+                <li>If it is less than 11, display "Keep playing"</li>
+              </ul></li>
+              <li>Display the total of all rolls</li>
+            </ol></li>
+          </ul></li>
+          <li>In order to check that anything is working, we need to be able to display an array of rolls and its total, so that's where we will start. <ol>
+            <li>In an <span class="blockname">"At the start"</span> block, create an array called "rolls" and put 3 numbers in the array (afterwards we will start with an empty array, but for now having numbers helps)</li>
+            <li>Using a loop, display each of the numbers in the array in the list (you know how to do this from previous exercises). Check that your code works.</li>
+            <li>Using the <span class="blockname">"get the sum of the numbers in array"</span> block, set the <code>&lt;span id="total"&gt;</code> to that value.</li>
+            <li>We will put in the "you won"/"you lost"/"keep playing" logic in last (but you could also do it now if you like)</li>
+          </ol></li>
+          <li>Next, let's go with the simplest: the restart button <ol>
+              <li>Add a <span class="blockname">"When the element with id ... is clicked"</span> block for this button</li>
+              <li>We want to set the "rolls" variable to an empty list (Use the same blocks as you did to initialise the rolls variable, then use the gear icon to remove all the items from the array)</li>
+              <li>We now want to remove the displayed rolls from the list (You will need to use the <span class="blockname">"Remove the contents of the element"</span> block)</li>
+              <li>And we want to set the text <code>&lt;span id="total"&gt;</code> to 0</li>
+          </ol></li>
+          <li>Slightly more tricky: the "roll the dice" button. Before following the instructions, can you think how we could create a dice?<ol>
+              <li>To create a dice, we'll create a new array in the <span class="blockname">"At the start"</span> block, called "dice" (be careful to select the "array" variable, not the "rolls" variable before renaming to "dice"), setting the values as the numbers 1, 2, 3, 4, 5, and 6. We can select a random item from this array when we want to roll a dice.</li>
+              <li>Add a <span class="blockname">"When the element with id ... is clicked"</span> block for the button</li>
+              <li>Let's roll the dice and add the result to the list. Use the <span class="blockname">"add ... to the start/end of the array"</span>, setting the "end" of the "rolls" array, and using a <span class="blockname">"get random item from the array"</span> block as the value.</li>
+              <li>We could now add a new <code>&lt;li&gt;</code> to the list and set the total. Instead, we are going to re-display the whole list - you will see why in the next step</li>
+              <li>To re-display the whole list (and set the total), we need a combination of the two previous steps: find the list, remove its contents, loop over the items in the array and add them to the list, set the total to the sum of the array.</li>
+          </ol></li>
+          <li>Notice that at this point, we have 3 different versions of the same steps to display the list contents and total. Now imagine we want to change something (like add the "you won"/"you lost"/"keep playing" information). We would have to add it in 3 different places! (And we still have a "remove last roll" button to implement - so it would be 4 places)<ol>
+              <li>We can actually write this code so that is exactly the same all the times (looping over an empty array will do nothing, and it's sum will be 0). When we see a piece of code we would like to use multiple times, we create a function.</li>
+              <li>From the Functions menu, select a <span class="blockname">"To <i>do something</i>"</span> block and call it "to <i>display the rolls</i>"</li>
+              <li>Take all the display code you wrote in the previous step and move it to inside this function.</li>
+              <li>In the Functions menu, there is now a <span class="blockname">"display the rolls"</span> block. You can us it as a replacement for the code you just moved. That block will "call" the function you created (this means it will execute all the blocks inside that function)</li>
+              <li>You can replace the 2 other versions of your display code with the <span class="blockname">"display the rolls"</span> block.</li>
+          </ol></li>
+          <li>Now you can add the logic that decides what to put into the <code>&lt;span id="info"&gt;</code>. <ol>
+              <li>Hint: You can calculate the sum of the array only once and store the result in a variable.</li>
+              <li>Hint: You can add else if and else conditions to the <span class="blockname">"if"</span> block by clicking on the gear icon.</li>
+              <li>To test all the logic, put different values into the initial rolls array. Once this is working, you can set the initial rolls array to an empty list.</li>
+          </ol></li>
+          <li>Last it's time to create our "cheat" functionality, the "Remove the last roll" button.<ol>
+              <li>You already know how to do everything except removing the last item from the array</li>
+              <li>From the arrays menu take a <span class="blockname">"get the first item from the array"</span> block.</li>
+              <li>Change the dropdowns to "remove" and "last", to remove the last roll</li>
+              <li>Don't for get to call the <span class="blockname">"display the rolls"</span> function!</li>
+          </ol></li>
+      </ol>
+      </div>
+      <xml class="toolbox" style="display: none">
+        <category name="Logic" colour="210">
+          <block type="controls_if"></block>
+          <block type="logic_negate"></block>
+          <block type="logic_compare"></block>
+        </category>
+        <category name="Values" colour='%{BKY_TEXTS_HUE}'>
+          <block type="math_number"></block>
+          <block type="text"></block>
+          <block type="colour_picker"></block>
+          <block type="logic_boolean"></block>
+        </category>
+        <category name="Html" colour="%{BKY_COLOUR_HUE}">
+          <block type="on_start"></block>
+          <block type="element_clicked"></block>
+          <block type="with_element_by_selector"></block>
+          <block type="add_element"></block>
+          <block type="set_content">
+            <value name="VALUE">
+              <shadow type="text"> </shadow>
+            </value>
+          </block>
+          <block type="set_attribute"></block>
+          <block type="remove_contents"></block>
+          <block type="element_clicked_current"></block>
+          <block type="with_elements_by_selector"></block>
+        </category>
+        <category name="Arrays" colour="%{BKY_LISTS_HUE}">
+          <block type="variables_set">
+            <field name="VAR">array</field>
+            <value name="VALUE">
+              <block type="lists_create_with">
+              </block>
+            </value>
+          </block>
+          <block type="arrays_forEach">
+            <field name="VAR">item</field>
+            </value>
+            <value name="LIST">
+              <block type="variables_get">
+                  <field name="VAR">array</field>
+              </block>
+            </value>
+          </block>
+          <block type="arrays_getFirst">
+            <value name="VALUE">
+              <block type="variables_get">
+                  <field name="VAR">array</field>
+              </block>
+            </value>
+          </block>
+          <block type="arrays_push">
+            <value name="LIST">
+              <block type="variables_get">
+                  <field name="VAR">array</field>
+              </block>
+            </value>
+          </block>
+        <block type="get_randomMember">
+          <value name="ARRAY">
+            <block type="variables_get">
+                <field name="VAR">array</field>
+            </block>
+          </value>
+        </block>
+          <block type="get_sum">
+          <value name="ARRAY">
+            <block type="variables_get">
+                <field name="VAR">array</field>
+            </block>
+          </value>
+        </block>
+        </category>
+        <category name="Variables" colour="330" custom="VARIABLE"></category>
+        <category name="Functions" colour="290" custom="PROCEDURE"></category>
+      </xml>
+      </div>
+      
       <div class="exercise" id="exercise_arrays_buttons">
       <h2>Arrays and buttons</h2>
       <script>
@@ -642,7 +1116,7 @@
       <div class="instructions">
         <p>The most common something with all the items in an array is to use a loop, as we saw in the previous exercise. Sometimes, a loop just doesn't do what we need, for example if we wanted to make the list of fruit appear gradually.</p>
       <ol>
-          <li>Create an empty unordered html list (as usual) and a "reveal next fruit" button (<code id="start_exercise_arrays_buttons">&lt;ul id="list"&gt;&lt;/ul&gt;<br>&lt;button id="button"&gt;reveal next fruit&lt;/button&gt;</code>)</li>
+          <li>Create an empty unordered html list (as usual) and a "reveal next fruit" button (<code class="start_code">&lt;ul id="list"&gt;&lt;/ul&gt;<br>&lt;button id="button"&gt;reveal next fruit&lt;/button&gt;</code>)</li>
           <li>Create an array of your favourite fruit inside an <span class="blockname">"at the start"</span> block</li>
           <li>We'll now make it so each click of the button reveals the next fruit.
           <ul>
@@ -724,10 +1198,18 @@
               </block>
             </value>
           </block>
+          <block type="get_sum">
+            <value name="ARRAY">
+              <block type="variables_get">
+                  <field name="VAR">array</field>
+              </block>
+            </value>
+          </block>
         </category>
         <category name="Variables" colour="330" custom="VARIABLE"></category>
       </xml>
       </div>
+      
       <div class="exercise" id="exercise_array_while_loops">
       <h2>Loops and arrays: more fun with fruit</h2>
       <script>
@@ -755,7 +1237,7 @@
       <div class="instructions">
       <p>Using the blocks from the previous exercise and a different kind of loop gives us an alternative way to loop through all the items of an array. Let's see a case where it might be useful.</p>
       <ol>
-          <li>Start with an empty unordered html list with the id "list" (<code id="start_exercise_arrays">&lt;ul id="list"&gt;&lt;/ul&gt;</code>) in the static html.</li>
+          <li>Start with an empty unordered html list with the id "list" (<code class="start_code">&lt;ul id="list"&gt;&lt;/ul&gt;</code>) in the static html.</li>
           <li>As with before, create an array called "fruits" of your favourite fruit inside an <span class="blockname">"at the start"</span> block.</li>
           <li>Instead of the <span class="blockname">"for each item in array"</span> block, we will use the <span class="blockname">"repeat while"</span> block and the <span class="blockname">"... is empty"</span> block together<ol>
               <li>As usual, add a <span class="blockname">"find the element using css selector"</span> block to find the html list</li>
@@ -856,10 +1338,18 @@
               </block>
             </value>
           </block>
+          <block type="get_sum">
+            <value name="ARRAY">
+              <block type="variables_get">
+                  <field name="VAR">array</field>
+              </block>
+            </value>
+          </block>
         </category>
         <category name="Variables" colour="330" custom="VARIABLE"></category>
       </xml>
       </div>
+      
       <div class="exercise" id="exercise_array_reverse">
       <h2>Reverse a list</h2>
       <script>
@@ -880,6 +1370,7 @@
           <li id="exercise_array_reverse_1">Using the blocks we have seen so far (using "get and remove the last" instead of "get and remove the first"), create an html list with the fruit in reverse order</li>
       </ol>
       </div></div>
+      
       <div class="exercise" id="exercise_array_foreach_loops_more">
       <h2>Using two loops</h2>
       <script>
@@ -926,6 +1417,7 @@
           <li id="exercise_array_foreach_loops_more_1">Can you implement this solution?</li>
       </ol>
       </div></div>
+      
       <div class="exercise" id="exercise_train_stops">
       <h2>Listing train stops</h2>
       <script>
@@ -956,7 +1448,7 @@
       <div class="instructions">
       <p>The fast train between Glasgow and Edinburgh stops at Falkirk High and Haymarket. Let's display some html lists of stops</p>
       <ol>
-          <li>Create a list named "stops" to represent all the stops, with the values: Glasgow Queen Street, Falkirk High, Haymarket, Edinburgh Waverly. Do the following tasks without changing the values in this list</li>
+          <li>Create an array named "stops" to represent all the stops, with the values: Glasgow Queen Street, Falkirk High, Haymarket, Edinburgh Waverly. Do the following tasks without changing the values in this array</li>
           <li id="exercise_train_stops_1">Display the html list of all the stops between Glasgow and Edinburgh
               <ul style="background-color: azure;">
                 <li>Glasgow Queen Street</li>
@@ -987,30 +1479,49 @@
       </ol>
       </div>
       </div>
-      <div class="exercise" id="exercise_train_stops_east_west">
-      <h2>Adding elements to a list: Make the train change direction</h2>
+      
+      <div class="exercise" id="exercise_create_teams">
+      <h2>Project: Select a random facilitator</h2>
       <div class="instructions">
-        <p>Some problems can be more easily solved with a second array in which we add elements [note: this also needs a current for a nice easy implementation, so is not a great introduction to this block]</p>
-      <ol>
-          <li>Create a list named "stops" to represent all the stops, with the values: Glasgow Queen Street, Falkirk High, Haymarket, Edinburgh Waverly. Do the following tasks without changing the values in this list</li>
-          <li>How could we display the current stop and have two buttons, instructing the train to go west (towards Glasgow) or go east (towards Edinburgh)?<ol>
-            <li>One way we could do this is imagining having a stack of plates with the names of the stops on them. On top of the stack is the current stop (Glasgow Queen Street).</li>
-            <li>All the other plates underneath are the stops to the east of Glasgow, so this is the "east" stack</li>
-            <li>To go east, we pick up the top plate from the "east" and set it down as the new "west" stack</li>
-            <li>To go east again, we do the same thing and put Falkirk High on top of Glasgow Queen Street to represent our "west" stack.</li>
-            <li>To go west, we take the first plate off the top of the "west" stack and move it to the east stack.</li>
-            <li>We have to be slightly careful when we can't go east or west any more because one of our stacks are empty.</li>
-          </ol></li>
-          <li>Using the <span>add ... at the start/end of the array</span> block as the "put a plate on top of the stack" operation, and two arrays (one for each of our stacks), can you implement this solution?</li>
-      </ol>
+        <p>For this project, you should provide the user with the ability to input names to an array, and a "select facilitator" button that selects and displays a random name</p>
       </div>
       </div>
+
+      <div class="exercise" id="exercise_earnings_expenses">
+      <h2>Project: Show earnings and expenses</h2>
+      <div class="instructions">
+        <p>For this project, you should provide the user with the ability to input earnings and expenses and see the totals</p>
+        <ol>
+          <li>Two lists and three totals should be shown: the earnings, the expenses, the total earnings, the total expenses and the total balance overall</li>
+          <li>A positive number is an earning</li>
+          <li>A negative number is an expense</li>
+          <li>If the user inputs 5, -2, 25, -10, -7, the result should look something like: 
+            <div style="background-color: azure;">
+              Earnings: 30
+              <ul>
+                <li>5</li>
+                <li>25</li>
+              </ul>
+              Expenses: -19
+              <ul>
+                <li>-2</li>
+                <li>-10</li>
+                <li>-3</li>
+              </ul>
+              Balance: 11
+            </div>
+          </li>
+        </ol>
+      </div>
+      </div>
+      
       <div class="exercise" id="exercise_list_consolidation">
       <h2>Project: List of links</h2>
       <div class="instructions">
         <p>Repeat the exercise to show a list of your favourite links. Use a loop so that there are only two "create a ... element" blocks (one for the &lt;li&gt;, one for the &lt;a&gt;). Outline what your solution needs to look like, and implement it step by step, clicking "run" at each iteration to check your work</p>
       </div>
       </div>
+      
       <div class="exercise" id="exercise_story_book">
       <h2>Project: Create a story book</h2>
       <div class="instructions"><p>The great thing about story books is that you never know what will happen when you turn the page!</p>
@@ -1019,6 +1530,7 @@
           <li>Make the story a bit more complicated. Maybe the user has choices? Maybe an image appears at the end?</li>
       </ol>
       </div></div>
+      
       <div class="exercise" id="exercise_image_carousel">
       <h2>Project: Build an image carousel</h2>
       <div class="instructions"><p>
@@ -1027,8 +1539,8 @@
       </p>
       <ul>
         <li>
-          A list of at least 3 image urls should be defined in an array (you can
-          use public urls from stock photograph websites, or copy the image link from a google search result)
+          A list of at least 3 image URLs should be defined in an array (you can
+          use public URLs from stock photograph websites, or copy the image link from a google search result)
         </li>
         <li>
           Clicking on the "previous" button should show the previous image
@@ -1045,7 +1557,8 @@
         each step will probably be solved (and how you can test that it does what you think it does), before creating any blocks
       </p>
     </div></div>
-    <div class="exercise" id="exercise_projects">
+    
+      <div class="exercise" id="exercise_projects">
       <h2>Some more "projects"</h2>
       <div class="instructions">
         <p>
@@ -1120,6 +1633,7 @@
         <block type="colour_picker"></block>
         <block type="logic_boolean"></block>
         <block type="get_randomWord"></block>
+        <block type="text_to_speech"></block>
       </category>
       <category name="Html" colour="%{BKY_COLOUR_HUE}">
         <block type="on_start"></block>
@@ -1133,6 +1647,7 @@
         </block>
         <block type="set_attribute"></block>
         <block type="remove_contents"></block>
+        <block type="get_value"></block>
         <block type="element_clicked_current"></block>
         <block type="with_elements_by_selector"></block>
       </category>
@@ -1181,6 +1696,20 @@
           <field name="VAR">item</field>
           </value>
           <value name="LIST">
+            <block type="variables_get">
+                <field name="VAR">array</field>
+            </block>
+          </value>
+        </block>
+        <block type="get_randomMember">
+          <value name="ARRAY">
+            <block type="variables_get">
+                <field name="VAR">array</field>
+            </block>
+          </value>
+        </block>
+        <block type="get_sum">
+          <value name="ARRAY">
             <block type="variables_get">
                 <field name="VAR">array</field>
             </block>

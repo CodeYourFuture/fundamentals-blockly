@@ -60,7 +60,7 @@ function addDomElements(exercises) {
       exercise.$blockly,
       exercise.id
     );
-    let startCode = exercise.$exercise.querySelector("#start_" + exercise.id);
+    let startCode = exercise.$exercise.querySelector(".start_code");
     if (startCode) {
       exercise.blocklyDomEditor.init(startCode.innerText);
     } else {

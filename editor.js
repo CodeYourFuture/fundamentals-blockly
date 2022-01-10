@@ -27,7 +27,6 @@ BlocklyDomEditor.prototype.getElementId = function (elementId) {
 };
 
 BlocklyDomEditor.prototype.init = function (initHtml) {
-  // keep <ul id="list"></ul> as default value in text area for most exercises
   this.root.setAttribute(
     "style",
     "margin-left:2em; display:grid;grid-template-columns: 1fr 2fr;grid-template-rows: auto 1fr;"
@@ -39,10 +38,9 @@ BlocklyDomEditor.prototype.init = function (initHtml) {
         <li id="${this.jsTab}" class="notcurrent">Generated code</li>
       </ul>
       <textarea id="${this.htmlTextarea}" cols="50" rows="10">
-<ul id="list"></ul>
       </textarea>
       <textarea id="${this.generatedJsTextarea}" class="generatedJsTextarea" cols="50" rows="10"></textarea>
-      <button id="${this.runButton}" class="btn">run</button>
+      <button id="${this.runButton}" class="runButton">run</button>
     </div>
     <div id="${this.blocklyArea}" style="height:400px;resize:vertical; overflow:auto; grid-row-end: span 2;"></div>
     <div id="${this.blocklyOutput}"></div>
