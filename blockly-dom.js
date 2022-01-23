@@ -82,6 +82,9 @@ Blockly.Blocks["arrays_getFirst"] = {
     this.setInputsInline(true);
     this.setOutput(true);
   },
+  /*
+   * mutationToDom and domToMutation are only here for backward compatibilty with xml (probably never needed)
+   */
   /**
    * Create XML to represent whether the block is a statement or a value.
    * Also represent whether there is an 'AT' input.
@@ -290,11 +293,17 @@ Blockly.defineBlocksWithJsonArray([
     extensions: ["validate_in_with_context"],
   },
   {
-    type: "get_value",
-    message0: "get the <input> element's value",
+    type: "get_input_value_with_id",
+    message0: "get the value of the <input> with id %1",
+    args0: [
+      {
+        type: "field_input",
+        name: "ID",
+        text: "text",
+      },
+    ],
     output: "String",
     colour: 60,
-    extensions: ["validate_in_with_context"],
   },
   {
     type: "remove_contents",
@@ -498,7 +507,7 @@ Blockly.Blocks["with_element_by_id"] = {
     this.setColour(45);
     this.appendDummyInput()
       .appendField("find the element with id")
-      .appendField(new Blockly.FieldTextInput("foo"), "ID");
+      .appendField(new Blockly.FieldTextInput("list"), "ID");
     this.appendStatementInput("STACK").appendField("and");
   },
 };
@@ -610,9 +619,28 @@ Blockly.JavaScript["set_content"] = function (block) {
   return withContextVariable + ".innerText = " + value + ";\n";
 };
 
-Blockly.JavaScript["get_value"] = function (block) {
-  let withContextVariable = Blockly.JavaScript.getWithContextVariable();
-  return [withContextVariable + ".value", Blockly.JavaScript.ORDER_MEMBER];
+Blockly.JavaScript["get_input_value_with_id"] = function (block) {
+  let elementId = block.getFieldValue("ID");
+  let getNumberOrString = Blockly.JavaScript.provideFunction_(
+    "getNumberOrString",
+    [
+      "function " + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + "(value) {",
+      "  // Convert a string value to a number if possible",
+      "  let number_value = Number(value);",
+      "  if (Number.isNaN(number_value)) {",
+      "    return value",
+      "  } else {",
+      "    return number_value",
+      "  }",
+      "}",
+    ]
+  );
+  return [
+    `getNumberOrString(document.getElementById(${Blockly.JavaScript.quote_(
+      elementId
+    )}).value)`,
+    Blockly.JavaScript.ORDER_MEMBER,
+  ];
 };
 
 Blockly.JavaScript["remove_contents"] = function (block) {

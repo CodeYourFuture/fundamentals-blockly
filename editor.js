@@ -20,13 +20,14 @@ function BlocklyDomEditor(root, id) {
   this.blocklyDiv = this.getElementId("blocklyDiv");
   this.blocklyArea = this.getElementId("blocklyArea");
   this.runButton = this.getElementId("runButton");
+  this.share = this.getElementId("share");
 }
 
 BlocklyDomEditor.prototype.getElementId = function (elementId) {
   return elementId + this.id;
 };
 
-BlocklyDomEditor.prototype.init = function (initHtml) {
+BlocklyDomEditor.prototype.init = function (initHtml, initJsonBlockly) {
   this.root.setAttribute(
     "style",
     "margin-left:2em; display:grid;grid-template-columns: 1fr 2fr;grid-template-rows: auto 1fr;"
@@ -36,6 +37,7 @@ BlocklyDomEditor.prototype.init = function (initHtml) {
       <ul>
         <li id="${this.htmlTab}" class="current">Static html</li>
         <li id="${this.jsTab}" class="notcurrent">Generated code</li>
+        <li id="${this.share}" class="notcurrent">Share</li>
       </ul>
       <textarea id="${this.htmlTextarea}" cols="50" rows="10">
       </textarea>
@@ -90,6 +92,7 @@ BlocklyDomEditor.prototype.init = function (initHtml) {
   let $htmlTextarea = document.getElementById(this.htmlTextarea);
   let $htmlTab = document.getElementById(this.htmlTab);
   let $jsTab = document.getElementById(this.jsTab);
+  let $share = document.getElementById(this.share);
   let $blocklyOutput = document.getElementById(this.blocklyOutput);
 
   if (initHtml) {
@@ -98,7 +101,12 @@ BlocklyDomEditor.prototype.init = function (initHtml) {
 
   setTimeout(() => {
     try {
-      BlocklyDomEditor.restoreBlocks(workspace, $htmlTextarea, id);
+      if (initJsonBlockly !== undefined) {
+        // don't use storage at all
+        Blockly.serialization.workspaces.load(initJsonBlockly, workspace);
+      } else {
+        BlocklyDomEditor.restoreBlocks(workspace, $htmlTextarea, id);
+      }
       // don't register backup unless we successfully restored blocks to avoid losing data
       BlocklyDomEditor.backupOnUnload(workspace, $htmlTextarea, id);
     } catch (e) {
@@ -139,6 +147,19 @@ BlocklyDomEditor.prototype.init = function (initHtml) {
     $htmlTab.className = "notcurrent";
     $jsTab.className = "current";
   });
+
+  $share.addEventListener("click", () => {
+    let json = Blockly.serialization.workspaces.save(workspace);
+    let html = $htmlTextarea.value;
+    let data = JSON.stringify({ j: json, h: html });
+    console.log(data);
+    let minifiedData = JSONCrush.crush(data);
+    var url = window.location.href
+      .split("#")[0]
+      .replace("index.html", "share.html");
+    let uri = url + "?v=" + encodeURIComponent(minifiedData);
+    navigator.clipboard.writeText(uri);
+  });
 };
 
 BlocklyDomEditor.prototype.hide = function () {
@@ -158,10 +179,10 @@ BlocklyDomEditor.prototype.show = function () {
  */
 BlocklyDomEditor.backupBlocks_ = function (workspace, $htmlTextarea, id) {
   if ("localStorage" in window) {
-    var xml = Blockly.Xml.workspaceToDom(workspace);
+    var json = JSON.stringify(Blockly.serialization.workspaces.save(workspace));
     // Gets the current URL, not including the hash.
     var url = window.location.href.split("#")[0];
-    window.localStorage.setItem(url + id, Blockly.Xml.domToText(xml));
+    window.localStorage.setItem(url + id, json);
     window.localStorage.setItem(url + "html" + id, $htmlTextarea.value);
   }
 };
@@ -188,9 +209,22 @@ BlocklyDomEditor.backupOnUnload = function (workspace, $htmlTextarea, id) {
 BlocklyDomEditor.restoreBlocks = function (workspace, $htmlTextarea, id) {
   var url = window.location.href.split("#")[0];
   if ("localStorage" in window && window.localStorage[url + id]) {
-    var xml = Blockly.Xml.textToDom(window.localStorage[url + id]);
-    Blockly.Xml.domToWorkspace(xml, workspace);
-    var html = window.localStorage[url + "html" + id];
+    let serialised = window.localStorage[url + id];
+    if (serialised[0] === "<") {
+      let xml = Blockly.Xml.textToDom(serialised);
+      Blockly.Xml.domToWorkspace(xml, workspace);
+    } else {
+      let json = JSON.parse(serialised);
+      console.log(
+        "chars",
+        id,
+        serialised.length,
+        JSONCrush.crush(serialised).length
+      );
+      Blockly.serialization.workspaces.load(json, workspace);
+    }
+
+    let html = window.localStorage[url + "html" + id];
     if (html) {
       $htmlTextarea.value = html;
     }

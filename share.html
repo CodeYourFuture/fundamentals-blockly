@@ -1,0 +1,223 @@
+<html>
+  <head>
+    <style type="text/css">
+
+      .blocklyHtml li {
+        display:inline-block;
+        list-style:none;
+        padding:5px;
+        cursor:pointer;
+        margin:2px;
+      }
+
+      .blocklyHtml li.current {
+        border-top: 1px solid black;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+        border-bottom: 1px solid white;
+        font-weight: bold;
+      }
+
+      .blocklyHtml li.notcurrent {
+        border: 1px solid black;
+      }
+
+      .blocklyHtml ul {
+        margin: 0px;
+      }
+
+      .generatedJsTextarea {
+        display: none;
+      }
+
+      body {
+        font-family: Helvetica, Arial, sans-serif;
+      }
+
+      .instructions {
+        margin-top:3em;
+        margin-left:2em;
+        max-width:50em;
+        font-size: 1.2em;
+        line-height: 1.5em;
+      }
+
+      .instructions li {
+        margin-top:0.8em;
+      }
+
+      .blockname {
+        background-color: lightgrey;
+      }
+
+      .runButton {
+       border: 1px dashed;
+      }
+
+    </style>
+  </head>
+  <body>
+    <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+    <script src="blockly-dom.js"></script>
+    <script src="blockly-cyf.js"></script>
+    <script src="jsoncrush.js"></script>
+    <script src="editor.js"></script>
+    <div id="shareeditor"></div>
+    
+    <xml id="toolbox" style="display: none">
+      <category name="Loops" colour="120">
+        <block type="controls_whileUntil"></block>
+        <block type="arrays_forEach">
+          <field name="VAR">item</field>
+          </value>
+          <value name="LIST">
+            <block type="variables_get">
+                <field name="VAR">array</field>
+            </block>
+          </value>
+        </block>
+        <block type="controls_for"></block>
+      </category>
+      <category name="Logic" colour="210">
+        <block type="controls_if"></block>
+        <block type="logic_negate"></block>
+        <block type="logic_compare"></block>
+      </category>
+      <category name="Values" colour='%{BKY_TEXTS_HUE}'>
+        <block type="math_number"></block>
+        <block type="text"></block>
+        <block type="colour_picker"></block>
+        <block type="logic_boolean"></block>
+        <block type="get_randomWord"></block>
+        <block type="text_to_speech"></block>
+      </category>
+      <category name="Html" colour="%{BKY_COLOUR_HUE}">
+        <block type="on_start"></block>
+        <block type="element_clicked"></block>
+        <block type="with_element_by_selector"></block>
+        <block type="add_element"></block>
+        <block type="set_content">
+          <value name="VALUE">
+            <shadow type="text"> </shadow>
+          </value>
+        </block>
+        <block type="set_attribute"></block>
+        <block type="remove_contents"></block>
+        <block type="get_value"></block>
+        <block type="element_clicked_current"></block>
+        <block type="with_elements_by_selector"></block>
+      </category>
+      <category name="Arrays" colour="%{BKY_LISTS_HUE}"" >
+        <block type="variables_set">
+          <field name="VAR">array</field>
+          <value name="VALUE">
+            <block type="lists_create_with">
+              <!--
+              would be nice but the shadow blocks don't know what to do with themselves when the list
+              is mutated -> https://github.com/google/blockly/issues/4939
+              <value name="ADD0">
+                <shadow type="text"> </shadow>
+              </value>
+              <value name="ADD1">
+                <shadow type="text"> </shadow>
+              </value>
+              <value name="ADD2">
+                <shadow type="text"> </shadow>
+              </value>-->
+            </block>
+          </value>
+        </block>
+        <block type="arrays_getFirst">
+          <value name="VALUE">
+            <block type="variables_get">
+                <field name="VAR">array</field>
+            </block>
+          </value>
+        </block>
+        <block type="arrays_push">
+          <value name="LIST">
+            <block type="variables_get">
+                <field name="VAR">array</field>
+            </block>
+          </value>
+        </block>
+        <block type="lists_isEmpty">
+          <value name="VALUE">
+            <block type="variables_get">
+                <field name="VAR">array</field>
+            </block>
+          </value>
+        </block>
+        <block type="arrays_forEach">
+          <field name="VAR">item</field>
+          </value>
+          <value name="LIST">
+            <block type="variables_get">
+                <field name="VAR">array</field>
+            </block>
+          </value>
+        </block>
+        <block type="get_randomMember">
+          <value name="ARRAY">
+            <block type="variables_get">
+                <field name="VAR">array</field>
+            </block>
+          </value>
+        </block>
+        <block type="get_sum">
+          <value name="ARRAY">
+            <block type="variables_get">
+                <field name="VAR">array</field>
+            </block>
+          </value>
+        </block>
+      </category>
+      <!--<category name="Lists" colour="%{BKY_LISTS_HUE}"" >
+        <block type="variables_set">
+          <field name="VAR">list</field>
+          <value name="VALUE">
+            <block type="linked_lists_create_with"> </block>
+          </value>
+        </block>
+        <block type="linked_lists_get_current">
+          <value name="VALUE">
+            <block type="variables_get">
+                <field name="VAR">list</field>
+            </block>
+          </value>
+        </block>
+        <block type="linked_lists_set_current">
+          <value name="VALUE">
+            <block type="variables_get">
+                <field name="VAR">list</field>
+            </block>
+          </value>
+        </block>
+        <block type="linked_lists_has_current">
+          <value name="VALUE">
+            <block type="variables_get">
+                <field name="VAR">list</field>
+            </block>
+          </value>
+        </block>
+        <block type="linked_lists_has_next">
+          <value name="VALUE">
+            <block type="variables_get">
+                <field name="VAR">list</field>
+            </block>
+          </value>
+        </block>
+        <block type="linked_lists_has_previous">
+          <value name="VALUE">
+            <block type="variables_get">
+                <field name="VAR">list</field>
+            </block>
+          </value>
+        </block>
+      </category>-->
+      <category name="Variables" colour="330" custom="VARIABLE"></category>
+      <category name="Functions" colour="290" custom="PROCEDURE"></category>
+    </xml>
+    <script src="shareeditor.js"></script>
+  </body>
+</html>
