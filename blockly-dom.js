@@ -186,7 +186,7 @@ Blockly.defineBlocksWithJsonArray([
       {
         type: "field_input",
         name: "ID",
-        text: "button",
+        text: "save-button",
       },
       {
         type: "field_label_serializable",
@@ -299,7 +299,7 @@ Blockly.defineBlocksWithJsonArray([
       {
         type: "field_input",
         name: "ID",
-        text: "text",
+        text: "new-todo",
       },
     ],
     output: "String",
@@ -507,7 +507,7 @@ Blockly.Blocks["with_element_by_id"] = {
     this.setColour(45);
     this.appendDummyInput()
       .appendField("find the element with id")
-      .appendField(new Blockly.FieldTextInput("list"), "ID");
+      .appendField(new Blockly.FieldTextInput("fruits"), "ID");
     this.appendStatementInput("STACK").appendField("and");
   },
 };
@@ -534,7 +534,7 @@ Blockly.Blocks["with_element_by_selector"] = {
     this.setColour(45);
     this.appendDummyInput()
       .appendField("find the element using css selector")
-      .appendField(new Blockly.FieldTextInput("#list"), "QUERY");
+      .appendField(new Blockly.FieldTextInput("#fruits"), "QUERY");
     this.appendStatementInput("STACK").appendField("and");
   },
 };
@@ -561,7 +561,7 @@ Blockly.Blocks["with_elements_by_selector"] = {
     this.setColour(45);
     this.appendDummyInput()
       .appendField("find all the elements using css selector")
-      .appendField(new Blockly.FieldTextInput("#list"), "QUERY");
+      .appendField(new Blockly.FieldTextInput("#fruits"), "QUERY");
     this.appendStatementInput("STACK").appendField("and with each");
   },
 };

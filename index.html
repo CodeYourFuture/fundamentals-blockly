@@ -302,12 +302,12 @@
             <li>Let's start with an html list with a single apple in the "Static html" 
                 <ol>
                     <li>Note the list has an id ("list") so that we can refer to it from our program.</li>
-                    <li>for example: <code class="start_code">&lt;ul id="list"&gt;<br>&lt;li&gt;Apple&lt;/li&gt;<br>&lt;/ul&gt;</code></li>
+                    <li>for example: <code class="start_code">&lt;ul id="fruits"&gt;<br>&lt;li&gt;Apple&lt;/li&gt;<br>&lt;/ul&gt;</code></li>
                 </ol>
             <li>Add one more fruit dynamically
                 <ol>
                     <li>Add an <span class="blockname">"at the start"</span> block</li>
-                    <li>Inside this block, add a <span class="blockname">"find the element with id"</span> block using the id for the ul element (<code>list</code>)</li>
+                    <li>Inside this block, add a <span class="blockname">"find the element with id"</span> block using the id for the ul element (<code>fruits</code>)</li>
                     <li>Inside this block, add a <span class="blockname">"create a new ... element"</span> block and select "&lt;li&gt;"</li>
                     <li>Inside this block, add a <span class="blockname">"set the text content"</span> block and set the value to "Banana"</li>
                     <li id="exercise_add_fruit_1">Click "run" to check the output looks like
@@ -362,7 +362,7 @@
         This exercise consolidates the use of the blocks we learned about in the previous exercises.
       </p>
         <ol>
-            <li>Start with an empty unordered html list (<code class="start_code">&lt;ul id="list"&gt;&lt;/ul&gt;</code>) in the static html.
+            <li>Start with an empty unordered html list (<code class="start_code">&lt;ul id="links"&gt;&lt;/ul&gt;</code>) in the static html.
             <li>Dynamically add your favourite links to the html list
                 <ol>
                     <li>Find the URLs of your three favourite websites (they look something like: <code>http://www.codeyourfuture.io</code>)</li>
@@ -436,7 +436,7 @@
         <ol>
             <li>Start with an empty unordered html list (<code>&lt;ul&gt;</code>) and a button to add apples to the list (<code>&lt;button&gt;</code>) in the static html.
                 <ol>
-                    <li>for example: <code class="start_code">&lt;ul id="list"&gt;&lt;/ul&gt;<br>&lt;button id="button"&gt;add an apple&lt;/button&gt;</code></li>
+                    <li>for example: <code class="start_code">&lt;ul id="fruits"&gt;&lt;/ul&gt;<br>&lt;button id="add-apple-button"&gt;add an apple&lt;/button&gt;</code></li>
                 </ol>
             <li>When we click on the "add an apple" button, let's add an apple to the list
                 <ol>
@@ -480,7 +480,7 @@
         <ol>
             <li>Start with a text input box list (<code>&lt;input /&gt;</code>) and a button to that says "speak" in the static html.
                 <ol>
-                    <li>for example: <code class="start_code">&lt;input id="text" /&gt;<br>&lt;button id="button"&gt;speak&lt;/button&gt;</code></li>
+                    <li>for example: <code class="start_code">&lt;input id="text-to-say" /&gt;<br>&lt;button id="speak-button"&gt;speak&lt;/button&gt;</code></li>
                 </ol>
             </li>
             <li>We want to do two things in order when the button is clicked. First we get the value entered by the user, then we pass it to a block that will say it out loud. A common strategy in problem solving for programming is to solve the visible (or in this case, audible) thing first: have the browser say something. 
@@ -530,7 +530,7 @@
           We're going to create a list of things to do.
         </p>
         <ol>
-            <li>Start with an empty list, an input, and a button "add Todo Item" in the static html. <code class="start_code">&lt;p&gt;Things to do:&lt;/p&gt;<br>&lt;ul id="list"&gt;&lt;/ul&gt;<br>&lt;input id="text" /&gt;<br>&lt;button id="button"&gt;add Todo Item&lt;/button&gt;</code></li>
+            <li>Start with an empty list, an input, and a button "add Todo Item" in the static html. <code class="start_code">&lt;p&gt;Things to do:&lt;/p&gt;<br>&lt;ul id="todo-list"&gt;&lt;/ul&gt;<br>&lt;input id="new-todo" /&gt;<br>&lt;button id="add-todo"&gt;add Todo Item&lt;/button&gt;</code></li>
             <li>When the button is clicked, we are going to do two things: get the value of the input box and add a new <code>&lt;li&gt;</code> with that value to the list. To do the visible outcome first, we're going to do these in reverse order.</li>
                 <ol>
                     <li>Add an <span class="blockname">"when the element with id ... is clicked"</span> block.</li>
@@ -609,7 +609,7 @@
           A variable is a name into which a value can be stored. There are several reasons for which we might want to do this. The first is when we want to keep track of a value that changes over time. Let's keep track of the number of times a button is clicked.
         </p>
         <ol>
-            <li>Start with a button (<code>&lt;button&gt;</code>) that has been clicked 0 times in the static html. <code class="start_code">&lt;button id="button"&gt;0&lt;/button&gt;</code></li>
+            <li>Start with a button (<code>&lt;button&gt;</code>) that has been clicked 0 times in the static html. <code class="start_code">&lt;button id="counting-button"&gt;0&lt;/button&gt;</code></li>
             <li>Add an <span class="blockname">"at the start"</span> block. Inside we are going to add a variable that will keep track of the number of times the button was clicked.</li>
                 <ol>
                     <li>In the Variables menu, click "create variable..." to create a variable called <code>click_count</code></li>
@@ -659,7 +659,7 @@
           Let's combine our variables to track state with some of the other blocks we have learned about. We would like to track how many times the user adds the word "sheep" and how many times they add any other word.
         </p>
         <ol>
-            <li>Let's start with the following static html. <code class="start_code">&lt;p&gt;There have been &lt;span id="sheep_count"&gt;0&lt;/span&gt; sheep 🐑 and &lt;span id="other_count"&gt;0&lt;/span&gt; others.&lt;/p&gt;<br>&lt;input id="text" /&gt;<br>&lt;button id="button"&gt;add animal&lt;/button&gt;</code></li>
+            <li>Let's start with the following static html. <code class="start_code">&lt;p&gt;There have been &lt;span id="sheep_count"&gt;0&lt;/span&gt; sheep 🐑 and &lt;span id="other_count"&gt;0&lt;/span&gt; others.&lt;/p&gt;<br>&lt;input id="animal-kind" /&gt;<br>&lt;button id="add-animal-button"&gt;add animal&lt;/button&gt;</code></li>
             <li>The following things should happen (use variables where necessary to keep track of various values, and the blocks you need from the Logic menu). Don't forget to break down your implementation into steps where you first add blocks that make a visible difference and test that it works.</li>
                 <ol>
                     <li>When the user clicks "add animal", if the word in the text input is "sheep", the number of sheep displayed in the <code>&lt;span&gt</code> with id <code>sheep_count</code> should increase by one.</li>
@@ -800,7 +800,7 @@
         Another use for an array is when we want to do the same thing with each element in an array (for example, create a <code>&lt;li&gt;</code>).
       </p>
       <ol>
-          <li>Start with an empty unordered html list with the id "list" (<code class="start_code">&lt;ul id="list"&gt;&lt;/ul&gt;</code>) in the static html.</li>
+          <li>Start with an empty unordered html list with the id "list" (<code class="start_code">&lt;ul id="fruits"&gt;&lt;/ul&gt;</code>) in the static html.</li>
           <li>Add an <span class="blockname">"at the start"</span> block</li>
           <li>We'll now create an array of fruits and assign it to a variable <ol>
               <li>From the "Arrays" menu, add a <span class="blockname">"Set ... to, create array with"</span> block to the <span class="blockname">"at the start"</span> block</li>
@@ -945,7 +945,7 @@
       <div class="instructions">
         <p>The most common something with all the items in an array is to use a loop, as we saw in the previous exercise. Sometimes, a loop just doesn't do what we need, for example if we wanted to make the list of fruit appear gradually.</p>
       <ol>
-          <li>Create an empty unordered html list (as usual) and a "reveal next fruit" button (<code class="start_code">&lt;ul id="list"&gt;&lt;/ul&gt;<br>&lt;button id="button"&gt;reveal next fruit&lt;/button&gt;</code>)</li>
+          <li>Create an empty unordered html list (as usual) and a "reveal next fruit" button (<code class="start_code">&lt;ul id="fruits"&gt;&lt;/ul&gt;<br>&lt;button id="reveal-fruit-button"&gt;reveal next fruit&lt;/button&gt;</code>)</li>
           <li>Create an array of your favourite fruit inside an <span class="blockname">"at the start"</span> block</li>
           <li>We'll now make it so each click of the button reveals the next fruit.
           <ul>
@@ -1067,7 +1067,7 @@
       <div class="instructions">
       <p>Using the blocks from the previous exercise and a different kind of loop gives us an alternative way to loop through all the items of an array. Let's see a case where it might be useful.</p>
       <ol>
-          <li>Start with an empty unordered html list with the id "list" (<code class="start_code">&lt;ul id="list"&gt;&lt;/ul&gt;</code>) in the static html.</li>
+          <li>Start with an empty unordered html list with the id "list" (<code class="start_code">&lt;ul id="fruits"&gt;&lt;/ul&gt;</code>) in the static html.</li>
           <li>As with before, create an array called "fruits" of your favourite fruit inside an <span class="blockname">"at the start"</span> block.</li>
           <li>Instead of the <span class="blockname">"for each item in array"</span> block, we will use the <span class="blockname">"repeat while"</span> block and the <span class="blockname">"... is empty"</span> block together<ol>
               <li>As usual, add a <span class="blockname">"find the element with id"</span> block to find the html list</li>
@@ -1187,7 +1187,7 @@
       <p>We are now going to learn how to add items to, remove items from, and get the sum of, an array of numbers. We're going to keep a running sum of the last five numbers (this can be a way of keeping track of how a value trends over time, e.g. the last 5 times you weighed yourself, or the last 5 times you went running).
       </p>
       <ol>
-          <li>Start with an input box, a button to add numbers, and a span to display the total. (<code class="start_code">&lt;p&gt;Total of the last 5 numbers: &lt;span id="total"&gt;&lt;/span&gt; &lt;/p&gt;<br>&lt;input id="number" /&gt;<br>&lt;button id="add_number"&gt;add value&lt;/button&gt;</code></li>
+          <li>Start with an input box, a button to add numbers, and a span to display the total. (<code class="start_code">&lt;p&gt;Total of the last 5 numbers: &lt;span id="total"&gt;&lt;/span&gt; &lt;/p&gt;<br>&lt;input id="number" /&gt;<br>&lt;button id="add-number"&gt;add value&lt;/button&gt;</code></li>
           <li>Let's start with an array of elements and show their sum<ol>
             <li>In an <span class="blockname">"at the start"</span> block, create a new array called "numbers" with 5 items, all set to the value 0</li>
             <li>Find the span with id "total" and set its text content to the sum of the numbers array, using the <span class="blockname">"get the sum of the numbers in array"</span> block</li>
@@ -1290,7 +1290,7 @@
       <p>We are now going to use all the array blocks we have learned about. We're going to create a game where you roll dice and your goal is to not total more than 11.
       </p>
       <ol>
-          <li>Start with an empty list (where we will display our rolls), a place to put a total, and a few buttons (<code class="start_code">&lt;p&gt;So far you have rolled:&lt;/p&gt;<br>&lt;ul id="list"&gt;&lt;/ul&gt;<br>&lt;button id="button_roll"&gt;Roll the dice&lt;/button&gt;<br>&lt;p&gt;Total: &lt;span id="total"&gt;0&lt;/span&gt;. &lt;span id="info"&gt;Keep playing!&lt;/span&gt;&lt;/p&gt;<br>&lt;button id="button_remove"&gt;Remove the last roll&lt;/button&gt;<br>&lt;button id="button_restart"&gt;Start again&lt;/button&gt;</code></li>
+          <li>Start with an empty list (where we will display our rolls), a place to put a total, and a few buttons (<code class="start_code">&lt;p&gt;So far you have rolled:&lt;/p&gt;<br>&lt;ul id="previous-rolls"&gt;&lt;/ul&gt;<br>&lt;button id="roll-button"&gt;Roll the dice&lt;/button&gt;<br>&lt;p&gt;Total: &lt;span id="total"&gt;0&lt;/span&gt;. &lt;span id="info"&gt;Keep playing!&lt;/span&gt;&lt;/p&gt;<br>&lt;button id="remove-roll-button"&gt;Remove the last roll&lt;/button&gt;<br>&lt;button id="restart-button"&gt;Start again&lt;/button&gt;</code></li>
           <li>The game has the following requirements. Before reading further, how would you break down and implement these requirements into steps? Think through what steps need to happen after each button click. In what order would you implement these steps so as to test each step as early as possible?<ul>
             <li>When "roll the dice" is clicked, a new random number between 1 and 6 should be generated and added</li>
             <li>If the total of all the dice rolls is exactly 11, display "You won" in the <code>&lt;span id="info"&gt;</code></li>
