@@ -1,6 +1,11 @@
 <html>
   <head>
     <style type="text/css">
+      :root {
+        --brand-red: rgb(220, 52, 52);
+        --brand-black: rgb(22,22,22);
+        --brand-white: rgb(255,255,255);
+          }
 
       #toc ul {
         display: flex;
@@ -58,6 +63,7 @@
 
       body {
         font-family: Helvetica, Arial, sans-serif;
+        margin:0; padding: 0;
       }
 
       .instructions {
@@ -1565,6 +1571,17 @@
       </ul>
       </div>
     </div>
+
+    <style>
+      .c-site-footer { 
+        background-color: var(--brand-red); color:white; padding: 40px 20px
+      }
+      .c-site-footer a { color: var(--brand-white); text-decoration: none; border-bottom: 2px solid var(--brand-black); padding:2px}
+    </style>
+    <footer class="c-site-footer">
+      <h3>CYF Blocks is a project of <a href="https://codeyourfuture.io">Code Your Future</a></h3>
+      <p>Recap your HTML/CSS knowledge with this <a href="https://scrimba.com/learn/htmlcss">free crash course</a> on Scrimba.</p>
+    </footer>
     <xml id="toolbox" style="display: none">
       <category name="Loops" colour="120">
         <block type="controls_whileUntil"></block>
