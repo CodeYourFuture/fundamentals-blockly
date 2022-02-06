@@ -13,7 +13,7 @@ For example: `<ul>
         <li id="apple">Apple</li>  
         <li id="strawberry">Strawberry</li>  
         </ul>`
-        
+
 2.  Click "run" to see the rendered output
 
 Let's change the banana element's colour to yellow
@@ -22,12 +22,17 @@ Let's change the banana element's colour to yellow
 
 4.  Inside this block, add a "find the element using css selector" block using the id selector for the <li> element for Banana (`#banana`)
 
-5.  Inside this block, add a "set the attribute" block, pick "color" and set the value to any yellow colour using the colour picker (you can find a color picker block in the "Values" menu).
+5.  Inside this block, add a "set the attribute" block. Use this block to select the _attribute_ "color"
 
-6.  The colour for a banana is probably not easy to see against a white background. Add a second "set the attribute" block and set a dark color for the background.
+6. You can find a color picker block in the "Values" menu and set its colour to yellow. Add the yellow colour block to the previous "set the attribute" block, to set the colour to yellow. 
 
-7.  Click "run" to check the output looks like
+The colour for a banana is probably not easy to see against a white background.
+
+7. Add a second "set the attribute" block and set a dark color for the background.
+
+8.  Click "run" to check the output looks like
         - Banana
         - Orange
 
-8.  Repeat the process above to colour each of the fruit (hint: you can add multiple "find the element using css selector" blocks one after the other). You can also change the background color if you like
+9.  Repeat the process above to colour each of the fruit. 
+❓ ( Hint: you can add multiple "find the element using css selector" blocks one after the other )
