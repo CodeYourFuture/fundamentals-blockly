@@ -2,6 +2,7 @@
 
 Some of the following may need a definition:
 
+- render
 - static vs dynamic
 - block based programming
 - html elements
