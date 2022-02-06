@@ -9,20 +9,20 @@ Let's start with the html below in the html area. It represents a sentence with 
 We can write this sentence with html so that it can be rendered into a web page.
 
 1. Check out the text area, where should see the following html:
-`<p>The <u id="noun1">dog</u> <u id="verb">saw</u> the <u id="adjective">___</u> <u id="noun2">cat</u></p>`
+`<p>The <u id="noun1">dog</u> <u id="verb">saw</u> the <u id="adjective">___</u> <u id="noun2">cat</u></p>`.
 This html represents the mad libs sentence we first saw above.
 
 2.  Click the "run" button to see the html rendered in the web page. 
 
-Let's modify the contents of the first `<u>` element to contain the word "mouse" instead of "dog".
+Let's modify the contents of the adjective `<u>` element to contain an adjective to describe the cat.
 
 3.  Go to the html blocks and from there add an "at the start" block
     
-4.  Inside this block, add a "find the element using css selector" block using the css selector for the id of the first <u> element
+4.  Inside this block, add a "find the element using css selector" block using the css selector for the id of the adjective `<u>` element
     
-5.  Inside this block, add a "set the text content to" block and set the text content to be `mouse`
+5.  Inside this block, add a "set the text content to" block and set the text content to be `white` ( or some other adjective, if you like! )
 
-6.  Click "run" to check the content has changed.
+6.  Click "run" to check the text content has changed.
 
 
 ## Extra exercises
