@@ -36,3 +36,39 @@ Load index.html from a live server (also needs improving upon)
 - Nothing is displaying -> are you selecting an element with the correct id/css selector?
 - Nothing is displaying -> are the names of your array variables all correct?
 - The same thing is happening every time (related to a list or other variable) -> are you initialising in "at the start"?
+
+# Contributing exercises
+
+All blocks should have consistent names and be marked up consistently (for easy renaming, or improved rendering), using either
+
+```html
+<span class="blockname">"at the start"</span> block
+```
+
+in html or
+
+```markdown
+"`at the start`" block
+```
+
+in markdown.
+
+Each exercise includes its default/starting html. It should be either marked as
+
+```html
+<code class="start_code"
+  >&lt;p&gt;The &lt;u id="noun1"&gt;dog&lt;/u&gt; &lt;u
+  id="verb"&gt;saw&lt;/u&gt; the &lt;u id="adjective"&gt;white&lt;/u&gt; &lt;u
+  id="noun2"&gt;cat&lt;/u&gt;&lt;/p&gt;</code
+>
+```
+
+in html or be the first html code block in markdown:
+
+```html
+<ul>
+  <li id="banana">Banana</li>
+  <li id="apple">Apple</li>
+  <li id="strawberry">Strawberry</li>
+</ul>
+```
