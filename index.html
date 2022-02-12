@@ -1,9 +1,10 @@
 <html>
   <head>
+    <title>CYF Blocks - Unblock your future!</title>
     <style type="text/css">
       :root {
         --brand-red: rgb(220, 52, 52);
-        --brand-black: rgb(22,22,22);
+        --brand-black: rgb(22, 22, 22);
         --brand-white: rgb(255,255,255);
           }
 
@@ -87,6 +88,7 @@
       }
 
     </style>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@2/dist/zero-md.min.js"></script>
   </head>
   <body>
     <script src="https://unpkg.com/blockly@7.20211209.0/blockly.min.js"></script>
@@ -99,59 +101,10 @@
       
       <div class="exercise" id="introduction">
       <h2>Introduction</h2>
-      <div class="instructions"><p>In this course, you will use <em>block-based programming</em>, 
-        like on code.org, to create JavaScript that changes the html on a web page.
-      </p>
-      <p>This "Introduction" has no tasks, only helpful information. Go to the first exercise whenever you're ready.</p>
-      <ul>
-        <li>
-          Static html can be written in the html textarea. "Static" means unchanging. In this case, we mean the original state, 
-          before the program changes anything).
-        </li>
-        <li>
-          Use blocks to create code that changes the html.
-        </li>
-        <li>
-          Click "run" to place the html in the space below the textarea and execute 
-          the generated code.
-        </li>
-        <li>
-          These exercises assume you have tried block based programming already. Do the <a href="https://studio.code.org/s/course3">code.org course</a> before you start. You should at least have done the lessons up to Conditionals and While Loops.
-        </li>
-        <li>
-          Unlike code.org, in CYF Blocks you can go to the next exercise when you feel ready.
-        </li> 
-          Grey checkmarks show that your current code doesn't solve the instruction. Green checkmarks show that it does.
-        </li>
-        <li>
-          The blocks create JavaScript code. You can view the result in the 
-          "Generated code" textarea. You are not expected to understand this code yet. (It's interesting to look at, though!)
-        </li>
-        <li>
-          The goal is to use the generated code in your own project. 
-          You will copy paste this code into a single .js file and add it, with html and css, 
-          to your course project.
-        </li>
-        <li>
-          The way the blocks work (and the code they generate) is very like the code you will learn in the long course. 
-          There are also some differences that make the code easier for new learners.
-        </li>
-      </ul>
-      <h3>Definitions</h3>
-      Some of the following may need a definition:
-      <ul>
-        <li>static vs dynamic</li>
-        <li>block based programming</li>
-        <li>html elements</li>
-        <li>html attributes</li>
-        <li>variable</li>
-        <li>array</li>
-        <li>function</li>
-        <li>function call</li>
-        <li>event handler? - not used, but would be convenient</li>
-      </ul>
-      </div></div>
-      
+      <div class="instructions">
+        <zero-md src="exercises/introduction.md"></zero-md>
+      </div>
+      </div>
       <div class="exercise" id="exercise_change_text">
       <h2>Modifying html dynamically: changing text</h2>
       <script>
@@ -235,32 +188,7 @@
       });
     </script>
       <div class="instructions">
-      <p>
-        Not only can we modify the contents of html elements, we can also change their properties, such as their colour. Different kinds of <b>Values blocks</b> provide ways of setting texts, numbers and colours.
-      </p>
-        <ol>
-            <li>Let's start with an html list of our favourite fruit in the "Static html" 
-                <ol>
-                    <li>each html list item (<code>&lt;li&gt;</code>) has a different id attribute so that we can refer to it from our program</li>
-                    <li>for example: <code class="start_code">&lt;ul&gt;<br>&lt;li id="banana"&gt;Banana&lt;/li&gt;<br>&lt;li id="apple"&gt;Apple&lt;/li&gt;<br>&lt;li id="strawberry"&gt;Strawberry&lt;/li&gt;<br>&lt;/ul&gt;</code></li>
-                    <li>you can click "run" to see the output</li>
-                </ol>
-            <li>Color the banana yellow
-                <ol>
-                    <li>Add an <span class="blockname">"at the start"</span> block</li>
-                    <li>Inside this block, add a <span class="blockname">"find the element with id"</span> block using the id of the &lt;li&gt; element for Banana (<code>banana</code>)</li>
-                    <li id="exercise_set_colours_1">Inside this block, add a <span class="blockname">"set the attribute"</span> block, pick "color" and set the value to any yellow colour using the <span class="blockname">colour picker</span> (you can find a color picker block in the "Values" menu).</li>
-                    <li id="exercise_set_colours_2">The colour for a banana is probably not easy to see against a white background. Add a second <span class="blockname">"set the attribute"</span> block and set a dark color for the background.</li>
-                    <li>Click "run" to check the output looks like
-                        <ul style="background-color: azure;">
-                            <li style="color:rgb(233, 233, 22);background-color: darkgrey;">Banana</li>
-                            <li>Orange</li>
-                        </ul>
-                    </li>
-                </ol>
-            </li>
-            <li id="exercise_set_colours_3">Repeat the process above to colour each of the fruit (hint: you can add multiple <span class="blockname">"find the element with id"</span> blocks one after the other). You can also change the background color if you like</li> 
-        </ol>
+      <zero-md src="exercises/set_colours.md"></zero-md>
        </div>
        <xml class="toolbox" style="display: none">
           <category name="Values" colour='%{BKY_TEXTS_HUE}'>

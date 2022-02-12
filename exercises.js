@@ -1,15 +1,32 @@
 /* jshint esversion: 6 */
 
-let exercises = findExercises();
-let currentExercise = null;
-setupToc(exercises);
-addDomElements(exercises);
-exercises.forEach(hideExercise);
-let exerciseIdFromUrl = window.location.hash.substring(1);
-let initialExercise =
-  exercises.find((exercise) => exercise.id === exerciseIdFromUrl) ||
-  exercises[0];
-selectExercise(initialExercise);
+const zeroMdRendered = Promise.all(
+  [...document.querySelectorAll("zero-md")].map((zeroMd) => {
+    return new Promise((resolve, reject) => {
+      addEventListener("zero-md-rendered", (ev) => {
+        // ev.detail.stamped.body says true even when there is no markdow-body?
+        // could be a bug in zero-md - or a misunderstanding of the apoi
+        if (zeroMd.shadowRoot.querySelector("div.markdown-body")) {
+          resolve(true);
+        }
+      });
+    });
+  })
+);
+// wait for all zeroMd to be rendered before initialising
+zeroMdRendered.then(initExercises);
+
+function initExercises() {
+  let exercises = findExercises();
+  setupToc(exercises);
+  addDomElements(exercises);
+  exercises.forEach(hideExercise);
+  let exerciseIdFromUrl = window.location.hash.substring(1);
+  let initialExercise =
+    exercises.find((exercise) => exercise.id === exerciseIdFromUrl) ||
+    exercises[0];
+  selectExercise(initialExercise);
+}
 
 function findExercises() {
   let $exercises = [...document.querySelectorAll(".exercise")];
@@ -60,9 +77,17 @@ function addDomElements(exercises) {
       exercise.$blockly,
       exercise.id
     );
-    let startCode = exercise.$exercise.querySelector(".start_code");
-    if (startCode) {
-      exercise.blocklyDomEditor.init(startCode.innerText);
+    let $startCode = exercise.$exercise.querySelector(".start_code"); // can be removed when all migrated to markdown
+    if (!$startCode) {
+      // get the first <pre class="language-html"> inside rendered markdown
+      let $zeroMd = exercise.$exercise.querySelector("zero-md");
+      if ($zeroMd) {
+        let $instructionsRoot = $zeroMd.shadowRoot;
+        $startCode = $instructionsRoot.querySelector("pre.language-html");
+      }
+    }
+    if ($startCode) {
+      exercise.blocklyDomEditor.init($startCode.innerText);
     } else {
       exercise.blocklyDomEditor.init();
     }
@@ -79,6 +104,8 @@ function createNavElement(name, exercise) {
   $navElement.style.marginRight = "5px";
   return $navElement;
 }
+
+let currentExercise = null;
 
 function selectExercise(exercise) {
   if (currentExercise) {
