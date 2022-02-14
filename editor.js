@@ -298,19 +298,33 @@ BlocklyTest = {
   },
   getOrCreateNotYetPassing: function (index, message) {
     const checkId = `${this.currentTestName}_${index}`;
+    let $span = null;
     let $li = document.getElementById(checkId);
-    let $span = $li.querySelector("span.test-checkbox");
-    if (!$span) {
-      $span = document.createElement("span");
-      $span.setAttribute("class", "test-checkbox");
-      $span.innerHTML = "&check;&nbsp;";
-      $li.insertBefore($span, $li.firstChild);
+    if ($li) {
+      // can remove the $li codepath once we are fully moved to markdown
+      $span = $li.querySelector("span.test-checkbox");
+      if (!$span) {
+        $span = document.createElement("span");
+        $span.setAttribute("class", "test-checkbox");
+        $li.insertBefore($span, $li.firstChild);
+      }
+    } else {
+      const zeroMdSelector = `#${this.currentTestName} zero-md`;
+      let $zeroMd = document.querySelector(zeroMdSelector);
+      if ($zeroMd) {
+        let $instructionsRoot = $zeroMd.shadowRoot;
+        $span =
+          $instructionsRoot.querySelectorAll(`span.test-checkbox`)[index - 1];
+      }
     }
+
+    $span.innerHTML = "&check;&nbsp;";
+    // don't use css as is potentially in shadow dom with own stylesheet
     $span.style.color = "gray";
     $span.title = "This test is not currently passing: " + message;
     return {
       showPassing: function () {
-        $span.style.color = "chartreuse";
+        $span.style.color = "#32CD32"; // lime green
         $span.title = message;
       },
     };

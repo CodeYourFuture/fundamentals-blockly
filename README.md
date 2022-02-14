@@ -39,6 +39,18 @@ Load index.html from a live server (also needs improving upon)
 
 # Contributing exercises
 
+Some conventions are set up to interact with the app, to facilitate testing and markup of block names and starting html.
+
+## Naming
+
+By convention (not currently necessary, but possibly useful in future):
+
+- exercises are named exercise_XXXXX
+- md file for exercise_XXXX are in exercises/XXXX.md
+- introduction is an exception
+
+## Referring to blocks
+
 All blocks should have consistent names and be marked up consistently (for easy renaming, or improved rendering), using either
 
 ```html
@@ -52,6 +64,8 @@ in html or
 ```
 
 in markdown.
+
+## Providing initial html
 
 Each exercise includes its default/starting html. It should be either marked as
 
@@ -72,3 +86,44 @@ in html or be the first html code block in markdown:
   <li id="strawberry">Strawberry</li>
 </ul>
 ```
+
+## Placeholder for placing a pass/fail testmark for a test
+
+In html, write the id of the test ("<exercise_id><expect_index>") in the corresponding li element classname
+
+```html
+<li id="exercise_set_colours_3">
+  <!-- linked to BlocklyTest.registerTest("exercise_set_colours") ... BlocklyTest.expect(3)-->
+</li>
+```
+
+In markdown, write an empty html span out. BlocklyTest.expect will be lined up by order of appearance
+
+```html
+<span class="test-checkbox"></span>
+```
+
+## Registering tests
+
+The test for an exercise is registered
+
+- once per exercise
+- inside the html for that exercise
+- by calling `BlocklyTest.registerTest` with the id attribute for the exercise and a callback to setup expectations
+
+The callback is executed when the run button has been pressed, after the html has been rendered, but before the code is executed. It sets up expectations of the things that should happen after the code is executed.
+
+`BlocklyTest.expect` has
+
+- a numeric attribute (should be 1..n in order of where the checkboxes appear in the instructions)
+- a text describing what should be true for the test to succeed
+- a dom element whose changes are to be observed
+- a predicate to be executed every time the dom element changes, to verify if the result is now true
+
+`BlocklyTest.expectAfterClick` has
+
+- same 1st 2 attributes
+- a dom element for which we would like to observe what happens before and after it is clicked
+- a value supplier that supplies an observed value
+- a predicate that accepts the value supplied before click handlers are executed and after click handlers are executed, in order to compare the before and after
+  git
