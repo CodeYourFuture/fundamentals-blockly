@@ -13,39 +13,50 @@ Blockly.setLocale(locale);
 
 export default function App() {
   const { BlocklyComponent, generate } = useBlockly({
-    initialBlock: {
-      kind: "controls_if",
-      x: 10,
-      y: 10,
-    },
     toolbox: {
       kind: "categoryToolbox",
       contents: [
         {
           kind: "category",
-          name: "Control",
+          name: "Values",
           contents: [
             {
               kind: "block",
-              type: "controls_if",
+              type: "text",
+            },
+            {
+              kind: "block",
+              type: "get_randomWord",
             },
           ],
         },
         {
           kind: "category",
-          name: "Logic",
+          name: "HTML",
           contents: [
             {
               kind: "block",
-              type: "logic_compare",
+              type: "on_start",
             },
             {
               kind: "block",
-              type: "logic_operation",
+              type: "with_element_by_id",
             },
             {
               kind: "block",
-              type: "logic_boolean",
+              type: "set_content",
+              contents: [
+                {
+                  kind: "value",
+                  name: "VALUE",
+                  value: {
+                    name: "VALUE",
+                    shadow: {
+                      type: "text",
+                    },
+                  },
+                },
+              ],
             },
           ],
         },
