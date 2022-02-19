@@ -3,6 +3,8 @@ import * as Blockly from "blockly/core";
 import locale from "blockly/msg/en";
 import "blockly/blocks";
 
+import "./Blocks/dom";
+import "./Blocks/cyf";
 import useBlockly from "./Blockly/useBlockly";
 
 import "./App.css";
