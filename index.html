@@ -127,28 +127,9 @@
         });
       });
     </script>
-      <div class="instructions">
-      <p>
-        This exercise introduces the <b>Html blocks</b> to find and modify the text of html elements.
-      </p>
-        <ol>
-            <li>Let's start with the html below in the static html area. It represents a sentence with holes (also known as <a href="https://en.wikipedia.org/wiki/Mad_Libs">Mad Libs</a>).
-                <ol>
-                    <li><code class="start_code">&lt;p&gt;The &lt;u id="noun1"&gt;dog&lt;/u&gt; &lt;u id="verb"&gt;saw&lt;/u&gt; the &lt;u id="adjective"&gt;white&lt;/u&gt; &lt;u id="noun2"&gt;cat&lt;/u&gt;&lt;/p&gt;</code></li>
-                    <li>you can click "run" to see the output</li>
-                </ol>
-            <li>Let's modify the contents of the first <code>&lt;u&gt;</code> element to contain the word "mouse" instead of "dog".
-                <ol>
-                    <li>Add an <span class="blockname">"at the start"</span> block</li>
-                    <li>Inside this block, add a <span class="blockname">"find the element with id"</span> block using the id of the first &lt;u&gt; element (<code>noun1</code>)</li>
-                    <li>Inside this block, add a <span class="blockname">"set the text content to"</span> block</li>
-                    <li>Set the value for the text of this block: <code>mouse</code></li>
-                    <li id="exercise_change_text_1">Click "run" to check the content has changed.</li>
-                </ol>
-            </li>
-            <li id="exercise_change_text_2">Can you modify the contents of the other three <code>&lt;u&gt;</code> elements? If you can't think of some words, you can use the <span class="blockname">"get a random word"</span> block from the Values menu</li>
-        </ol>
-       </div>
+      <div class="instructions" >
+        <zero-md src="exercises/changing_text.md" ></zero-md>
+      </div>
        <xml class="toolbox" style="display: none">
           <category name="Values" colour='%{BKY_TEXTS_HUE}'>
             <block type="text"></block>
