@@ -2,11 +2,11 @@
 
 This exercise introduces the **Html blocks** you can use to find and update the text of html elements.
 
-Let's start with the html below in the html area. It represents a sentence with gaps, known as a [Mad Libs](https://en.wikipedia.org/wiki/Mad_Libs) sentence
+Let's start with the html below in the html area. It represents a sentence with gaps, taken from the popular [Mad Libs](https://en.wikipedia.org/wiki/Mad_Libs) game
 
 An example of a mad lib sentence would be the following:
 
-  >  The dog saw the ___ cat
+>  The dog saw the ___ cat
 
 
 Check out the text area, where you should see the following html:
