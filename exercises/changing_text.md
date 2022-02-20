@@ -27,7 +27,7 @@ Let's update the contents of the adjective `<u>` element to contain an adjective
       
 4.  Inside this block, add a `set the text content to` block 
 
-5. Set the value of the text in this element to `"pink"` ( or any other colour you like )
+5. Set the value of the text in this element to pink ( or any other colour you like )
 
 6.  Click "run" to check the text content has changed.
 
