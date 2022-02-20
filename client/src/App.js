@@ -45,18 +45,10 @@ export default function App() {
             {
               kind: "block",
               type: "set_content",
-              contents: [
-                {
-                  kind: "value",
-                  name: "VALUE",
-                  value: {
-                    name: "VALUE",
-                    shadow: {
-                      type: "text",
-                    },
-                  },
-                },
-              ],
+              // AFAICT, there's no JSON api for values/shadows, so stringifying
+              // some XML it is ¯\_(ツ)_/¯
+              blockxml:
+                '<block type="set_content"><value name="VALUE"><shadow type="text"> </shadow></value></block>',
             },
           ],
         },
