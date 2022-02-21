@@ -21,20 +21,22 @@ This html represents the mad libs sentence we first saw above. Click the "run" b
 
 Let's update the contents of the adjective `<u>` element to contain an adjective to describe the cat.
 
-1.  Go to the html blocks and from there add an `at the start` block
-      
-2.  Inside this block, add a `find the element with id` block using the css selector for the id of the adjective `<u>` element
-      
-3.  Inside this block, add a `set the text content to` block 
 
-4. Set the value of the text in this element to pink ( or any other colour you like )
+1.  Go to the html blocks and from there add an `at the start` block.
+      
+2.  Inside this block, add a `find the element with id` block using the id of the adjective `<u>` element.
+      
+3.  Inside this block, add a `set the text content to` block.
 
-5.  Click run to check the text content has changed.
+4. Set the value of the text in this element to an adjective, for example "big", "small", "scary", "angry" etc. 
+
+<p id="exercise_change_text_1"><span class="test-checkbox"></span>Click run to check the text content has changed.</p>
+
 
 <br>
 
 ## Extra exercises
 
-1.  Can you update the contents of the other three `<u>` elements? If you can't think of some words, you can use the "get a random word" block from the Values menu
+1. <span class="test-checkbox"></span>  Can you update the contents of the other three `<u>` elements? If you can't think of some words, you can use the `get a random word` block from the Values menu
 
 <br>

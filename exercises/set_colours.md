@@ -35,7 +35,7 @@ The colour for a banana is probably not easy to see against a white background.
 8. Click "run" to check the output looks like
 <ul style="background-color: azure;">
       <li style="color:rgb(233, 233, 22);background-color: darkgrey;">Banana</li>
-      <li>Orange</li>
+      <li>Orange</li> 
 </ul>
 
 <span class="test-checkbox"></span>Repeat the process above to colour each of the fruit. ( Hint: you can add multiple "`find the element with id`" blocks one after the other )
