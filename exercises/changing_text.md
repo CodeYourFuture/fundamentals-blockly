@@ -21,7 +21,6 @@ This html represents the mad libs sentence we first saw above. Click the "run" b
 
 Let's update the contents of the adjective `<u>` element to contain an adjective to describe the cat.
 
-
 1.  Go to the html blocks and from there add an `at the start` block.
       
 2.  Inside this block, add a `find the element with id` block using the id of the adjective `<u>` element.
@@ -30,13 +29,12 @@ Let's update the contents of the adjective `<u>` element to contain an adjective
 
 4. Set the value of the text in this element to an adjective, for example "big", "small", "scary", "angry" etc. 
 
-<p id="exercise_change_text_1"><span class="test-checkbox"></span>Click run to check the text content has changed.</p>
-
+<li id="exercise_change_text_1"><span class="test-checkbox"></span>Click run to check the text content has changed.</li>
 
 <br>
 
 ## Extra exercises
 
-1. <span class="test-checkbox"></span>  Can you update the contents of the other three `<u>` elements? If you can't think of some words, you can use the `get a random word` block from the Values menu
+<li id="exercise_change_text_2"><span class="test-checkbox"></span>Can you update the contents of the other three &lt;u&gt; elements? If you can't think of some words, you can use the <span class="blockname">get a random word</span> block from the Values menu</li>
 
 <br>
