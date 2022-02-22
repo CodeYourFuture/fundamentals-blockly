@@ -35,6 +35,6 @@ Let's update the contents of the adjective `<u>` element to contain an adjective
 
 ## Extra exercises
 
-<li id="exercise_change_text_2"><span class="test-checkbox"></span>Can you update the contents of the other three &lt;u&gt; elements? If you can't think of some words, you can use the <span class="blockname">get a random word</span> block from the Values menu</li>
+<li id="exercise_change_text_2"><span class="test-checkbox"></span>Can you update the contents of the other three &lt;u&gt; elements? If you can't think of some words, you can use the <code>get a random word</code> block from the Values menu</li>
 
 <br>
