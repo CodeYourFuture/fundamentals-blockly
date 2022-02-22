@@ -27,7 +27,7 @@ Let's update the contents of the adjective `<u>` element to contain an adjective
       
 3.  Inside this block, add a `set the text content to` block.
 
-4. Set the value of the text in this element to an adjective, for example "big", "small", "scary", "angry" etc. 
+4. Set the value of the text in this element to be any adjective, for example "big", "small", "scary", "angry" etc. 
 
 <li id="exercise_change_text_1"><span class="test-checkbox"></span>Click run to check the text content has changed.</li>
 
