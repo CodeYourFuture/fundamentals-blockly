@@ -7,53 +7,45 @@ import "./Blocks/dom";
 import "./Blocks/cyf";
 import useBlockly from "./Blockly/useBlockly";
 
+import * as Exercise1 from "./Exercises/01-stuff";
+import * as Exercise2 from "./Exercises/02-more-stuff";
+
 import "./App.css";
 
 Blockly.setLocale(locale);
 
+const exercises = [Exercise1, Exercise2];
+
+function useExercise() {
+  const [exerciseIndex, setExerciseIndex] = useState(0);
+
+  function nextExercise() {
+    setExerciseIndex(exerciseIndex + 1);
+  }
+  function prevExercise() {
+    setExerciseIndex(exerciseIndex - 1);
+  }
+
+  return {
+    exercise: exercises[exerciseIndex],
+    hasNextExercise: exerciseIndex + 1 < exercises.length,
+    nextExercise,
+    hasPrevExercise: exerciseIndex - 1 >= 0,
+    prevExercise,
+  };
+}
+
 export default function App() {
+  const {
+    exercise,
+    hasNextExercise,
+    nextExercise,
+    hasPrevExercise,
+    prevExercise,
+  } = useExercise();
+
   const { BlocklyComponent, generate } = useBlockly({
-    toolbox: {
-      kind: "categoryToolbox",
-      contents: [
-        {
-          kind: "category",
-          name: "Values",
-          contents: [
-            {
-              kind: "block",
-              type: "text",
-            },
-            {
-              kind: "block",
-              type: "get_randomWord",
-            },
-          ],
-        },
-        {
-          kind: "category",
-          name: "HTML",
-          contents: [
-            {
-              kind: "block",
-              type: "on_start",
-            },
-            {
-              kind: "block",
-              type: "with_element_by_id",
-            },
-            {
-              kind: "block",
-              type: "set_content",
-              // AFAICT, there's no JSON api for values/shadows, so stringifying
-              // some XML it is ¯\_(ツ)_/¯
-              blockxml:
-                '<block type="set_content"><value name="VALUE"><shadow type="text"> </shadow></value></block>',
-            },
-          ],
-        },
-      ],
-    },
+    toolbox: exercise.toolbox,
   });
 
   const [generated, setGenerated] = useState("");
@@ -73,6 +65,18 @@ export default function App() {
       <div className="output">
         <button onClick={handleGenerate}>Generate</button>
         <code>{generated}</code>
+      </div>
+
+      <div>
+        <div>
+          {hasNextExercise && (
+            <button onClick={nextExercise}>Next exercise</button>
+          )}
+          {hasPrevExercise && (
+            <button onClick={prevExercise}>Previous exercise</button>
+          )}
+        </div>
+        <exercise.Lesson />
       </div>
     </div>
   );
