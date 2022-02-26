@@ -2,12 +2,14 @@
 
 This exercise introduces the **Html blocks** you can use to find and update the text of html elements.
 
-Let's start with the html below in the html area. It represents a sentence with gaps, taken from the popular [Mad Libs](https://en.wikipedia.org/wiki/Mad_Libs) game
-
-An example of a mad lib sentence would be the following:
+Let's start with the sentence below.
 
 >  The dog saw the ___ cat
 
+This is an example of a **mad lib sentence**.
+
+A **mad lib sentence** is a sentence with gaps that you can fill in to form new sentences.
+It's taken from the popular [Mad Libs game](https://en.wikipedia.org/wiki/Mad_Libs).
 
 Check out the text area, where you should see the following html:
 
@@ -29,12 +31,12 @@ Let's update the contents of the adjective `<u>` element to contain an adjective
 
 4. Set the value of the text in this element to be any adjective, for example "big", "small", "scary", "angry" etc. 
 
-<li id="exercise_change_text_1"><span class="test-checkbox"></span>Click run to check the text content has changed.</li>
+5. <span class="test-checkbox"></span>Click run to check the text content has changed.</li>
 
 <br>
 
 ## Extra exercises
 
-<li id="exercise_change_text_2"><span class="test-checkbox"></span>Can you update the contents of the other three &lt;u&gt; elements? If you can't think of some words, you can use the <code>get a random word</code> block from the Values menu</li>
+1. <span class="test-checkbox"></span>Can you update the contents of the other three &lt;u&gt; elements? If you can't think of some words, you can use the <code>get a random word</code> block from the Values menu</li>
 
 <br>
