@@ -1,0 +1,6 @@
+@import "../theme/utilities.scss";
+
+.output pre {
+  padding: var(--theme-spacing--3);
+  border: var(--theme-border--highlight);
+}

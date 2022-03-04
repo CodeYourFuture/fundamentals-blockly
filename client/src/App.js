@@ -10,6 +10,8 @@ import useBlockly from "./Blockly/useBlockly";
 import * as Exercise1 from "./Exercises/01-stuff";
 import * as Exercise2 from "./Exercises/02-more-stuff";
 
+import Output from "./Output/Output";
+
 import "./App.scss";
 
 Blockly.setLocale(locale);
@@ -56,16 +58,24 @@ export default function App() {
 
   return (
     <div className="page">
-      <h1 className="title">CYF Blocks</h1>
+      <header>
+        <h1 className="title">CYF Blocks</h1>
+        <button class="trigger menu button">
+          <span class="text">Menu</span>
+        </button>
+      </header>
+      <nav aria-label="Main Site Menu.">
+        <ol></ol>
+      </nav>
 
       <div className="blockly-wrapper">
         <BlocklyComponent />
       </div>
 
-      <div className="output">
+      <section className="output">
         <button onClick={handleGenerate}>Generate</button>
-        <code>{generated}</code>
-      </div>
+        <Output renderedCode={generated} />
+      </section>
 
       <div>
         <div>
