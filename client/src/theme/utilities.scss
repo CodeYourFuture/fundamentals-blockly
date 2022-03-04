@@ -1,0 +1,6 @@
+// lists, maps, sass-only variables, mixins, functions
+// nothing imported into this file can create any css output on its own
+// you can import this into any component to make sass features available to them
+
+@import "./mixins.scss";
+@import "./functions.scss";
