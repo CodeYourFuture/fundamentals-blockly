@@ -10,7 +10,7 @@ import useBlockly from "./Blockly/useBlockly";
 import * as Exercise1 from "./Exercises/01-stuff";
 import * as Exercise2 from "./Exercises/02-more-stuff";
 
-import "./App.css";
+import "./App.scss";
 
 Blockly.setLocale(locale);
 
