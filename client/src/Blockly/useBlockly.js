@@ -3,6 +3,7 @@ import useDeepCompareEffect from "use-deep-compare-effect";
 import _ from "lodash";
 import * as Blockly from "blockly/core";
 import BlocklyJS from "blockly/javascript";
+import "./Blockly.scss";
 
 export default function useBlockly({ initialBlock, toolbox }) {
   const wrapperRef = useRef();
@@ -35,7 +36,7 @@ export default function useBlockly({ initialBlock, toolbox }) {
   return useMemo(
     () => ({
       // Return a component to inject the workspace
-      BlocklyComponent: () => <div ref={wrapperRef} className="blockly" />,
+      BlocklyComponent: () => <div ref={wrapperRef} className="c-blockly" />,
       // Generate code from the workspace
       generate: () => {
         return BlocklyJS.workspaceToCode(workspaceRef.current);
