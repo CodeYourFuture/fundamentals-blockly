@@ -4,7 +4,7 @@
 }
 body,
 html {
-  font-family: var(--theme-font-copy);
+  font-family: var(--theme-font--copy);
   font-size: 100%;
   background-color: var(--theme-color--paper);
   color: var(--theme-color--ink);
@@ -14,13 +14,15 @@ html {
 $heading__levels: 1, 2, 3, 4, 5, 6;
 @each $h in $heading__levels {
   h#{$h} {
-    font-family: var(--theme-font-display);
+    font-family: var(--theme-font--display);
     font-size: var(--theme-type-size--#{$h});
     margin: 0;
   }
 }
 
 a {
+  color: currentColor;
+  text-decoration: none;
   background-image: linear-gradient(
     120deg,
     var(--theme-color--accent) 0%,
@@ -36,7 +38,7 @@ a {
   &:visited,
   &:focus,
   &:hover {
-    color: var(--theme-color--ink);
+    color: currentColor;
     text-decoration: none;
   }
   &:focus,

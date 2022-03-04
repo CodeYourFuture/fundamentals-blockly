@@ -1,20 +1,11 @@
-.page {
-  display: grid;
-  grid-template-rows: auto 1fr;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
-}
+@import "theme/utilities.scss";
 
-.title {
-  grid-column: 1 / 3;
-  justify-self: center;
-}
-
-.editor {
-  margin: 0.5rem;
-}
-
-.blockly {
-  height: 75vh;
-  width: 60vw;
+.c-layout {
+  @include grid-assign(header, panels, blockly, footer);
+  grid-template-columns: 10fr 2fr;
+  grid-template-rows: auto 80vh 1fr;
+  grid-template-areas:
+    "header header"
+    "blockly panels"
+    "footer footer";
 }

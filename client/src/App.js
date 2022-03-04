@@ -11,6 +11,9 @@ import * as Exercise1 from "./Exercises/01-stuff";
 import * as Exercise2 from "./Exercises/02-more-stuff";
 
 import Output from "./Output/Output";
+import Header from "./Layout/Header/Header";
+import Menu from "./Layout/Menu/Menu";
+import Footer from "./Layout/Footer/Footer";
 
 import "./App.scss";
 
@@ -57,37 +60,35 @@ export default function App() {
   }
 
   return (
-    <div className="page">
-      <header>
-        <h1 className="title">CYF Blocks</h1>
-        <button class="trigger menu button">
-          <span class="text">Menu</span>
-        </button>
-      </header>
-      <nav aria-label="Main Site Menu.">
-        <ol></ol>
-      </nav>
+    <div className="c-layout">
+      <Header />
+      <Menu />
+      <div class="c-layout__panels c-panels">
+        {/* move this to a copy component? */}
+        <div>
+          <div>
+            {hasNextExercise && (
+              <button onClick={nextExercise}>Next exercise</button>
+            )}
+            {hasPrevExercise && (
+              <button onClick={prevExercise}>Previous exercise</button>
+            )}
+          </div>
+          <exercise.Lesson />
+        </div>
 
-      <div className="blockly-wrapper">
+        <section className="output">
+          {/* does this button belong here or should it go in a toolbar? */}
+          <button onClick={handleGenerate}>Generate</button>
+          <Output renderedCode={generated} />
+        </section>
+      </div>
+
+      <div className="c-layout__blockly">
         <BlocklyComponent />
       </div>
 
-      <section className="output">
-        <button onClick={handleGenerate}>Generate</button>
-        <Output renderedCode={generated} />
-      </section>
-
-      <div>
-        <div>
-          {hasNextExercise && (
-            <button onClick={nextExercise}>Next exercise</button>
-          )}
-          {hasPrevExercise && (
-            <button onClick={prevExercise}>Previous exercise</button>
-          )}
-        </div>
-        <exercise.Lesson />
-      </div>
+      <Footer />
     </div>
   );
 }
