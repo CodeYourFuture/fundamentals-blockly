@@ -1,0 +1,13 @@
+@import "../../theme/utilities.scss";
+
+.c-footer {
+  @include grid-assign(title);
+  grid-template:
+    ". ..... ..... . " var(--theme-spacing--3)
+    ". title title ." auto
+    ". ..... ..... ." var(--theme-spacing--3) / var(--theme-spacing--2) 1fr auto var(
+      --theme-spacing--2
+    );
+
+  background: var(--theme-color--pop);
+}
