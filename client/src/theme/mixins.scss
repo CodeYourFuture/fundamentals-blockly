@@ -1,26 +1,11 @@
-// https://css-tricks.com/code-as-documentation-new-strategies-with-css-grid/
-@mixin grid-assign($elements...) {
-  display: grid;
-  @each $element in $elements {
-    &__#{$element} {
-      grid-area: $element;
-    }
-  }
-}
+// nothing imported into this file can create any css output on its own
+// you can import this into any component to make sass features available to them
 
-@mixin gradient(
-  $from: var(--theme-color--pop),
-  $to: var(--theme-color--accent)
-) {
-  background-image: linear-gradient(to right, $from, $to);
-}
-
-@mixin dots($color: currentColor) {
-  background-image: radial-gradient($color 1px, transparent 1px);
-  background-size: calc(10 * 1px) calc(10 * 1px);
-}
-
-@mixin invert {
-  background: var(--theme-color--ink);
-  color: var(--theme-color--paper);
-}
+@import "mixins/dots.scss";
+@import "mixins/gradient.scss";
+@import "mixins/grid.scss";
+@import "mixins/invert.scss";
+@import "mixins/menu-transforms.scss";
+@import "mixins/on-event.scss";
+@import "mixins/on-move.scss";
+@import "mixins/screen.scss";

@@ -1,0 +1,37 @@
+@mixin menu-transforms {
+  transition: transform 0.55s 0.3s ease-in-out;
+
+  &:before,
+  &:after {
+    transition: all 0.3s ease-in-out;
+    content: " ";
+    display: block;
+  }
+  &:before {
+    width: unset;
+    height: unset;
+    left: 0;
+    right: 0;
+    top: 1em;
+    bottom: 1em;
+  }
+  &:after {
+    top: 0;
+    bottom: unset;
+    box-shadow: 0 2em currentColor;
+  }
+  &:hover,
+  &:focus {
+    transform: rotate(45deg);
+    &:before {
+      left: calc(50% - 0.1em);
+      right: calc(50% - 0.1em);
+      top: -0.8em;
+      bottom: -0.8em;
+    }
+    &:after {
+      top: 1em;
+      box-shadow: 0 0px transparent;
+    }
+  }
+}

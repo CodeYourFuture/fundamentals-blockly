@@ -1,0 +1,4 @@
+@mixin dots($color: currentColor) {
+  background-image: radial-gradient($color 1px, transparent 1px);
+  background-size: calc(10 * 1px) calc(10 * 1px);
+}
