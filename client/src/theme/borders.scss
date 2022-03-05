@@ -1,5 +1,7 @@
 :root {
-  --theme-border: 0;
+  --theme-border: 0.5px solid currentColor;
+  --theme-border-radius: 17rem 1rem 16rem 1rem/1rem 16rem 1rem 17rem;
+  --theme-border--thick: 2px solid;
   --theme-border--highlight: 0.5px solid var(--theme-color--paper);
   --theme-border--underline: 0.5px solid var(--theme-color--ink);
 }
