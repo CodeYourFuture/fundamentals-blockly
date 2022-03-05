@@ -14,7 +14,7 @@ import Output from "./Output/Output";
 import Header from "./Layout/Header/Header";
 import Menu from "./Layout/Menu/Menu";
 import Footer from "./Layout/Footer/Footer";
-
+import Button from "./Button/Button";
 import "./App.scss";
 
 Blockly.setLocale(locale);
@@ -66,20 +66,32 @@ export default function App() {
       <div class="c-layout__panels c-panels">
         {/* move this to a copy component? */}
         <div>
-          <div>
+          <nav className="c-navigator">
             {hasNextExercise && (
-              <button onClick={nextExercise}>Next exercise</button>
+              <Button
+                context="c-navigator__next"
+                text="Next exercise"
+                action={nextExercise}
+              />
             )}
             {hasPrevExercise && (
-              <button onClick={prevExercise}>Previous exercise</button>
+              <Button
+                context="c-navigator__previous"
+                text="Previous exercise"
+                action={prevExercise}
+              />
             )}
-          </div>
+          </nav>
           <exercise.Lesson />
         </div>
 
-        <section className="output">
+        <section className="c-output">
           {/* does this button belong here or should it go in a toolbar? */}
-          <button onClick={handleGenerate}>Generate</button>
+          <Button
+            context="c-output__generate"
+            text="Generate"
+            action={handleGenerate}
+          />
           <Output renderedCode={generated} />
         </section>
       </div>

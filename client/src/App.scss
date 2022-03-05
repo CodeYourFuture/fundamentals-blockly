@@ -2,10 +2,15 @@
 
 .c-layout {
   @include grid-assign(header, panels, blockly, footer);
-  grid-template-columns: 10fr 2fr;
-  grid-template-rows: auto 80vh 1fr;
+  grid-template-columns: 0 minmax(10fr, 1060px) minmax(2fr, 220px) 0;
+  grid-template-rows: 0 auto 80vh 1fr;
   grid-template-areas:
-    "header header"
-    "blockly panels"
-    "footer footer";
+    ". ...... ...... ."
+    ". header header . "
+    ". blockly panels ."
+    "footer footer footer footer ";
+  gap: var(--theme-spacing--4);
+
+  max-width: 100vw;
+  overflow-y: hidden;
 }

@@ -1,11 +1,21 @@
 @import "../../theme/utilities.scss";
 
 .c-header {
-  @include grid-assign(title, button);
+  @include grid-assign(title, text, output, menu);
+  gap: var(--theme-spacing--2);
   grid-template:
-    ". ..... ...... . " var(--theme-spacing--3)
-    ". title button ." auto
-    ". ..... ...... ." var(--theme-spacing--3) / var(--theme-spacing--2) 1fr auto var(
-      --theme-spacing--2
-    );
+    ". ..... .... ...... .... . " 0
+    ". title text output menu ." auto
+    ". ..... .... ...... .... ." 0 / 0 1fr auto auto auto 0;
+
+  align-items: center;
+
+  border: var(--theme-border--thick);
+  border-radius: var(--theme-border-radius);
+  box-shadow: 4px 9px 0px var(--theme-color--pop);
+
+  &__title {
+    text-transform: lowercase;
+    letter-spacing: 4px;
+  }
 }

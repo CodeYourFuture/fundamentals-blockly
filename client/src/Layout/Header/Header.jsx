@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Button from "../../Button/Button";
 import "./Header.scss";
 
 const Header = () => {
@@ -8,10 +9,10 @@ const Header = () => {
 
 
    return( <header class="c-layout__header c-header">
-        <h1 className="c-header__title">CYF Blocks</h1>
-        <button class="c-header__button c-button" onClick={toggleMenu} open={open}>
-            <span class="c-button__text">Menu</span>
-        </button>
+       <h1 className="c-header__title">CYF Blocks</h1>
+       <Button context="c-header__text"  text='Text' action={toggleMenu} />
+       <Button context="c-header__output" text='Output' action={toggleMenu} />
+       <Button context="c-header__menu"  text='Menu' action={toggleMenu} />
     </header>)
 };
 export default Header;

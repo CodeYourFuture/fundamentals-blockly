@@ -20,7 +20,9 @@ $heading__levels: 1, 2, 3, 4, 5, 6;
   }
 }
 
-a {
+a,
+a:link,
+a:visited {
   color: currentColor;
   text-decoration: none;
   background-image: linear-gradient(
@@ -34,15 +36,7 @@ a {
   transition: background-size 0.25s cubic-bezier(0.68, -0.55, 0.265, 1.55),
     color 0.3s;
 
-  &:link,
-  &:visited,
-  &:focus,
-  &:hover {
-    color: currentColor;
-    text-decoration: none;
-  }
-  &:focus,
-  &:hover {
+  @include on-event {
     color: var(--theme-color--paper);
     background-size: 100% 88%;
   }

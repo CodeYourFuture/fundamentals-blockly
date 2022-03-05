@@ -1,6 +1,12 @@
 @import "../theme/utilities.scss";
 
-.output pre {
-  padding: var(--theme-spacing--3);
-  border: var(--theme-border--highlight);
+.output {
+  max-width: 80ch;
+  overflow: hidden;
+  pre {
+    padding: var(--theme-spacing--3);
+    border: var(--theme-border--highlight);
+    width: 100%;
+    overflow: auto;
+  }
 }
