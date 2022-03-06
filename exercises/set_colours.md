@@ -16,7 +16,7 @@ For example:
 </ul>
 ```
 
-2.  Click `run` to see the rendered outputc
+2.  Click `run` to see the rendered output
 
 
 Let's change the banana element's colour to yellow
