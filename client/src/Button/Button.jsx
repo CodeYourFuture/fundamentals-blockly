@@ -7,13 +7,13 @@ const Button = ({ context, styleModifier, action, text, icon, link }) => {
             {link
                 ? <a className={`${context} c-button c-button--${styleModifier}`}
                     href={link}>
-                    <span class="c-button__text">
+                    <span className="c-button__text">
                         {text}
                     </span>
                      {icon ? <span className={`c-button__icon c-button__icon--${icon}`}></span> : ``}
                 </a>
                 : <button className={`${context} c-button c-button--${styleModifier}`} onClick={action} >
-                    <span class="c-button__text">
+                    <span className="c-button__text">
                         {text}
                     </span>
                     {icon ? <span className={`c-button__icon c-button__icon--${icon}`}></span> : ``}

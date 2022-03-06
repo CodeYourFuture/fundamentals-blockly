@@ -63,7 +63,7 @@ export default function App() {
     <div className="c-layout">
       <Header />
       <Menu />
-      <div class="c-layout__panels c-panels">
+      <div className="c-layout__panels c-panels">
         {/* move this to a copy component? */}
         <div>
           <nav className="c-navigator">
