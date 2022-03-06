@@ -6,7 +6,7 @@ Not only can we update existing html elements, we can also create new ones and s
 Let's start with an html list with a single apple in the static html 
                 
 - Note the list has an id `list` so that we can refer to it in our program.</li>
-- for example:
+For example:
 
 ```html
 <ul id="list">
@@ -20,7 +20,7 @@ Let's add one more fruit to the list:
 2. Inside this block, add a `find the element with id` block using the id for the ul element `list`
 3. Inside this block, add a `create a new ... element` block and select `<li>`
 4. Inside this block, add a `set the text content` block and set the value to "Banana"
-5. <span class="test-checkbox"></span> Click "run" to check the output looks like
+5. <span class="test-checkbox"></span> Click `run` to check the output looks like
 
 ```html
 <ul id="list">
