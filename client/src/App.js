@@ -64,30 +64,6 @@ export default function App() {
   // these are resizable panels -- a possible solution to the problem of making all three things available
   // so the user can compare across text, blocks, and output
   // not married to this
-  const Grid = ({ getGridProps, getGutterProps }) => (
-    <main {...getGridProps()} className="c-layout__panels">
-      <TextPanel
-        exercise={exercise}
-        navigation={{
-          nextExercise,
-          prevExercise,
-          hasNextExercise,
-          hasPrevExercise,
-        }}
-      />
-      <div
-        {...getGutterProps("column", 1)}
-        className="c-button c-button--handle"
-        role="button"
-      ></div>
-      <Output generatedCode={generated} generateCodeButton={handleGenerate} />
-      <div
-        {...getGutterProps("column", 3)}
-        className="c-button c-button--handle"
-      ></div>
-      <BlocklyComponent />
-    </main>
-  );
 
   return (
     <div className="c-layout">
@@ -96,15 +72,40 @@ export default function App() {
       <Split
         minSize={100}
         cursor="col-resize"
-        component={Grid}
         sizes={[50, 50, 200]}
-        expandToMin={true}
         gutterSize={48}
         gutterAlign="center"
-        snapOffset={30}
         dragInterval={1}
         direction="horizontal"
+        render={({ getGridProps, getGutterProps }) => (
+          <main {...getGridProps()} className="c-layout__panels">
+            <TextPanel
+              exercise={exercise}
+              navigation={{
+                nextExercise,
+                prevExercise,
+                hasNextExercise,
+                hasPrevExercise,
+              }}
+            />
+            <div
+              {...getGutterProps("column", 1)}
+              className="c-button c-button--handle"
+              role="button"
+            ></div>
+            <Output
+              generatedCode={generated}
+              generateCodeButton={handleGenerate}
+            />
+            <div
+              {...getGutterProps("column", 3)}
+              className="c-button c-button--handle"
+            ></div>
+            <BlocklyComponent />
+          </main>
+        )}
       />
+
       <Footer />
     </div>
   );
