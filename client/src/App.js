@@ -86,15 +86,10 @@ export default function App() {
             <exercise.Lesson />
           </section>
 
-          <section className="c-output">
-            {/* does this button belong here or should it go in a toolbar? */}
-            <Button
-              context="c-output__generate"
-              text="Generate"
-              action={handleGenerate}
-            />
-            <Output renderedCode={generated} />
-          </section>
+          <Output
+            generatedCode={generated}
+            generateCodeButton={handleGenerate}
+          />
         </div>
 
         <div className="c-layout__blockly">
