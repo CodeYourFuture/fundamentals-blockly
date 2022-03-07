@@ -2,7 +2,16 @@
 
 .c-layout {
   @include grid-assign(header, panels, blockly, footer);
-  grid-template-columns: 0 minmax(10fr, 1060px) minmax(2fr, 220px) 0;
+  // sorry, this is petty
+  --calc-pack--10: calc(
+    calc(10 * calc(100vw / 12)) - calc(0.66 * calc(var(--theme-spacing--4) * 3))
+  );
+  --calc-pack--2: calc(
+    calc(2 * calc(100vw / 12)) - calc(0.66 * calc(var(--theme-spacing--4) * 3))
+  );
+  grid-template-columns:
+    0 minmax(var(--calc-pack--10), 1060px) minmax(var(--calc-pack--2), 220px)
+    0;
   grid-template-rows: 0 auto 80vh 1fr;
   grid-template-areas:
     ". ...... ...... ."
@@ -10,7 +19,11 @@
     ". blockly panels ."
     "footer footer footer footer ";
   gap: var(--theme-spacing--4);
-
+  place-content: center;
   max-width: 100vw;
   overflow-y: hidden;
+
+  main {
+    display: contents;
+  }
 }

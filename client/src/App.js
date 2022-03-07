@@ -63,42 +63,44 @@ export default function App() {
     <div className="c-layout">
       <Header />
       <Menu />
-      <div className="c-layout__panels c-panels">
-        {/* move this to a copy component? */}
-        <div>
-          <nav className="c-navigator">
-            {hasNextExercise && (
-              <Button
-                context="c-navigator__next"
-                text="Next exercise"
-                action={nextExercise}
-              />
-            )}
-            {hasPrevExercise && (
-              <Button
-                context="c-navigator__previous"
-                text="Previous exercise"
-                action={prevExercise}
-              />
-            )}
-          </nav>
-          <exercise.Lesson />
+      <main>
+        <div className="c-layout__panels c-panels">
+          {/* move this to a copy component? */}
+          <section aria-label="Instructions.">
+            <nav className="c-navigator">
+              {hasNextExercise && (
+                <Button
+                  context="c-navigator__next"
+                  text="Next exercise"
+                  action={nextExercise}
+                />
+              )}
+              {hasPrevExercise && (
+                <Button
+                  context="c-navigator__previous"
+                  text="Previous exercise"
+                  action={prevExercise}
+                />
+              )}
+            </nav>
+            <exercise.Lesson />
+          </section>
+
+          <section className="c-output">
+            {/* does this button belong here or should it go in a toolbar? */}
+            <Button
+              context="c-output__generate"
+              text="Generate"
+              action={handleGenerate}
+            />
+            <Output renderedCode={generated} />
+          </section>
         </div>
 
-        <section className="c-output">
-          {/* does this button belong here or should it go in a toolbar? */}
-          <Button
-            context="c-output__generate"
-            text="Generate"
-            action={handleGenerate}
-          />
-          <Output renderedCode={generated} />
-        </section>
-      </div>
-
-      <div className="c-layout__blockly">
-        <BlocklyComponent />
-      </div>
+        <div className="c-layout__blockly">
+          <BlocklyComponent />
+        </div>
+      </main>
 
       <Footer />
     </div>

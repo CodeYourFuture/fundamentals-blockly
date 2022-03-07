@@ -1,7 +1,7 @@
 import "./Button.scss";
 // encourage proper use of link for link and button for action
-const Button = ({ context, styleModifier, action, text, icon, link }) => {
-    if (!action && !link)return null;
+const Button = ({ context, styleModifier="default", action, text, icon, link }) => {
+    if (!action && !link) return null;
     return (
         <>
             {link

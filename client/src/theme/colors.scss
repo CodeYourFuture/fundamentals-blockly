@@ -1,6 +1,7 @@
 :root {
   --theme-color--paper: rgba(240, 240, 240, 1);
   --theme-color--ink: rgba(12, 12, 50, 1);
+  --theme-color--ink-fade: rgba(12, 12, 50, 0.25);
   --theme-color--accent: rgba(129, 67, 201, 1);
   --theme-color--shade: rgba(129, 67, 201, 0.4);
   --theme-color--brand: #e62a2a;
@@ -9,6 +10,7 @@
   // @media (prefers-color-scheme: dark) {
   //   --theme-color--paper: rgba(12, 12, 50, 1);
   //   --theme-color--ink: rgba(240, 240, 240, 1);
+  //  --theme-color--ink-fade: rgba(240, 240, 240, .25);
   //   --theme-color--pop: rgba(129, 67, 201, 1);
   //   --theme-color--shade: rgba(252, 92, 125, 0.4);
   //   --theme-color--accent: rgb(93 223 253);

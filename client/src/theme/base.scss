@@ -8,6 +8,7 @@ html {
   font-size: 100%;
   background-color: var(--theme-color--paper);
   color: var(--theme-color--ink);
+  @include dots($color: var(--theme-color--ink-fade), $spacing: 25px);
   margin: 0;
 }
 
