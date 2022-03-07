@@ -1,24 +1,28 @@
 import React from "react";
 import Button from "../Button/Button";
-const TextPanel = (exercise, navigation) => (
-  <section aria-label="Instructions.">
-    <nav className="c-navigator">
+import "./TextPanel.scss";
+
+const TextPanel = ({ exercise, navigation }) => (
+  <section aria-label="Instructions." className="c-textpanel">
+    <nav className="c-textpanel__nav">
       {navigation.hasNextExercise && (
         <Button
-          context="c-navigator__next"
+          context="c-textpanel__next"
           text="Next exercise"
           action={navigation.nextExercise}
         />
       )}
       {navigation.hasPrevExercise && (
         <Button
-          context="c-navigator__previous"
+          context="c-textpanel__previous"
           text="Previous exercise"
           action={navigation.prevExercise}
         />
       )}
     </nav>
-    <exercise.Lesson />
+    <section className="c-textpanel__text">
+      <exercise.Lesson />
+    </section>
   </section>
 );
 

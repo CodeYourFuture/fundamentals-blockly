@@ -4,8 +4,9 @@ import _ from "lodash";
 import * as Blockly from "blockly/core";
 import BlocklyJS from "blockly/javascript";
 import "./Blockly.scss";
+import * as Theme from "./CYFTheme";
 
-export default function useBlockly({ initialBlock, toolbox }) {
+export default function useBlockly({ initialBlock, toolbox, theme }) {
   const wrapperRef = useRef();
   const workspaceRef = useRef();
 
@@ -17,6 +18,8 @@ export default function useBlockly({ initialBlock, toolbox }) {
       // means that the dep changes between renders, which in turn means that
       // the workspace is re-injected
       toolbox: _.cloneDeep(toolbox),
+      theme: Theme,
+      // does this mean it cannot be https://developers.google.com/blockly/guides/configure/web/resizable ?
     });
 
     // Set the initial block in the workspace
@@ -31,12 +34,18 @@ export default function useBlockly({ initialBlock, toolbox }) {
     return () => {
       workspaceRef.current.dispose();
     };
-  }, [toolbox, initialBlock]);
+  }, [toolbox, initialBlock, theme]);
 
   return useMemo(
     () => ({
       // Return a component to inject the workspace
-      BlocklyComponent: () => <div ref={wrapperRef} className="c-blockly" />,
+      BlocklyComponent: () => (
+        <section
+          ref={wrapperRef}
+          className="c-blockly"
+          aria-label="Visual Block Editor."
+        />
+      ),
       // Generate code from the workspace
       generate: () => {
         return BlocklyJS.workspaceToCode(workspaceRef.current);

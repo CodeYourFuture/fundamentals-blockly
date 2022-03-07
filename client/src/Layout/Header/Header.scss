@@ -10,11 +10,6 @@
 
   align-items: center;
 
-  background: var(--theme-color--paper);
-  border: var(--theme-border--thick);
-  border-radius: var(--theme-border-radius);
-  box-shadow: 4px 9px 0px var(--theme-color--pop);
-
   &__title {
     text-transform: lowercase;
     letter-spacing: 4px;
