@@ -19,6 +19,8 @@ import Footer from "./Layout/Footer/Footer";
 import Button from "./Button/Button";
 import "./App.scss";
 
+import { ReactComponent as Background } from "../src/svgs/Humaaans-Phone.svg";
+
 Blockly.setLocale(locale);
 
 // just left all this and presumed you will pass whatever you decide to do into the text panel
@@ -67,6 +69,16 @@ export default function App() {
 
   return (
     <div className="c-layout">
+      <Background
+        style={{
+          position: "absolute",
+          height: "100vh",
+          width: "auto",
+          mixBlendMode: "multiply",
+          zIndex: "-1",
+          left: "33vw",
+        }}
+      />
       <Header />
       <Menu />
       <Split
