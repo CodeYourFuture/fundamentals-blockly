@@ -9,7 +9,8 @@
 
   &__text {
     background: var(--theme-color--paper);
-    padding: 0 var(--theme-spacing--3) var(--theme-spacing--3) 0;
+    padding: var(--theme-spacing--2) var(--theme-spacing--3);
     max-width: 55ch;
+    line-height: 1.5;
   }
 }

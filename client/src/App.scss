@@ -2,22 +2,12 @@
 
 .c-layout {
   @include grid-assign(header, panels, footer);
-  // sorry, this is petty
-  --calc-pack--10: calc(
-    calc(10 * calc(100vw / 12)) - calc(0.66 * calc(var(--theme-spacing--4) * 3))
-  );
-  --calc-pack--2: calc(
-    calc(2 * calc(100vw / 12)) - calc(0.66 * calc(var(--theme-spacing--4) * 3))
-  );
-  grid-template-columns:
-    0 minmax(var(--calc-pack--10), 1060px) minmax(var(--calc-pack--2), 220px)
-    0;
-  grid-template-rows: 0 auto minmax(90vh, 1fr) minmax(20vh, fit-content);
+  grid-template-columns: 0 1fr 0;
   grid-template-areas:
-    ". ...... ...... ."
-    ". header header . "
-    ". panels panels ."
-    "footer footer footer footer ";
+    ". ...... ."
+    ". header . "
+    ". panels ."
+    ". footer .";
   gap: var(--theme-spacing--4);
   place-content: center;
   max-width: 100vw;
