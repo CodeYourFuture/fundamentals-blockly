@@ -30,19 +30,22 @@ BlocklyDomEditor.prototype.getElementId = function (elementId) {
 BlocklyDomEditor.prototype.init = function (initHtml, initJsonBlockly) {
   this.root.setAttribute(
     "style",
-    "margin-left:2em; display:grid;grid-template-columns: 1fr 2fr;grid-template-rows: auto 1fr;"
+    "display:grid;grid-template-columns: 1fr 2fr;grid-template-rows: auto 1fr;"
   );
+
   this.root.innerHTML = `
     <div id="${this.blocklyHtml}" class="blocklyHtml">
-      <ul>
-        <li id="${this.htmlTab}" class="current">Static html</li>
-        <li id="${this.jsTab}" class="notcurrent">Generated code</li>
-        <li id="${this.share}" class="notcurrent">Share</li>
+      <ul class="tabs">
+        <li id="${this.htmlTab}" role="button" class="button current">Static html</li>
+        <li id="${this.jsTab}" role="button" class="button notcurrent">Generated code</li>
       </ul>
       <textarea id="${this.htmlTextarea}" cols="50" rows="10">
       </textarea>
       <textarea id="${this.generatedJsTextarea}" class="generatedJsTextarea" cols="50" rows="10"></textarea>
-      <button id="${this.runButton}" class="runButton">run</button>
+      <section class="actions">
+      <button id="${this.runButton}" class="button runButton">run</button>
+      <button id="${this.share}" class="button">Share</button>
+      </section>
     </div>
     <div id="${this.blocklyArea}" style="height:400px;resize:vertical; overflow:auto; grid-row-end: span 2;"></div>
     <div id="${this.blocklyOutput}"></div>
@@ -125,6 +128,7 @@ BlocklyDomEditor.prototype.init = function (initHtml, initJsonBlockly) {
   function loadHtmlAndRunCode() {
     let blocklyHtml = $htmlTextarea.value;
     $blocklyOutput.innerHTML = blocklyHtml;
+    $blocklyOutput.classList.add("blockly-output");
     BlocklyTest.setCurrentTest(id);
     window.LoopTrap = 1000; // reset it
     eval(code);
@@ -137,15 +141,15 @@ BlocklyDomEditor.prototype.init = function (initHtml, initJsonBlockly) {
   $htmlTab.addEventListener("click", () => {
     $generatedJsTextarea.style.display = "none";
     $htmlTextarea.style.display = "block";
-    $htmlTab.className = "current";
-    $jsTab.className = "notcurrent";
+    $htmlTab.className = "button current";
+    $jsTab.className = "button notcurrent";
   });
 
   $jsTab.addEventListener("click", () => {
     $generatedJsTextarea.style.display = "block";
     $htmlTextarea.style.display = "none";
-    $htmlTab.className = "notcurrent";
-    $jsTab.className = "current";
+    $htmlTab.className = "button notcurrent";
+    $jsTab.className = "button current";
   });
 
   $share.addEventListener("click", () => {
