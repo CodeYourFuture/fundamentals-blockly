@@ -39,9 +39,10 @@ function findExercises() {
 
 function setupToc(exercises) {
   let $toc = document.getElementById("toc");
-  let $ul = document.createElement("ul");
+  let $ul = document.createElement("ol");
   exercises.forEach((exercise) => {
     $li = document.createElement("li");
+    $li.setAttribute("role", "button");
     $li.innerText = exercise.title;
     $li.addEventListener("click", () => {
       selectExercise(exercise);
@@ -55,7 +56,7 @@ function setupToc(exercises) {
 function addDomElements(exercises) {
   for (let i = 0; i < exercises.length; i++) {
     let exercise = exercises[i];
-    let $nav = document.createElement("div");
+    let $nav = document.createElement("nav");
     $nav.setAttribute("class", "nav-buttons");
     if (i > 0) {
       $nav.appendChild(createNavElement("previous exercise", exercises[i - 1]));
@@ -101,7 +102,6 @@ function createNavElement(name, exercise) {
     e.preventDefault();
     selectExercise(exercise);
   });
-  $navElement.style.marginRight = "5px";
   return $navElement;
 }
 
@@ -120,12 +120,12 @@ function selectExercise(exercise) {
 
 function hideExercise(exercise) {
   exercise.$exercise.style.display = "none";
-  exercise.$li.style.backgroundColor = "darkslateblue";
+  exercise.$li.classList.remove("current");
   exercise.blocklyDomEditor.hide();
 }
 
 function showExercise(exercise) {
   exercise.$exercise.style.display = "block";
-  exercise.$li.style.backgroundColor = "slateblue";
+  exercise.$li.classList.add("current");
   exercise.blocklyDomEditor.show();
 }
