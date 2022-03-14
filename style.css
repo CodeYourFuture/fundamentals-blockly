@@ -1,0 +1,218 @@
+:root {
+  --theme-color--paper: rgba(240, 240, 240, 1);
+  --theme-color--ink: rgba(12, 12, 50, 1);
+  --theme-color--accent: rgba(129, 67, 201, 1);
+  --theme-color--shade: rgba(129, 67, 201, 0.4);
+  --theme-color--brand: #e62a2a;
+  --theme-color--pop: rgb(252, 92, 125);
+  @media (prefers-color-scheme: dark) {
+    --theme-color--paper: rgba(12, 12, 50, 1);
+    --theme-color--ink: rgba(240, 240, 240, 1);
+    --theme-color--pop: rgba(129, 67, 201, 1);
+    --theme-color--shade: rgba(252, 92, 125, 0.4);
+    --theme-color--accent: rgb(93 223 253);
+  }
+}
+:root {
+  --theme-font--display: Menlo, Monaco, monospace;
+  --theme-font--copy: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font: 100%/1.5 var(--theme-font--copy);
+  background: var(--theme-color--paper);
+  color: var(--theme-color--ink);
+}
+html {
+  display: grid;
+  align-items: center;
+}
+body {
+  background-image: radial-gradient(
+    var(--theme-color--shade) 1px,
+    transparent 1px
+  );
+  background-size: 10px 10px;
+  display: grid;
+  grid-template:
+    ". header ." auto
+    ". exercises ." auto
+    " footer footer footer " auto/ minmax(20px, 1fr) minmax(auto, 1280px) minmax(20px, 1fr);
+}
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--theme-font--display);
+}
+
+/* CHROME */
+header {
+  display: grid;
+  grid-template-columns: 1fr min-content;
+  align-items: center;
+  grid-area: header;
+}
+header button {
+  z-index: 100001;
+}
+footer {
+  grid-area: footer;
+}
+a {
+  text-decoration: none;
+  border-bottom: 2px solid var(--theme-color--ink);
+  padding: 2px;
+}
+
+/* MENU */
+
+#toc {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: translateX(-100vw);
+  background: var(--theme-color--ink);
+  color: var(--theme-color--paper);
+  display: grid;
+  place-content: center;
+  transition: transform cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s;
+  /* bad blockly */
+  z-index: 100000;
+}
+
+#toc.open {
+  transform: translateX(0);
+}
+
+#toc li {
+  cursor: pointer;
+  line-height: 2;
+}
+
+#toc .current,
+#toc :active {
+  color: var(--theme-color--pop);
+}
+
+#toc li:hover,
+#toc li:focus {
+  text-decoration: underline;
+  color: var(--theme-color--pop);
+}
+/* MAIN stuff */
+#exercises {
+  grid-area: exercises;
+}
+
+/* TEXT */
+
+.instructions {
+  max-width: 47em;
+  padding: 1.5em 3.5em;
+  background-color: white;
+  margin: 3em auto 2em 0;
+}
+.exercise h2 {
+  font-size: 2em;
+  margin: 40px auto;
+}
+
+/*BLOCKLY */
+.exercise > div:first-of-type {
+  background-color: var(--theme-color--ink);
+  border: 3px solid var(--theme-color--accent);
+  padding: 20px 30px;
+}
+.nav-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 3px;
+}
+
+.blockly-editor {
+  margin-left: 2em;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto 1fr;
+}
+
+.blocklyHtml ul {
+  display: flex;
+  list-style: none;
+  cursor: pointer;
+  margin: 0 0 -2px 0;
+  gap: 2px;
+  padding: 0;
+}
+
+.blocklyHtml li.notcurrent {
+  filter: grayscale(1);
+}
+
+.generatedJsTextarea {
+  display: none;
+}
+
+#exercises textarea,
+.blockly-output,
+.generatedJsTextarea {
+  border: 3px solid var(--theme-color--accent);
+  background-color: var(--theme-color--paper);
+  color: var(--theme-color--ink);
+  font: 100% var(--theme-font--display);
+  padding: 0;
+}
+.actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* BUTTONS */
+
+button,
+.button {
+  appearance: none;
+  font: 100% var(--theme-font--display);
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-flex;
+  place-items: center;
+  min-width: fit-content;
+  height: fit-content;
+  gap: 5px;
+  color: var(--theme-color--paper);
+  background: var(--theme-color--accent);
+  border: 2px solid var(--theme-color--accent);
+  border-radius: 1px;
+  padding: 7px 11px;
+  transition: all cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+button:hover,
+button:focus,
+.button:hover,
+.button:focus {
+  background: var(--theme-color--ink);
+  color: var(--theme-color--paper);
+}
+button:active {
+  background: var(--theme-color--pop);
+  color: var(--theme-color--paper);
+}
+:focus {
+  outline: 5px solid var(--theme-color--pop);
+}
