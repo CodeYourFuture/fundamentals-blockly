@@ -39,7 +39,7 @@ function findExercises() {
 
 function setupToc(exercises) {
   let $toc = document.getElementById("toc");
-  let $ul = document.createElement("ol");
+  let $ol = document.createElement("ol");
   exercises.forEach((exercise) => {
     $li = document.createElement("li");
     $li.setAttribute("role", "button");
@@ -47,10 +47,10 @@ function setupToc(exercises) {
     $li.addEventListener("click", () => {
       selectExercise(exercise);
     });
-    $ul.appendChild($li);
+    $ol.appendChild($li);
     exercise.$li = $li;
   });
-  $toc.appendChild($ul);
+  $toc.appendChild($ol);
 }
 
 function addDomElements(exercises) {
