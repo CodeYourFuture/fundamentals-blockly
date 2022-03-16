@@ -31,6 +31,13 @@ Load index.html from a live server (also needs improving upon)
 - "At the start" does nothing except act as a container
 - "sum" is a really important block, because it justifies storing values in arrays as opposed to displaying them directly (as there aren't any blocks for mathematical operations)
 
+# Design patterns for implementing projects
+
+- Arrays should ideally be simply iterated over (no access by index)
+- Problems that might be solved by accessing/tracking an index can be solved with two arrays acting as stacks and a "current value"
+- Using CSS and setting the class for a given html element is a useful (and usual) way to achieve many style changes at once
+- There deliberately is only a "remove all children" block -> Prefer removing all children and then regenerating them all based on a list, rather than trying to individually add/remove pieces of DOM
+
 # Troubleshooting
 
 - Nothing is displaying -> are you selecting an element with the correct id/css selector?
