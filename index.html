@@ -7,14 +7,22 @@
     <script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@2/dist/zero-md.min.js"></script>
   </head>
   <body>
-        <script src="https://unpkg.com/blockly@7.20211209.0/blockly.min.js"></script>
+    <script src="https://unpkg.com/blockly@7.20211209.0/blockly.min.js"></script>
     <script src="blockly-dom.js"></script>
     <script src="blockly-cyf.js"></script>
     <script src="jsoncrush.js"></script>
     <script src="editor.js"></script>
+
      <header>
       <h1>CYF Blocks</h1>
-      <button onclick="getElementById('toc').classList.toggle('open')">Menu</button>
+      <button onclick="getElementById('toc').classList.toggle('open')">
+        <span style="position: absolute;transform: translateY(-100vh);">Menu</span> 
+        <svg viewBox="0 0 100 80" width="30" height="30">
+        <rect width="100" height="10" fill="currentColor"></rect>
+        <rect y="30" width="100" height="10" fill="currentColor"></rect>
+        <rect y="60" width="100" height="10" fill="currentColor"></rect>
+        </svg>
+      </button>
     </header>
     <nav id="toc"></nav>
     <div id="exercises">
@@ -1405,12 +1413,9 @@
       <h3>CYF Blocks is a project of <a href="https://codeyourfuture.io">Code Your Future</a></h3>
       <p>Recap your HTML/CSS knowledge with this <a href="https://scrimba.com/learn/htmlcss">free crash course</a> on Scrimba.</p>
     </footer>
-     <!-- <dialog aria-live="assertive" class="toast" id="toast" aria-labelledby="toast-title" closed>
-      <h4 id="toast-title">
-        <button>Close</button>
-      <span class="o-text"></span>
-      </h4>
-    </dialog> -->
+     <section role="dialog" aria-live="assertive" class="toast" id="toast" aria-labelledby="toast-title">
+      <h4 class="toast-title"></h4>
+    </section>
     <xml id="toolbox" style="display: none">
       <category name="Loops" colour="120">
         <block type="controls_whileUntil"></block>
@@ -1566,5 +1571,5 @@
       <category name="Functions" colour="290" custom="PROCEDURE"></category>
     </xml>
     <script src="exercises.js"></script>
-  </body>
+</body>
 </html>

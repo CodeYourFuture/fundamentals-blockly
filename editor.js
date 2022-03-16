@@ -160,6 +160,17 @@ BlocklyDomEditor.prototype.init = function (initHtml, initJsonBlockly) {
       .replace("index.html", "share.html");
     let uri = url + "?v=" + encodeURIComponent(minifiedData);
     navigator.clipboard.writeText(uri);
+    if (uri) {
+      // a little toast
+      let toast = document.getElementById("toast");
+      let toastTitle = toast.querySelector(".toast-title");
+
+      toastTitle.innerHTML = "Share link copied to clipboard!";
+      toast.classList.toggle("is-open");
+      setTimeout(() => {
+        toast.classList.toggle("is-open");
+      }, 6000);
+    }
   });
 };
 
