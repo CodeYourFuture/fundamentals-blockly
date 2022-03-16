@@ -1,11 +1,16 @@
 :root {
   --theme-color--paper: rgba(240, 240, 240, 1);
+  --theme-color--paper-max: rgb(255, 255, 255);
   --theme-color--ink: rgba(12, 12, 50, 1);
-  --theme-color--accent: rgba(129, 67, 201, 1);
+  --theme-color--accent: rgb(154, 30, 192);
   --theme-color--shade: rgba(129, 67, 201, 0.4);
   --theme-color--brand: #e62a2a;
   --theme-color--pop: rgb(252, 92, 125);
-  @media (prefers-color-scheme: dark) {
+
+  --theme-border: 2px solid var(--theme-color--accent);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
     --theme-color--paper: rgba(12, 12, 50, 1);
     --theme-color--ink: rgba(240, 240, 240, 1);
     --theme-color--pop: rgba(129, 67, 201, 1);
@@ -40,7 +45,7 @@ body {
   grid-template:
     ". header ." auto
     ". exercises ." auto
-    " footer footer footer " auto/ minmax(20px, 1fr) minmax(auto, 1280px) minmax(20px, 1fr);
+    " footer footer footer " auto/ minmax(20px, 1fr) minmax(auto, 1440px) minmax(20px, 1fr);
 }
 * {
   box-sizing: border-box;
