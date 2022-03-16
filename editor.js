@@ -28,10 +28,7 @@ BlocklyDomEditor.prototype.getElementId = function (elementId) {
 };
 
 BlocklyDomEditor.prototype.init = function (initHtml, initJsonBlockly) {
-  this.root.setAttribute(
-    "style",
-    "display:grid;grid-template-columns: 1fr 2fr;grid-template-rows: auto 1fr;"
-  );
+  this.root.classList.add("interface");
 
   this.root.innerHTML = `
     <div id="${this.blocklyHtml}" class="blocklyHtml">
@@ -47,9 +44,9 @@ BlocklyDomEditor.prototype.init = function (initHtml, initJsonBlockly) {
       <button id="${this.share}" class="button">Share</button>
       </section>
     </div>
-    <div id="${this.blocklyArea}" style="height:400px;resize:vertical; overflow:auto; grid-row-end: span 2;"></div>
-    <div id="${this.blocklyOutput}"></div>
-    <div id="${this.blocklyDiv}" style="position:absolute"></div>
+    <div id="${this.blocklyArea}" class="area"></div>
+    <div id="${this.blocklyOutput}" class="output"></div>
+    <div id="${this.blocklyDiv}" class="canvas"></div>
   `;
 
   let $blocklyArea = document.getElementById(this.blocklyArea);
