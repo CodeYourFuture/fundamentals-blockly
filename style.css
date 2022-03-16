@@ -59,6 +59,18 @@ h5,
 h6 {
   font-family: var(--theme-font--display);
 }
+a,
+a:link,
+a:visited {
+  color: var(--theme-color--accent);
+  text-decoration: none;
+  border-bottom: 2px solid var(--theme-color--ink);
+  padding: 2px;
+}
+a:hover,
+a:focus {
+  color: currentColor;
+}
 
 /* CHROME */
 header {
@@ -72,11 +84,6 @@ header button {
 }
 footer {
   grid-area: footer;
-}
-a {
-  text-decoration: none;
-  border-bottom: 2px solid var(--theme-color--ink);
-  padding: 2px;
 }
 
 /* MENU */
@@ -111,6 +118,7 @@ a {
 #toc .current,
 #toc :active {
   color: var(--theme-color--pop);
+  text-decoration: underline;
 }
 
 #toc li:hover,
@@ -122,37 +130,63 @@ a {
 #exercises {
   grid-area: exercises;
 }
-
-/* TEXT */
-
-.instructions {
-  max-width: 47em;
-  padding: 1.5em 3.5em;
-  background-color: white;
-  margin: 3em auto 2em 0;
-}
-.exercise h2 {
-  font-size: 2em;
-  margin: 40px auto;
-}
-
-/*BLOCKLY */
-.exercise > div:first-of-type {
-  background-color: var(--theme-color--ink);
-  border: 3px solid var(--theme-color--accent);
-  padding: 20px 30px;
-}
 .nav-buttons {
   display: flex;
   justify-content: flex-end;
   gap: 3px;
 }
 
-.blockly-editor {
-  margin-left: 2em;
+/* TEXT */
+
+.instructions {
+  max-width: 47em;
+  padding: 1.5rem 3.5rem;
+  margin: 3rem auto 2rem 0;
+  background-color: white;
+  color: rgba(
+    12,
+    12,
+    50,
+    1
+  ); /*this can't be themed here -- it's inside zeromarkdown */
+}
+
+.exercise h2 {
+  font-size: 2em;
+  margin: 40px auto;
+}
+
+/*BLOCKLY  */
+
+.interface {
+  background-color: var(--theme-color--paper);
+  padding: 20px 10px 10px 20px;
+  border: var(--theme-border);
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-rows: auto 1fr;
+  gap: 0 20px;
+}
+@media (max-width: 960px) {
+  .interface {
+    display: flex;
+    flex-flow: column-reverse;
+  }
+}
+.area {
+  height: 400px;
+  resize: vertical;
+  overflow: auto;
+  grid-row-end: span 2;
+}
+.canvas {
+  position: absolute;
+}
+
+.blocklyToolboxDiv {
+  /* this can't be themed here; it's inside Blockly 
+    so we need to reset dark mode */
+  color: rgba(12, 12, 50, 1);
 }
 
 .blocklyHtml ul {
@@ -167,6 +201,11 @@ a {
 .blocklyHtml li.notcurrent {
   filter: grayscale(1);
 }
+.blocklyHtml li.current {
+  background: var(--theme-color--paper);
+  color: var(--theme-color--ink);
+  border-bottom-color: var(--theme-color--paper);
+}
 
 .generatedJsTextarea {
   display: none;
@@ -175,13 +214,18 @@ a {
 #exercises textarea,
 .blockly-output,
 .generatedJsTextarea {
-  border: 3px solid var(--theme-color--accent);
+  border: var(--theme-border);
   background-color: var(--theme-color--paper);
   color: var(--theme-color--ink);
   font: 100% var(--theme-font--display);
-  padding: 0;
+  padding: 20px;
+}
+.blockly-output {
+  margin-bottom: 10px; /*drag handle of blockly */
+  min-height: 30;
 }
 .actions {
+  margin: 20px 0;
   display: flex;
   justify-content: space-between;
 }
@@ -199,9 +243,9 @@ button,
   min-width: fit-content;
   height: fit-content;
   gap: 5px;
-  color: var(--theme-color--paper);
-  background: var(--theme-color--accent);
-  border: 2px solid var(--theme-color--accent);
+  color: var(--theme-color--ink);
+  background: var(--theme-color--paper);
+  border: var(--theme-border);
   border-radius: 1px;
   padding: 7px 11px;
   transition: all cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -212,12 +256,41 @@ button:focus,
 .button:hover,
 .button:focus {
   background: var(--theme-color--ink);
+  border-color: var(--theme-color--ink);
   color: var(--theme-color--paper);
 }
-button:active {
-  background: var(--theme-color--pop);
-  color: var(--theme-color--paper);
+
+a:focus,
+button:focus {
+  outline: none;
 }
-:focus {
-  outline: 5px solid var(--theme-color--pop);
+
+/* TOAST */
+#toast {
+  background-color: var(--theme-color--pop);
+  color: var(--theme-color--ink);
+  border: var(--theme-border);
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 10px 20px;
+  transform: translateY(12em);
+  transition: transform cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.4s;
+  z-index: 1001;
+}
+#toast.is-open {
+  transform: translateY(0);
+}
+
+/* SVG BG */
+
+#bg {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 100vh;
+  width: auto;
+  mix-blend-mode: multiply;
+  opacity: 0.8;
+  top: 100vh;
 }
