@@ -1,93 +1,9 @@
 <html>
   <head>
     <title>CYF Blocks - Unblock your future!</title>
-    <style type="text/css">
-      :root {
-        --brand-red: rgb(220, 52, 52);
-        --brand-black: rgb(22, 22, 22);
-        --brand-white: rgb(255,255,255);
-          }
+    
 
-      #toc ul {
-        display: flex;
-        flex-wrap: wrap;
-        margin-left:0;
-        justify-content: flex-start;
-        background-color: darkslateblue;
-        padding:0
-      }
-
-      #toc li {
-        height: 1em;
-        list-style:none;
-        padding:10px;
-        background-color: darkslateblue;
-        color: white;
-        cursor:pointer;
-      }
-
-      #toc li:current {
-        background-color: slateblue;
-      }
-
-      #toc li:hover {
-        background-color: slateblue;
-      }
-
-      .blocklyHtml li {
-        display:inline-block;
-        list-style:none;
-        padding:5px;
-        cursor:pointer;
-        margin:2px;
-      }
-
-      .blocklyHtml li.current {
-        border-top: 1px solid black;
-        border-left: 1px solid black;
-        border-right: 1px solid black;
-        border-bottom: 1px solid white;
-        font-weight: bold;
-      }
-
-      .blocklyHtml li.notcurrent {
-        border: 1px solid black;
-      }
-
-      .blocklyHtml ul {
-        margin: 0px;
-      }
-
-      .generatedJsTextarea {
-        display: none;
-      }
-
-      body {
-        font-family: Helvetica, Arial, sans-serif;
-        margin:0; padding: 0;
-      }
-
-      .instructions {
-        margin-top:3em;
-        margin-left:2em;
-        max-width:50em;
-        font-size: 1.2em;
-        line-height: 1.5em;
-      }
-
-      .instructions li {
-        margin-top:0.8em;
-      }
-
-      .blockname {
-        background-color: lightgrey;
-      }
-
-      .runButton {
-       border: 1px dashed;
-      }
-
-    </style>
+    <link rel="stylesheet" href="./style.css" />
     <script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@2/dist/zero-md.min.js"></script>
   </head>
   <body>
@@ -96,7 +12,19 @@
     <script src="blockly-cyf.js"></script>
     <script src="jsoncrush.js"></script>
     <script src="editor.js"></script>
-    <div id="toc"></div>
+
+     <header>
+      <h1>CYF Blocks</h1>
+      <button onclick="getElementById('toc').classList.toggle('open')">
+        <span style="position: absolute;transform: translateY(-100vh);">Menu</span> 
+        <svg viewBox="0 0 100 80" width="30" height="30">
+        <rect width="100" height="10" fill="currentColor"></rect>
+        <rect y="30" width="100" height="10" fill="currentColor"></rect>
+        <rect y="60" width="100" height="10" fill="currentColor"></rect>
+        </svg>
+      </button>
+    </header>
+    <nav id="toc"></nav>
     <div id="exercises">
       
       <div class="exercise" id="introduction">
@@ -1457,16 +1385,13 @@
       </div>
     </div>
 
-    <style>
-      .c-site-footer { 
-        background-color: var(--brand-red); color:white; padding: 40px 20px
-      }
-      .c-site-footer a { color: var(--brand-white); text-decoration: none; border-bottom: 2px solid var(--brand-black); padding:2px}
-    </style>
-    <footer class="c-site-footer">
+    <footer>
       <h3>CYF Blocks is a project of <a href="https://codeyourfuture.io">Code Your Future</a></h3>
       <p>Recap your HTML/CSS knowledge with this <a href="https://scrimba.com/learn/htmlcss">free crash course</a> on Scrimba.</p>
     </footer>
+     <section role="dialog" aria-live="assertive" class="toast" id="toast" aria-labelledby="toast-title">
+      <h4 class="toast-title"></h4>
+    </section>
     <xml id="toolbox" style="display: none">
       <category name="Loops" colour="120">
         <block type="controls_whileUntil"></block>
@@ -1622,5 +1547,5 @@
       <category name="Functions" colour="290" custom="PROCEDURE"></category>
     </xml>
     <script src="exercises.js"></script>
-  </body>
+</body>
 </html>
