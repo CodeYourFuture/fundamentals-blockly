@@ -157,10 +157,9 @@ footer {
   margin: 40px auto;
 }
 
-/*BLOCKLY  */
+/*BLOCKLY surround */
 
 .interface {
-  background-color: var(--theme-color--paper);
   padding: 20px 10px 10px 20px;
   border: var(--theme-border);
   display: grid;
@@ -184,12 +183,6 @@ footer {
   position: absolute;
 }
 
-.blocklyToolboxDiv {
-  /* this can't be themed here; it's inside Blockly 
-    so we need to reset dark mode */
-  color: rgba(12, 12, 50, 1);
-}
-
 .blocklyHtml ul {
   display: flex;
   list-style: none;
@@ -199,19 +192,16 @@ footer {
   padding: 0;
 }
 
-.blocklyHtml li.notcurrent {
-  filter: grayscale(1);
-}
 .blocklyHtml li.current {
   background: var(--theme-color--paper);
   color: var(--theme-color--ink);
   border-bottom-color: var(--theme-color--paper);
+  z-index: 2;
 }
-
 .generatedJsTextarea {
   display: none;
 }
-
+/*end mini blockly theme */
 #exercises textarea,
 .blockly-output,
 .generatedJsTextarea {
@@ -229,6 +219,38 @@ footer {
   margin: 20px 0;
   display: flex;
   justify-content: space-between;
+}
+
+/* a mini theme for blockly as it bugged me */
+.blocklyTreeLabel {
+  font-family: var(--theme-font--display);
+  color: var(--theme-color--ink);
+}
+.blocklyToolboxDiv,
+.blocklyFlyoutBackground {
+  background: var(--theme-color--paper);
+  color: var(--theme-color--ink);
+  fill: var(--theme-color--paper);
+}
+.blocklyFlyoutBackground {
+  filter: drop-shadow(2px 4px 6px var(--theme-color--pop));
+}
+.blocklyToolboxDiv {
+  border: var(--theme-border);
+  padding: 20px 10px;
+  box-shadow: 2px 6px 0 var(--theme-color--pop);
+}
+.blocklyMainBackground {
+  fill: transparent !important;
+  border: var(--theme-border);
+  stroke: var(--theme-color--accent);
+  stroke-width: 0;
+}
+.blocklySvg {
+  background: transparent;
+}
+.blocklyScrollbarHandle {
+  fill: var(--theme-color--pop);
 }
 
 /* BUTTONS */
