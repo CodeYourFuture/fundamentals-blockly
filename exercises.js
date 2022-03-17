@@ -46,6 +46,7 @@ function setupToc(exercises) {
     $li.innerText = exercise.title;
     $li.addEventListener("click", () => {
       selectExercise(exercise);
+      $toc.classList.toggle("open");
     });
     $ol.appendChild($li);
     exercise.$li = $li;

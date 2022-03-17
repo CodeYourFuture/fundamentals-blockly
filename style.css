@@ -58,6 +58,7 @@ h4,
 h5,
 h6 {
   font-family: var(--theme-font--display);
+  font-weight: 100;
 }
 a,
 a:link,
@@ -132,7 +133,7 @@ footer {
 }
 .nav-buttons {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: 3px;
 }
 
