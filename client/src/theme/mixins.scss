@@ -1,0 +1,19 @@
+// on a production site this would be a library of mixins
+// but this is as simple as we can
+
+// https://sass-lang.com/documentation/at-rules/mixin#taking-arbitrary-keyword-arguments
+// this mixin takes an unknown number of arguments; that's what the ellipsis (...) tells us
+// https://css-tricks.com/code-as-documentation-new-strategies-with-css-grid/
+@mixin grid-assign($elements...) {
+  // the arguments are treated as a list and we can iterate over them
+  @each $element in $elements {
+    &__#{$element} {
+      grid-area: $element;
+    }
+  }
+}
+
+// https://sass-lang.com/documentation/at-rules/mixin#optional-arguments
+@mixin gradient($from: var(--theme-color-pop), $to: var(--theme-color-accent)) {
+  background-image: linear-gradient(to right, $from, $to);
+}
