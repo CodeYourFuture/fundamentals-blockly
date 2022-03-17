@@ -1,0 +1,25 @@
+@mixin offset-dots($offset: 0.27em) {
+  position: relative;
+  overflow: visible;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transition: transform 0.3s;
+    background-image: radial-gradient(currentColor 1px, transparent 1px);
+    background-size: calc(10 * 1px) calc(10 * 1px);
+
+    @if $offset != null {
+      @include offset($offset);
+    }
+    @content;
+  }
+}
