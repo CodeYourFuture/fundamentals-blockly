@@ -134,14 +134,14 @@ footer {
 .nav-buttons {
   display: flex;
   justify-content: flex-start;
-  gap: 3px;
+  gap: 5px;
 }
 
 /* TEXT */
 
 .instructions {
   max-width: 47em;
-  padding: 1.5rem 3.5rem;
+  padding: 3.5rem 3.5rem 1.5rem;
   margin: 3rem auto 2rem 0;
   background-color: white;
   color: rgba(
@@ -150,6 +150,8 @@ footer {
     50,
     1
   ); /*this can't be themed here -- it's inside zeromarkdown */
+  box-shadow: 3px 5px 0 var(--theme-color--pop);
+  border: var(--theme-border);
 }
 
 .exercise h2 {
@@ -187,8 +189,8 @@ footer {
   display: flex;
   list-style: none;
   cursor: pointer;
-  margin: 0 0 -2px 0;
-  gap: 2px;
+  margin: 0 0 -3px 0;
+  gap: 5px;
   padding: 0;
 }
 
@@ -201,7 +203,7 @@ footer {
 .generatedJsTextarea {
   display: none;
 }
-/*end mini blockly theme */
+
 #exercises textarea,
 .blockly-output,
 .generatedJsTextarea {
@@ -232,9 +234,7 @@ footer {
   color: var(--theme-color--ink);
   fill: var(--theme-color--paper);
 }
-.blocklyFlyoutBackground {
-  filter: drop-shadow(2px 4px 6px var(--theme-color--pop));
-}
+
 .blocklyToolboxDiv {
   border: var(--theme-border);
   padding: 20px 10px;
@@ -251,6 +251,9 @@ footer {
 }
 .blocklyScrollbarHandle {
   fill: var(--theme-color--pop);
+}
+.geras-renderer.classic-theme .blocklySelected > .blocklyPath {
+  stroke: var(--theme-color--accent);
 }
 
 /* BUTTONS */
