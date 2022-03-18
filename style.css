@@ -244,7 +244,6 @@ footer {
   fill: transparent !important;
   border: var(--theme-border);
   stroke: var(--theme-color--accent);
-  stroke-width: 0;
 }
 .blocklySvg {
   background: transparent;
