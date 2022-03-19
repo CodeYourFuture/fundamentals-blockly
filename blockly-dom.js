@@ -82,32 +82,7 @@ Blockly.Blocks["arrays_getFirst"] = {
     this.setInputsInline(true);
     this.setOutput(true);
   },
-  /*
-   * mutationToDom and domToMutation are only here for backward compatibilty with xml (probably never needed)
-   */
-  /**
-   * Create XML to represent whether the block is a statement or a value.
-   * Also represent whether there is an 'AT' input.
-   * @return {!Element} XML storage element.
-   * @this {Blockly.Block}
-   */
-  mutationToDom: function () {
-    var container = Blockly.utils.xml.createElement("mutation");
-    var isStatement = !this.outputConnection;
-    container.setAttribute("statement", isStatement);
-    return container;
-  },
-  /**
-   * Parse XML to restore the 'AT' input.
-   * @param {!Element} xmlElement XML storage element.
-   * @this {Blockly.Block}
-   */
-  domToMutation: function (xmlElement) {
-    // Note: Until January 2013 this block did not have mutations,
-    // so 'statement' defaults to false and 'at' defaults to true.
-    var isStatement = xmlElement.getAttribute("statement") == "true";
-    this.updateStatement_(isStatement);
-  },
+
   /**
    * Switch between a value block and a statement block.
    * @param {boolean} newStatement True if the block should be a statement.
