@@ -126,9 +126,14 @@ BlocklyDomEditor.prototype.init = function (initHtml, initJsonBlockly) {
     let blocklyHtml = $htmlTextarea.value;
     $blocklyOutput.innerHTML = blocklyHtml;
     $blocklyOutput.classList.add("blockly-output");
+    $blocklyOutput.classList.toggle("has-changed");
     BlocklyTest.setCurrentTest(id);
     window.LoopTrap = 1000; // reset it
     eval(code);
+    /* this has to wait until after the animation is done */
+    setTimeout(() => {
+      $blocklyOutput.classList.toggle("has-changed");
+    }, 2000);
   }
 
   document

@@ -134,14 +134,14 @@ footer {
 .nav-buttons {
   display: flex;
   justify-content: flex-start;
-  gap: 3px;
+  gap: 5px;
 }
 
 /* TEXT */
 
 .instructions {
   max-width: 47em;
-  padding: 1.5rem 3.5rem;
+  padding: 3.5rem 3.5rem 1.5rem;
   margin: 3rem auto 2rem 0;
   background-color: white;
   color: rgba(
@@ -150,6 +150,8 @@ footer {
     50,
     1
   ); /*this can't be themed here -- it's inside zeromarkdown */
+  box-shadow: 3px 5px 0 var(--theme-color--pop);
+  border: var(--theme-border);
 }
 
 .exercise h2 {
@@ -157,10 +159,9 @@ footer {
   margin: 40px auto;
 }
 
-/*BLOCKLY  */
+/*BLOCKLY surround */
 
 .interface {
-  background-color: var(--theme-color--paper);
   padding: 20px 10px 10px 20px;
   border: var(--theme-border);
   display: grid;
@@ -184,30 +185,21 @@ footer {
   position: absolute;
 }
 
-.blocklyToolboxDiv {
-  /* this can't be themed here; it's inside Blockly 
-    so we need to reset dark mode */
-  color: rgba(12, 12, 50, 1);
-}
-
 .blocklyHtml ul {
   display: flex;
   list-style: none;
   cursor: pointer;
-  margin: 0 0 -2px 0;
-  gap: 2px;
+  margin: 0 0 -3px 0;
+  gap: 5px;
   padding: 0;
 }
 
-.blocklyHtml li.notcurrent {
-  filter: grayscale(1);
-}
 .blocklyHtml li.current {
   background: var(--theme-color--paper);
   color: var(--theme-color--ink);
   border-bottom-color: var(--theme-color--paper);
+  z-index: 2;
 }
-
 .generatedJsTextarea {
   display: none;
 }
@@ -229,6 +221,38 @@ footer {
   margin: 20px 0;
   display: flex;
   justify-content: space-between;
+}
+
+/* a mini theme for blockly as it bugged me */
+.blocklyTreeLabel {
+  font-family: var(--theme-font--display);
+  color: var(--theme-color--ink);
+}
+.blocklyToolboxDiv,
+.blocklyFlyoutBackground {
+  background: var(--theme-color--paper);
+  color: var(--theme-color--ink);
+  fill: var(--theme-color--paper);
+}
+
+.blocklyToolboxDiv {
+  border: var(--theme-border);
+  padding: 20px 10px;
+  box-shadow: 2px 6px 0 var(--theme-color--pop);
+}
+.blocklyMainBackground {
+  fill: transparent !important;
+  border: var(--theme-border);
+  stroke: var(--theme-color--accent);
+}
+.blocklySvg {
+  background: transparent;
+}
+.blocklyScrollbarHandle {
+  fill: var(--theme-color--pop);
+}
+.geras-renderer.classic-theme .blocklySelected > .blocklyPath {
+  stroke: var(--theme-color--accent);
 }
 
 /* BUTTONS */
@@ -294,4 +318,20 @@ button:focus {
   mix-blend-mode: multiply;
   opacity: 0.8;
   top: 100vh;
+}
+
+/* ATTENTION DELIGHT */
+.has-changed {
+  animation: attention 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+@keyframes attention {
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(3);
+  }
+  100% {
+    filter: brightness(1);
+  }
 }
