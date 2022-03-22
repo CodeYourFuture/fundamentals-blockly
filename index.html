@@ -293,31 +293,7 @@
       <div class="exercise" id="exercise_button_input">
         <h2>Inputs and clicks: say something</h2>
         <div class="instructions">
-        <p>
-          We can also get user input when a button is clicked. Let's have the browser say a word or sentence that the user enters.
-        </p>
-        <ol>
-            <li>Start with a text input box list (<code>&lt;input /&gt;</code>) and a button to that says "speak" in the static html.
-                <ol>
-                    <li>for example: <code class="start_code">&lt;input id="text" /&gt;<br>&lt;button id="button"&gt;speak&lt;/button&gt;</code></li>
-                </ol>
-            </li>
-            <li>We want to do two things in order when the button is clicked. First we get the value entered by the user, then we pass it to a block that will say it out loud. A common strategy in problem solving for programming is to solve the visible (or in this case, audible) thing first: have the browser say something. 
-                <ol>
-                    <li>Add a <span class="blockname">"when the element with id ... is clicked"</span> block</li>
-                    <li>Inside this block, add a <span class="blockname">"say"</span> block from the Values menu</li>
-                    <li>As input to this block, connect a <span class="blockname">"get a random word"</span> block</li>
-                    <li>Check that a random word gets said when you click "speak"</li>
-                </ol>
-            </li>
-            <li>Now that we know a word gets said out loud when we click the button, we can make it be the one from the input box. 
-                <ol>
-                    <li>Replace the <span class="blockname">"get a random word"</span> block with a <span class="blockname">"get the value of &lt;input&gt; with id"</span> block, using the input's id</li>
-                    <li>Check that whatever word you write in the input box gets said when you click "speak"</li>
-                </ol>
-            </li>
-            <li>Do you see why it was useful to solve this problem in reverse order?</li>
-        </ol>
+           <zero-md src="exercises/say_something.md"></zero-md>
        </div>
        <xml class="toolbox" style="display: none">
           <category name="Values" colour='%{BKY_TEXTS_HUE}'>
