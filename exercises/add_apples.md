@@ -20,4 +20,4 @@ When we click on the `add an apple` button, let's add an apple to the list.
 
 3. Inside this block, add the blocks necessary to find the `list` element, create a new `li` element and set the content to "apple" (you know how to do this from previous exercises).
 
-Can you add a second button (in the static html, with a different id) that removes all the apples (you can do this by using the `remove the contents of the element` block).              
+<span class="test-checkbox"></span>Can you add a second button (in the static html, with a different id) that removes all the apples (you can do this by using the `remove the contents of the element` block).              
