@@ -248,24 +248,8 @@
           (countBefore, countAfter) => countBefore > 0 && countAfter == 0);
         });
       </script>
-      <div class="instructions">
-      <p>
-        JavaScript is often "event-driven". This means it is run in when the user interacts with the page (clicking, typing, etc.). Let's make it so every time we (as a "user") click on an "add an apple" button, it adds an apple to the list.
-      </p>
-        <ol>
-            <li>Start with an empty unordered html list (<code>&lt;ul&gt;</code>) and a button to add apples to the list (<code>&lt;button&gt;</code>) in the static html.
-                <ol>
-                    <li>for example: <code class="start_code">&lt;ul id="list"&gt;&lt;/ul&gt;<br>&lt;button id="button"&gt;add an apple&lt;/button&gt;</code></li>
-                </ol>
-            <li>When we click on the "add an apple" button, let's add an apple to the list
-                <ol>
-                    <li>Add a <span class="blockname">"when the element with id ... is clicked"</span> block (it doesn't need to be connected to any other blocks)</li>
-                    <li id="exercise_button_add_1">Inside this block, add the blocks necessary to find the "list" element, create a new "li" element and set the content to "apple" (you know how to do this from previous exercises)</li>
-                </ol>
-            </li> 
-            <li id="exercise_button_add_2">Can you add a second button (in the static html, with a different id) that removes all the apples (you can do this by using the <span class="blockname">"remove the contents of the element"</span> block).              
-            </li>
-        </ol>
+       <div class="instructions">
+        <zero-md src="exercises/add_apples.md"></zero-md>
        </div>
        <xml class="toolbox" style="display: none">
           <category name="Values" colour='%{BKY_TEXTS_HUE}'>
