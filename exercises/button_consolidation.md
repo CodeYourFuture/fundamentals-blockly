@@ -1,12 +1,11 @@
 
 ## Button consolidation
 
-Anything that we could do previously as soon as run is clicked, we can now do as a response to clicking buttons or other elements in the static html.
 
-In earlier exercises, we started by writing our blockly program. We can click the run button to execute our program so it updates the rendered html. We can also write blockly programs that will run in response to a user clicking a button.
+In earlier exercises, our blockly program executed after we clicked the run button. We can also write blockly programs that will run in response to some kind of user interaction. For example, we can write a program that executes after a user clicks on a certain button.
 
 
-1. <span class="test-checkbox"></span>We're going to take the sentence from the first exercise in the static html, but this time with `<button>` elements around the words to be filled in:
+We're going to start with a madlibs sentence but this time with `<button>` elements around some of the mad lib words.( It is the same mad libs sentence from the first exercise. )
 
 ```html
 <p>The <button id="noun1">dog</button>
@@ -15,10 +14,13 @@ In earlier exercises, we started by writing our blockly program. We can click th
 <button id="noun2">cat</button></p>
 ```
 
-Make it so each button's text gets set to a random word when it is clicked
+1. <span class="test-checkbox"></span>Make it so each button's text gets set to a random word when a user clicks on it.
 
-2. <span class="test-checkbox"></span>Place two buttons (`day mode and "night mode") and an html list in the static html. Can you add blocks so that when the buttons are clicked, the html list changes to "day mode" (dark text on a light background) and "night mode" (light text on a dark background)?
+2. <span class="test-checkbox"></span>Place two buttons with text (`day mode` and `night mode`) in the static HTML. Then add an unordered list to the static HTML too. Add some blocks so that when a user clicks on one of the 2 buttons, the html list changes to "day mode" / "night mode"?
 
-3. <span class="test-checkbox"></span>Place a button in the static html. Can you add blocks so it changes colour when it is clicked?
+- "Day mode" should be dark text on a light background.
+- "Night mode" should be light text on a dark background.
 
-4. <span class="test-checkbox"></span>Place an image in the static html. Can you add blocks so it changes when it is clicked
+3. <span class="test-checkbox"></span>Place a button in the static html. Can you add blocks so it changes colour when a user clicks on it?
+
+4. <span class="test-checkbox"></span>Place an image in the static html. Can you add blocks so it changes when a user clicks on it ?
