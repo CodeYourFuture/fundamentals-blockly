@@ -18,8 +18,8 @@ We're going to start with a madlibs sentence but this time with `<button>` eleme
 
 2. <span class="test-checkbox"></span>Place two buttons with text (`day mode` and `night mode`) in the static HTML. Then add an unordered list to the static HTML too. Add some blocks so that when a user clicks on one of the 2 buttons, the html list changes to "day mode" / "night mode".
 
-> ℹ️ "Day mode" should be dark text on a light background. <br>
-> ℹ️ "Night mode" should be light text on a dark background.
+> 🌞 "Day mode" should be dark text on a light background. <br>
+> 🌙 "Night mode" should be light text on a dark background.
 
 3. <span class="test-checkbox"></span>Place another button in the static html. Can you add blocks so it changes colour when a user clicks on it?
 
