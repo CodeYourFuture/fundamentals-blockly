@@ -688,24 +688,7 @@
         });
       </script>
       <div class="instructions">
-        <p>The most common something with all the items in an array is to use a loop, as we saw in the previous exercise. Sometimes, a loop just doesn't do what we need, for example if we wanted to make the list of fruit appear gradually.</p>
-      <ol>
-          <li>Create an empty unordered html list (as usual) and a "reveal next fruit" button (<code class="start_code">&lt;ul id="list"&gt;&lt;/ul&gt;<br>&lt;button id="button"&gt;reveal next fruit&lt;/button&gt;</code>)</li>
-          <li>Create an array of your favourite fruit inside an <span class="blockname">"at the start"</span> block</li>
-          <li>We'll now make it so each click of the button reveals the next fruit.
-          <ul>
-            <li id="exercise_arrays_buttons_1">Add a <span class="blockname">"when the element with id ... is clicked"</span> block. Make it add an <code>&lt;li&gt;</code> with the text "fruit" for now (and check it works)</li>
-            <li>As we did at the start of the previous exercise, we can use the <span class="blockname">get the first item from the array</span> block instead of the "fruit" text (your fruits array is accessible from inside the <span class="blockname">"when the element with id ... is clicked"</span> block). Now each time you click the button, a new <code>&lt;li&gt;</code> with the name of the first fruit will appear.</li>
-            <li id="exercise_arrays_buttons_2">Change "get the first item" to "<em>get and remove</em> the first item". This will remove the first item from the array, so that the new first item is the old second item: if it was previously <code>["apple", "banana", "cherry"]</code>, it is now <code>["banana", "cherry"]</code></li>
-          </ul></li>
-          <li>As you can see, after all of the elements in the array have been removed, new <code>&lt;li&gt;</code>s with the text "undefined" are created. Let's fix that!</li>
-          <ul>
-            <li>We want the behaviour to be different once the array is empty. So we use an <span class="blockname">"if"</span> block from the Logic menu.</li>
-            <li>We can check if an array is empty by using the <span class="blockname">"... is empty"</span> block.</li>
-            <li>In fact, we only want to add the <code>&lt;li&gt;</code> element if the array is <em>not</em> empty. So we can add a <span class="blockname">"not"</span> block in front of the <span class="blockname">"... is empty"</span> block.</li>
-            <li id="exercise_arrays_buttons_3">Now we can move our <code>&lt;li&gt;</code> creating blocks inside the <span class="blockname">"if"</span> block. In the other case (when the list is empty) we want to do nothing. And that's exactly what will happen.</li>
-          </ul> 
-      </ol>
+        <zero-md src="exercises/arrays_buttons.md"></zero-md>
       </div>
       <xml class="toolbox" style="display: none">
         <category name="Logic" colour="210">
