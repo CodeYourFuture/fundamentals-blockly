@@ -163,6 +163,9 @@ BlocklyDomEditor.prototype.init = function (initHtml, initJsonBlockly) {
     var url = window.location.href
       .split("#")[0]
       .replace("index.html", "share.html");
+    if (!url.endsWith("share.html")) {
+      url += "share.html";
+    }
     let uri = url + "?v=" + encodeURIComponent(minifiedData);
     navigator.clipboard.writeText(uri);
     if (uri) {
@@ -170,7 +173,8 @@ BlocklyDomEditor.prototype.init = function (initHtml, initJsonBlockly) {
       let toast = document.getElementById("toast");
       let toastTitle = toast.querySelector(".toast-title");
 
-      toastTitle.innerHTML = "Share link copied to clipboard!";
+      toastTitle.innerHTML =
+        "Share link copied to clipboard!<br>(it's a bit long but don't worry)";
       toast.classList.toggle("is-open");
       setTimeout(() => {
         toast.classList.toggle("is-open");
@@ -197,10 +201,8 @@ BlocklyDomEditor.prototype.show = function () {
 BlocklyDomEditor.backupBlocks_ = function (workspace, $htmlTextarea, id) {
   if ("localStorage" in window) {
     var json = JSON.stringify(Blockly.serialization.workspaces.save(workspace));
-    // Gets the current URL, not including the hash.
-    var url = window.location.href.split("#")[0];
-    window.localStorage.setItem(url + id, json);
-    window.localStorage.setItem(url + "html" + id, $htmlTextarea.value);
+    window.localStorage.setItem(id, json);
+    window.localStorage.setItem("html" + id, $htmlTextarea.value);
   }
 };
 
@@ -224,24 +226,19 @@ BlocklyDomEditor.backupOnUnload = function (workspace, $htmlTextarea, id) {
  * @param {String} id unique id, must be stable across page reloads
  */
 BlocklyDomEditor.restoreBlocks = function (workspace, $htmlTextarea, id) {
-  var url = window.location.href.split("#")[0];
-  if ("localStorage" in window && window.localStorage[url + id]) {
-    let serialised = window.localStorage[url + id];
-    if (serialised[0] === "<") {
-      let xml = Blockly.Xml.textToDom(serialised);
-      Blockly.Xml.domToWorkspace(xml, workspace);
-    } else {
-      let json = JSON.parse(serialised);
-      console.log(
-        "chars",
-        id,
-        serialised.length,
-        JSONCrush.crush(serialised).length
-      );
-      Blockly.serialization.workspaces.load(json, workspace);
-    }
+  if ("localStorage" in window && window.localStorage[id]) {
+    let serialised = window.localStorage[id];
 
-    let html = window.localStorage[url + "html" + id];
+    let json = JSON.parse(serialised);
+    console.log(
+      "chars",
+      id,
+      serialised.length,
+      JSONCrush.crush(serialised).length
+    );
+    Blockly.serialization.workspaces.load(json, workspace);
+
+    let html = window.localStorage["html" + id];
     if (html) {
       $htmlTextarea.value = html;
     }
