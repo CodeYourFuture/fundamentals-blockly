@@ -1,6 +1,6 @@
 ## Arrays and buttons
 
-One of the most common things we do with an array is loop through all the items, performing a task each time. Sometimes, a loop just doesn't do what we need, for example if we wanted to make the list of fruit appear gradually.
+One of the most common things we do with an array is  to sloop through all the items, performing a task each time. Sometimes, a loop just doesn't do what we need, for example if we wanted to make the list of fruit appear gradually.
 
 We'll start with an empty unordered html list (as usual) and a `reveal next fruit` button:
 
@@ -22,7 +22,7 @@ We'll now make it so each click of the button reveals the next fruit.
 1. <span class="test-checkbox"></span> Add a `when the element with id ... is clicked` block. Make it add an `<li>` with the text "fruit" for now (and check it works).
 
 2. As we did at the start of the previous exercise, we can use the `get the first item from the array` block instead of the "fruit" text (your fruits array is accessible from inside the `when the element with id ... is clicked` block). Now each time you click the button, a new `<li>` with the name of the first fruit will appear.
-?>
+
 3. <span class="test-checkbox"></span> Change `get the first item` to `get and remove the first item`. This will remove the first item from the array, so that the new first item is the old second item: if it was previously `["apple", "banana", "cherry"]`, it is now `["banana", "cherry"]`.
 
 
