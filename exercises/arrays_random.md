@@ -1,7 +1,7 @@
 ##  Arrays: Mad lib revisited
 
 In the first Mad Libs exercise, we were unable to make our own list of words. We could only pick a category (noun, adjective, verb).
-We will now introduce a data structure called an **array**. An array represents a list of data, ( often numbers or text ).
+We will now introduce a data structure called an **array**. An array represents a list of data, often numbers or text.
 
 We can create and use arrays with the "Arrays" menu. Let's create our own list of words to select from.
 
