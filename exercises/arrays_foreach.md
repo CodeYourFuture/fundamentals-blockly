@@ -5,7 +5,7 @@ In this series of exercises, we have so far used one `create a new ... element` 
 
 Another use for an array is when we want to do the same thing with each element in an array (for example, create an `<li>`).
 
-Start with an empty unordered html list with the id "list"
+We'll start with an empty unordered html list with the id "list"
 
 ```html
 <ul id="list"></ul>
