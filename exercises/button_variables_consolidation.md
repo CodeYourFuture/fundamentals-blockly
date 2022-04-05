@@ -1,7 +1,7 @@
 ## Variables consolidation
 
 
-Let's use variables to keep track of information about user interactions. We would like to track how many times the user adds the word "sheep" and how many times they add any other word.
+Let's use variables to keep track of information about some user interactions. We would like to track how many times the user adds the word "sheep" and how many times they add any other word.
 
 Let's start with the following static html:
 
