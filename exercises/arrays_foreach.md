@@ -12,6 +12,9 @@ Start with an empty unordered html list with the id "list"
 ```
 in the static html.
 
+
+#### Part 1
+
 1. Add an `at the start` block.
 
 We'll now create an array of fruits and assign it to a variable 
@@ -22,6 +25,8 @@ We'll now create an array of fruits and assign it to a variable
 
 4. Add at least 3 fruit text values to this array
 
+#### Part 2
+
 Let's do the first steps to convert the first entry in this array into `<li>`.
 You already know how to do most of the steps (find the element with id list, create an li, set its text content)
 
@@ -29,7 +34,9 @@ You already know how to do most of the steps (find the element with id list, cre
 
 2. <span class="test-checkbox"></span> Click "run" to check you are displaying a list with one fruit
 
-Let's use this same code to show all the fruits
+#### Part 3
+
+Let's use this same code to show all the fruits.
 
 1. At the beginning of the `find the element with id` block, insert a `for each item in array` block. Select the fruits array in the dropdown.
 
