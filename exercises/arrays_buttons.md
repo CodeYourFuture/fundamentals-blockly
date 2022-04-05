@@ -1,6 +1,7 @@
 ## Arrays and buttons
 
-One of the most common things we do with an array is  to sloop through all the items, performing a task each time. Sometimes, a loop doesn't do what we need, for example, if we wanted to make the list of fruit appear gradually.
+
+One of the most common things we do with an array is loop through all its items, performing a task each time. Sometimes, a loop doesn't do what we need, for example, if we wanted to make the list of fruit appear gradually.
 
 We'll start with an empty unordered html list (as usual) and a `reveal next fruit` button:
 
