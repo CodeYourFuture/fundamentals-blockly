@@ -28,4 +28,4 @@ When a user clicks on the button, we are going to do two things:
 
 7. Add the necessary blocks to set the text content of the button to the value of `click_count`. (You can get this value by selecting the `click_count` block from the Variables menu)
 
-A common pattern will be first setting a variable in the `at the start` block and then modifying with a `when the element with id ... is clicked` block. We call the first setting of the variable "initialisation".
+A common pattern will be first setting a variable in the `at the start` block and then modifying it with a `when the element with id ... is clicked` block. We call the first setting of the variable "initialisation".
