@@ -1,6 +1,6 @@
 ## Arrays and buttons
 
-One of the most common things we do with an array is  to sloop through all the items, performing a task each time. Sometimes, a loop just doesn't do what we need, for example if we wanted to make the list of fruit appear gradually.
+One of the most common things we do with an array is  to sloop through all the items, performing a task each time. Sometimes, a loop doesn't do what we need, for example, if we wanted to make the list of fruit appear gradually.
 
 We'll start with an empty unordered html list (as usual) and a `reveal next fruit` button:
 
@@ -8,14 +8,11 @@ We'll start with an empty unordered html list (as usual) and a `reveal next frui
 <ul id="list"></ul>
 <button id="button">reveal next fruit</button>
 ```
-
 #### Part 1
 
 1. Create an array of your favourite fruit inside an `at the start` block.
 
-
 #### Part 2
-
 
 We'll now make it so each click of the button reveals the next fruit.
 
@@ -23,12 +20,11 @@ We'll now make it so each click of the button reveals the next fruit.
 
 2. As we did at the start of the previous exercise, we can use the `get the first item from the array` block instead of the "fruit" text (your fruits array is accessible from inside the `when the element with id ... is clicked` block). Now each time you click the button, a new `<li>` with the name of the first fruit will appear.
 
-3. <span class="test-checkbox"></span> Change `get the first item` to `get and remove the first item`. This will remove the first item from the array, so that the new first item is the old second item: if it was previously `["apple", "banana", "cherry"]`, it is now `["banana", "cherry"]`.
-
+3. <span class="test-checkbox"></span> Change `get the first item` to `get and remove the first item`. This will remove the first item from the array so that the new first item is the old second item. For example, if before the array was `["apple", "banana", "cherry"]`, then ait will become `["banana", "cherry"]`.
 
 #### Part 3
 
-As you can see, after all of the elements in the array have been removed, new `<li>`s with the text "undefined" are created. Let's fix that!
+As you can see, after all the elements in the array are gone, new `<li>`s with the text "undefined" are created. Let's fix that!
 
 1. We want the behaviour to be different once the array is empty. So we use an `if` block from the Logic menu.
 We can check if an array is empty by using the `... is empty` block.
