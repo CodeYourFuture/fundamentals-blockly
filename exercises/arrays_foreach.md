@@ -12,8 +12,6 @@ Start with an empty unordered html list with the id "list"
 ```
 in the static html.
 
-
-
 #### Part 1
 
 1. Add an `at the start` block.
@@ -24,7 +22,7 @@ We'll now create an array of fruits and assign it to a variable.
 
 3. Rename the variable `array` to `fruits`
 
-4. Add at least 3 fruit text values to this array
+4. Add at least 3 fruit text values to this array.
 
 #### Part 2
 
@@ -33,10 +31,11 @@ You already know how to do most of the steps (find the element with id list, cre
 
 1. The thing we will do differently is to set the text content to a `get the first item from the array block`. You can then select the "fruits" array in the dropdown.
 
-2. <span class="test-checkbox"></span> Click "run" to check you are displaying a list with one fruit
+2. <span class="test-checkbox"></span> Click "run" to check you are displaying a list with one fruit.
+
 #### Part 3
 
-Let's use this same code to show all the fruits.
+Let's use the same code to show all the fruits.
 
 1. At the beginning of the `find the element with id` block, insert a `for each item in array` block. Select the fruits array in the dropdown.
 
