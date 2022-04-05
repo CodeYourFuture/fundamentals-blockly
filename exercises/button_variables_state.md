@@ -6,6 +6,8 @@ Suppose we have a value that represents the number of times a user clicks on a g
 We can give this value a label like `click_count` and refer to `click_count` when we need to get the number of clicks. In programming, we call this label a variable. 
 
 ℹ️ A variable is a label for some value.
+
+In this exercise, we're going to create a variable `click_count` and update it when a user clicks on a particular button.
  
 
 We'll start with a button (`<button>`) that a user has clicked 0 times, in the static html.
