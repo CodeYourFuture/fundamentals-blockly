@@ -1,8 +1,9 @@
 import React from "react";
 import Button from "../Button/Button";
+import LessonMarkdown from "../LessonMarkdown";
 import "./TextPanel.scss";
 
-const TextPanel = ({ exercise, navigation }) => (
+const TextPanel = ({ exerciseMd, navigation }) => (
   <section aria-label="Instructions." className="c-textpanel">
     <nav className="c-textpanel__nav">
       {navigation.hasNextExercise && (
@@ -21,7 +22,7 @@ const TextPanel = ({ exercise, navigation }) => (
       )}
     </nav>
     <section className="c-textpanel__text">
-      <exercise.Lesson />
+      < LessonMarkdown text={exerciseMd} />
     </section>
   </section>
 );

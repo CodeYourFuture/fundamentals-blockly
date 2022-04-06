@@ -88,7 +88,7 @@ export default function App() {
         render={({ getGridProps, getGutterProps }) => (
           <main {...getGridProps()} className="c-layout__panels">
             <TextPanel
-              exercise={exercise}
+              exerciseMd={exercise.markdown}
               navigation={{
                 nextExercise,
                 prevExercise,

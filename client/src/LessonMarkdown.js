@@ -1,22 +1,20 @@
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 
-export default function LessonMarkdown({ url }) {
+export default function LessonMarkdown({ md }) {
   const [status, setStatus] = useState("pending");
   const [markdown, setMarkdown] = useState("");
 
   useEffect(() => {
-    (async function getText() {
+    (function getText() {
       try {
-        const res = await fetch(url);
-        const text = await res.text();
-        setMarkdown(text);
+        setMarkdown(md);
         setStatus("done");
       } catch (e) {
         setStatus("error");
       }
     })();
-  }, [url]);
+  }, [md]);
 
   if (status === "pending") {
     return <span>Loading&hellip;</span>;
