@@ -19,6 +19,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-npm-
 
-      - name: Run prettier
-        run: |-
-          npm run format
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run format
