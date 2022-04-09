@@ -41,15 +41,15 @@
         let noun2 = BlocklyTest.findElement(["#noun2"]);
         let verb = BlocklyTest.findElement(["#verb"]);
         let adjective = BlocklyTest.findElement(["#adjective"]);
-        BlocklyTest.expect(1, "first noun was changed", noun1, (noun1) => {
-          return noun1.innerText.toLowerCase() !== "dog";
+        BlocklyTest.expect(1, "first noun was changed", adjective, (adjective) => {
+          return adjective.innerText !== "___";
         });
 
         BlocklyTest.expect(2, "all words were changed", noun1, (noun1) => {
           return (
             noun1.innerText.toLowerCase() !== "dog" &&
             noun2.innerText.toLowerCase() !== "cat" &&
-            adjective.innerText.toLowerCase() !== "white" &&
+            adjective.innerText.toLowerCase() !== "___" &&
             verb.innerText.toLowerCase() !== "saw"
           )
         });
