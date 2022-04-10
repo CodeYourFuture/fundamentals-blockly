@@ -19,4 +19,4 @@ Don't forget to break down your implementation into steps. First, add blocks tha
 
 1. When the user clicks `add animal`, the following should happen. If the text input is "sheep", the number displayed in the `<span id="sheep_count">` should increase by one.
 
-2. When the user clicks `add animal`, the following should happen. If the text input is not "sheep", the number displayed in the `<span id="other_count">` should increase by one.
+2. When the user clicks `add animal` and the text input is not "sheep", then the following should happen: the number displayed in the `<span id="other_count">` should increase by one.
