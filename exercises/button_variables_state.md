@@ -1,7 +1,7 @@
 ## Variables
 
 
-Suppose we have a value that represents the number of times a user clicks on a given button. Every time a user clicks on this button then this value increases by 1. We need to refer to this value so we can check it and update it. 
+Suppose we have a value that represents the number of times a user clicks on a given button. Every time a user clicks on this button then this value increases by 1. We will need to keep track of this value so that we can update it. 
 
 We can give this value a label like `click_count` and refer to `click_count` when we need to get the number of clicks. In programming, we call this label a variable. 
 
