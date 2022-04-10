@@ -521,33 +521,7 @@
         });
       </script>
       <div class="instructions">
-      <p>In this series of exercises, we have so far used one <span class="blockname">"create a new ... element"</span> for each <code>&lt;li&gt;</code> we want to create. 
-        Another use for an array is when we want to do the same thing with each element in an array (for example, create a <code>&lt;li&gt;</code>).
-      </p>
-      <ol>
-          <li>Start with an empty unordered html list with the id "list" (<code class="start_code">&lt;ul id="list"&gt;&lt;/ul&gt;</code>) in the static html.</li>
-          <li>Add an <span class="blockname">"at the start"</span> block</li>
-          <li>We'll now create an array of fruits and assign it to a variable <ol>
-              <li>From the "Arrays" menu, add a <span class="blockname">"Set ... to, create array with"</span> block to the <span class="blockname">"at the start"</span> block</li>
-              <li>Rename the variable <span class="variablename">"array"</span> to "fruits"</li>
-              <li>Add at least 3 fruit text values to this array</li>
-          </ol></li>
-          <li>Let's do the first steps to convert the first entry in this array into <code>&lt;li&gt;</code><ol>
-              <li>You already know how to do most of the steps (find the element with id list, create an li, set its text content)</li>
-              <li>The thing we will do differently is to set the text content to a <span class="blockname">get the first item from the array</span> block, selecting the "fruits" array in the dropdown.</li>
-              <li id="exercise_arrays_foreach_1">Click "run" to check you are displaying a list with one fruit</li>
-          </ol></li>
-          <li>Let's use this same code to show all the fruits<ol>
-              <li>At the beginning of the <span class="blockname">"find the element with id"</span> block, insert a <span class="blockname">"for each item in array"</span> block. Select the fruits array in the dropdown.</li>
-              <li>Move all of the <span class="blockname">"create a new ... element"</span> block inside the for <span class="blockname">"for each item in array"</span> block</li>
-              <li id="exercise_arrays_foreach_2">As you can see by clicking "run", you now have a list with multiple items - but they are all the first item in the array</li>
-              <li>Inside the loop, you have a variable available called <span class="variablename">"item"</span>. Each time through the loop, this variable will take on the value of the next fruit in the array</li>
-              <li>Replace the <span class="blockname">get the first item from the array</span> block with a "item" variable block (you can find it in the Variables menu)</li>
-              <li id="exercise_arrays_foreach_3">Check by clicking run that you now have a list with each item of fruit in your array.</li>
-              <li>If you have an array called "fruits", it's good practice to rename the loop "item" variable to "fruit".</li>
-          </ol></li>
-          <li id="exercise_arrays_foreach_4">Add another fruit to your array and check that all your fruits are still shown.</li>
-      </ol>
+        <zero-md src="exercises/arrays_foreach.md"></zero-md>
       </div>
       <xml class="toolbox" style="display: none">
         <category name="Values" colour='%{BKY_TEXTS_HUE}'>
