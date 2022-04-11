@@ -18,7 +18,7 @@ Instead of the `for each item in array` block, we will use the `repeat while` bl
 
 2. Add a `find the element with id` block to find the html list.
 
-3. Add a `repeat while` block from the Loops menu inside the previous block and change it to be `repeat until`. (We are going to keep "get and remove"ing items from the array _until_ it's empty.)
+3. Add a `repeat while` block from the Loops menu inside the previous block and change it to be `repeat until`. (We are going to keep `get and remove`ing items from the array _until_ it's empty.)
 
 4. Set the condition value to `... is empty`.
 
@@ -32,7 +32,7 @@ Next, let's have each `<li>` contain two things. The name and the emoji of the f
 
 We can only set the text contents of an element once. However, we can add multiple elements inside the same `<li>`. In html, the `<span>` element is typically used for such a purpose, because it doesn't add any extra meaning or formatting to the text (unlike others which say "this is a list item" or "this is a link")
 
-1. Add two `create a new ... element` block, selecting `<span>`. Set the first's content to the `get and remove the first item from the array`.
+1. Add two `create a new ... element` blocks, selecting `<span>`. Set the first's content to the `get and remove the first item from the array`.
 
 2. For now, let's set the second to 🍎 (you can copy paste this into a text block. More can be found [here](https://unicode-table.com/en/emoji/food-and-drink/food-fruit/))
 
@@ -48,4 +48,4 @@ Finally, let's show the right emoji next to each fruit.
 
 2. Replace the 🍎 block inside your loop with the appropriate `get and remove the first item from the array` block.
 
-3. <span class="test-checkbox"></span> Check that all your fruit are now displaying with a the right emoji next to them
+3. <span class="test-checkbox"></span> Check that all your fruit are now displaying with the right emoji next to them
