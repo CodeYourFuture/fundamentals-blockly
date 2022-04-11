@@ -739,30 +739,7 @@
         });
       </script>
       <div class="instructions">
-      <p>Using the blocks from the previous exercise and a different kind of loop gives us an alternative way to loop through all the items of an array. Let's see a case where it might be useful.</p>
-      <ol>
-          <li>Start with an empty unordered html list with the id "list" (<code class="start_code">&lt;ul id="list"&gt;&lt;/ul&gt;</code>) in the static html.</li>
-          <li>As with before, create an array called "fruits" of your favourite fruit inside an <span class="blockname">"at the start"</span> block.</li>
-          <li>Instead of the <span class="blockname">"for each item in array"</span> block, we will use the <span class="blockname">"repeat while"</span> block and the <span class="blockname">"... is empty"</span> block together<ol>
-              <li>As usual, add a <span class="blockname">"find the element with id"</span> block to find the html list</li>
-              <li>Add a <span class="blockname">"repeat while"</span> block from the Loops menu inside the previous block and change it to be <span class="blockname">"repeat until"</span> (we are going to keep "get and remove"ing items from the array <em>until</em> it's empty.)</li>
-              <li>Set the condition value to <span class="blockname">"... is empty"</span></li>
-              <li>Inside the loop, add the blocks to create a new <code>&lt;li&gt;</code> and set the contents to a <span class="blockname">"get and remove the first item from the array"</span> block, using the "fruits" array</li>
-              <li id="exercise_array_while_loops_1">Check that all your fruit are now displaying</li>
-          </ol></li>
-          <li>Next, let's have each <code>&lt;li&gt;</code> contain two things. The name and the emoji of the fruit.<ol>
-              <li>We can only set the text contents of an element once. However, we can add multiple elements inside the same <code>&lt;li&gt;</code>. In html, the <code>&lt;span&gt;</code> element is typically used for such a purpose, because it doesn't add any extra meaning or formatting to the text (unlike others which say "this is a list item" or "this is a link")</li>
-              <li>Add two <span class="blockname">"create a new ... element"</span> block, selecting <code>&lt;span&gt;</code>. Set the first's content to the <span class="blockname">"get and remove the first item from the array"</span>.</li>
-              <li>For now, let's set the second to 🍎 (you can copy paste this into a text block. More can be found <a href="https://unicode-table.com/en/emoji/food-and-drink/food-fruit/">here</a>)</li>
-              <li id="exercise_array_while_loops_2">Check that all your fruit are now displaying with a 🍎 next to them</li>
-          </ol></li>
-          <li>Finally, let's show the right emoji next to each fruit.<ol>
-              <li>(Before doing this, make sure you have renamed your first array of fruits to "fruits")</li>
-              <li>Create a second array which will be called "emojis" and will contain each of your emojis (🍎, 🍌, 🍒)</li>
-              <li>Replace the 🍎 block inside your loop with the appropriate <span class="blockname">"get and remove the first item from the array"</span> block.
-              <li id="exercise_array_while_loops_3">Check that all your fruit are now displaying with a the right emoji next to them</li>
-          </ol></li>
-      </ol>
+        <zero-md src="exercises/array_while_loops.md"></zero-md>
       </div>
       <xml class="toolbox" style="display: none">
         <category name="Loops" colour="120">
