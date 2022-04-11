@@ -10,9 +10,9 @@ We'll start with an empty unordered html list with the id "list" in the static h
 <ul id="list"></ul>
 ```
 
-1. As before, create an array called "fruits" of your favourite fruit inside an `at the start` block.
+1. As before, create an array called `fruits` of your favourite fruit inside an `at the start` block.
 
-We're going to use this array of "fruits" to build a HTML list.
+We're going to use this array of `fruits` to build a HTML list.
 
 Instead of the `for each item in array` block, we will use the `repeat while` block and the `... is empty` block together
 
@@ -42,9 +42,9 @@ We can only set the text contents of an element once. However, we can add multip
 
 Finally, let's show the right emoji next to each fruit.
 
-(Before doing this, make sure you have renamed your first array of fruits to "fruits")
+(Before doing this, make sure you have renamed your first array of fruits to `fruits`)
 
-1. Create a second array which will be called "emojis" and will contain each of your emojis (🍎, 🍌, 🍒)
+1. Create a second array which will be called `emojis` and will contain each of your emojis (🍎, 🍌, 🍒)
 
 2. Replace the 🍎 block inside your loop with the appropriate `get and remove the first item from the array` block.
 
