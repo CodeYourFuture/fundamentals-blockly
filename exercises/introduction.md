@@ -16,7 +16,7 @@ This "Introduction" has no tasks, only helpful information. Go to the first exer
 
 ### Definitions
 
-Some of the following may need a definition:
+Over the course of the exercises, you will learn some concepts. Once you reach the end, can you explain what the following concepts mean?
 
 - static vs dynamic
 - block based programming
@@ -26,4 +26,4 @@ Some of the following may need a definition:
 - array
 - function
 - function call
-- event handler? - not used, but would be convenient
+- event handler
