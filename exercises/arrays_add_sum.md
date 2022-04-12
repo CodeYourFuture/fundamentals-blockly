@@ -19,9 +19,9 @@ Let's start with an array of elements and show their sum.
 Now, we'll take the number in the input element, add it to the array and display the sum again when a user clicks the button.
 You already know how to get the value from the input element when a user clicks on it. Let's add that value to the numbers array. 
 
-4. From the arrays menu, use the `add ... to the start/end of the array` block, selecting "end", and setting the value to the value of the input element.
+3. From the arrays menu, use the `add ... to the start/end of the array` block, selecting "end", and setting the value to the value of the input element.
 
-You can now display the sum of the array again, reusing your logic from the previous steps.
+4. You can now display the sum of the array again, reusing your logic from the previous steps.
 
 5. Test that this works (and note, that it displays the full sum of the array, not the last 5 numbers).
 
