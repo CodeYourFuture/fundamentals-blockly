@@ -1,6 +1,6 @@
 ## Adding, removing, and summing elements
 
-We are now going to learn how to add items to, remove items from, and get the sum of, an array of numbers. We're going to keep a running sum of the last five numbers (this can be a way of keeping track of how a value trends over time, e.g. the last 5 times you weighed yourself, or the last 5 times you went running).
+We are now going to learn how to add items to, remove items from, and get the sum of, an array of numbers. We're going to keep a running total of the last five numbers. (This can be a way of keeping track of how a value trends over time. For example, the last 5 times you weighed yourself, or the last 5 times you went running).
 
 Start with an input box, a button to add numbers, and a span to display the total.
 
@@ -14,17 +14,16 @@ Let's start with an array of elements and show their sum.
 
 1. In an `at the start` block, create a new array called `numbers` with 5 items, all set to the value 0
 
-2. Find the span with id "total" and set its text content to the sum of the numbers array, using the `get the sum of the numbers in array` block
+2. Find the span with id "total" and set its text content to the sum of the numbers array. You'll need to use the `get the sum of the numbers in array` block for this step.
 
-3. Next, let's take the number in the input element, add it to the array and display the sum again when the button is clicked
-
-You already know how to get the value from the input element when it is clicked. Let's add that value to the numbers array. 
+Now, we'll take the number in the input element, add it to the array and display the sum again when a user clicks the button.
+You already know how to get the value from the input element when a user clicks on it. Let's add that value to the numbers array. 
 
 4. From the arrays menu, use the `add ... to the start/end of the array` block, selecting "end", and setting the value to the value of the input element.
 
-You can now display the sum of the array again, in the same way as you already did.
+You can now display the sum of the array again, reusing your logic from the previous steps.
 
-5. Test that this works (and note, that it displays the full sum of the array, not just the last 5 numbers).
+5. Test that this works (and note, that it displays the full sum of the array, not the last 5 numbers).
 
 Last, we need to remove the first (oldest) element from the array. 
 
@@ -32,5 +31,5 @@ Last, we need to remove the first (oldest) element from the array.
 
 7. Change the dropdown from "get" to "remove", to remove the first item
 
-Where do you need to place this removing so that there are only ever 5 numbers in the list when the sum is calculated?
+Where do you need to place this removal so that there are only ever 5 numbers in the list when we calculate the sum?
 Test that this works and that the sum is only ever that of the last 5 numbers.
