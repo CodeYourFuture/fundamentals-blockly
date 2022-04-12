@@ -11,4 +11,4 @@ Your project have the following features:
 - The images should cycle (The next image after the last image should be the first image. Similarly, the previous image before the first image should be the last image.)
 
 You should first break down this problem into steps, then outline how you will probably solve each step.
-You should also think about how you can test what you think each step does, before you start using any blocks.
+You should also think about how you can test how your project should behave at each step, before you start using any blocks.
