@@ -5,7 +5,7 @@ Here are some additional ideas of projects that can be accomplished with the cur
 ### Shopping list
 
 Create a list of products.
-Display each product in an html list with a "add to shopping cart" button next to it.
+Display each product in an html list with an "add to shopping cart" button next to it.
 When the button is clicked, add the product to a separate html list that represents the current shopping cart.
 
 ### List with a hidden 2nd
