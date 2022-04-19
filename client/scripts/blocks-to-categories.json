@@ -1,0 +1,23 @@
+{
+    "things": {
+        "categoryType": "Values",
+        "blockType": "get_randomWord"
+    },
+    "here": {
+        "categoryType": "HTML",
+        "blockType": "on_start"
+    },
+    "blah": {
+        "categoryType": "Values",
+        "blockType": "text"
+    },
+    "with element by ID": {
+        "categoryType": "HTML",
+        "blockType": "with_element_by_id"
+    },
+    "set content": {
+        "categoryType": "HTML",
+        "blockType": "set_content",
+        "blockxml": "<block type='set_content'><value name='VALUE'><shadow type='text'> </shadow></value></block>"
+    }
+}

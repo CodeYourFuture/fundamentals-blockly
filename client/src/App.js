@@ -7,8 +7,7 @@ import "./Blocks/dom";
 import "./Blocks/cyf";
 import useBlockly from "./Blockly/useBlockly";
 
-import * as Exercise1 from "./Exercises/01-stuff";
-import * as Exercise2 from "./Exercises/02-more-stuff";
+import exercises from "./Exercises"
 
 import Split from "react-split-grid";
 import TextPanel from "./TextPanel/TextPanel";
@@ -16,15 +15,11 @@ import Output from "./Output/Output";
 import Header from "./Layout/Header/Header";
 import Menu from "./Layout/Menu/Menu";
 import Footer from "./Layout/Footer/Footer";
-import Button from "./Button/Button";
 import "./App.scss";
 
 import { ReactComponent as Background } from "../src/svgs/Humaaans-Phone.svg";
 
 Blockly.setLocale(locale);
-
-// just left all this and presumed you will pass whatever you decide to do into the text panel
-const exercises = [Exercise1, Exercise2];
 
 function useExercise() {
   const [exerciseIndex, setExerciseIndex] = useState(0);
