@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Split from "react-split-grid";
 import * as Blockly from "blockly/core";
 import locale from "blockly/msg/en";
 import "blockly/blocks";
@@ -7,43 +8,17 @@ import "./Blocks/dom";
 import "./Blocks/cyf";
 import useBlockly from "./Blockly/useBlockly";
 
-import * as Exercise1 from "./Exercises/01-stuff";
-import * as Exercise2 from "./Exercises/02-more-stuff";
-
-import Split from "react-split-grid";
+import { useExercise } from "./Exercises/useExercise";
 import TextPanel from "./TextPanel/TextPanel";
 import Output from "./Output/Output";
 import Header from "./Layout/Header/Header";
 import Menu from "./Layout/Menu/Menu";
 import Footer from "./Layout/Footer/Footer";
-import Button from "./Button/Button";
 import "./App.scss";
 
 import { ReactComponent as Background } from "../src/svgs/Humaaans-Phone.svg";
 
 Blockly.setLocale(locale);
-
-// just left all this and presumed you will pass whatever you decide to do into the text panel
-const exercises = [Exercise1, Exercise2];
-
-function useExercise() {
-  const [exerciseIndex, setExerciseIndex] = useState(0);
-
-  function nextExercise() {
-    setExerciseIndex(exerciseIndex + 1);
-  }
-  function prevExercise() {
-    setExerciseIndex(exerciseIndex - 1);
-  }
-
-  return {
-    exercise: exercises[exerciseIndex],
-    hasNextExercise: exerciseIndex + 1 < exercises.length,
-    nextExercise,
-    hasPrevExercise: exerciseIndex - 1 >= 0,
-    prevExercise,
-  };
-}
 
 export default function App() {
   const {
