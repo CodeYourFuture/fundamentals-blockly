@@ -20,9 +20,7 @@ const TextPanel = ({ exercise, navigation }) => (
         />
       )}
     </nav>
-    <section className="c-textpanel__text">
-      <exercise.Lesson />
-    </section>
+    <section className="c-textpanel__text">{exercise}</section>
   </section>
 );
 
