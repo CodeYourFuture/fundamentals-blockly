@@ -5,7 +5,7 @@ const Footer = () => (
   <footer className="c-layout__footer c-footer">
     <h3 className="c-footer__title">
       <Logo width="180px" />
-      <span class="invisible">Code Your Future</span>
+      <span className="invisible">Code Your Future</span>
     </h3>
   </footer>
 );
