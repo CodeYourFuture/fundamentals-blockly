@@ -8,7 +8,7 @@ Create a list of products.
 Display each product in an html list with an "add to shopping cart" button next to it.
 When the button is clicked, add the product to a separate html list that represents the current shopping cart.
 
-### List with a hidden 2nd
+### List with a hidden 2nd level
 
 Create an html list with a second list inside each `li` (maybe a list of folders and the files in each folder ?)
 Hide the inner lists.
