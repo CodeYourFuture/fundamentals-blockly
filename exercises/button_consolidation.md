@@ -4,7 +4,7 @@ In earlier exercises, our blockly program executed after we clicked the run butt
 
 ### Exercise 1
 
-We're going to start with a madlibs sentence but this time with `<button>` elements around some of the mad lib words. (It 's the same mad libs sentence from the first exercise.)
+We're going to start with a madlibs sentence but this time with `<button>` elements around some of the mad lib words. (It's the same mad libs sentence from the first exercise.)
 
 ```html
 <p>
@@ -29,4 +29,4 @@ We're going to start with a madlibs sentence but this time with `<button>` eleme
 
 ### Exercise 4
 
-<span class="test-checkbox"></span>Place an image in the static html. Can you add blocks so it changes when a user clicks on it ?
+<span class="test-checkbox"></span>Place an image in the static html. Can you add blocks so it changes when a user clicks on it?

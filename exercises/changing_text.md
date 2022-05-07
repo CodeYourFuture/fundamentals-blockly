@@ -22,22 +22,14 @@ Check out the text area, where you should see the following html:
 
 This html represents the mad libs sentence we first saw above. Click the "run" button to see the html rendered in the web page.
 
-<br>
-
 Let's update the contents of the adjective `<u>` element to contain an adjective to describe the cat.
 
 1.  Go to the html blocks and from there add an `at the start` block.
 2.  Inside this block, add a `find the element with id` block using the id of the adjective `<u>` element.
 3.  Inside this block, add a `set the text content to` block.
-
 4.  Set the value of the text in this element to be any adjective, for example "big", "small", "scary", "angry" etc.
-
-5.  <span class="test-checkbox"></span>Click run to check the text content has changed.</li>
-
-<br>
+5.  <span class="test-checkbox"></span>Click run to check the text content has changed.
 
 ## Change the other texts
 
-1. <span class="test-checkbox"></span>Can you update the contents of the other three &lt;u&gt; elements? If you can't think of some words, you can use the <code>get a random word</code> block from the Values menu</li>
-
-<br>
+1. <span class="test-checkbox"></span>Can you update the contents of the other three &lt;u&gt; elements? If you can't think of some words, you can use the <code>get a random word</code> block from the Values menu
