@@ -108,7 +108,7 @@ BlocklyDomEditor.prototype.init = function (initHtml, initJsonBlockly) {
         BlocklyDomEditor.restoreBlocks(workspace, $htmlTextarea, id);
       }
       // don't register backup unless we successfully restored blocks to avoid losing data
-      BlocklyDomEditor.backupOnUnload(workspace, $htmlTextarea, id);
+      BlocklyDomEditor.registerSaveBlocks(workspace, $htmlTextarea, id);
     } catch (e) {
       console.log("couldn't restore blocks for " + id);
       throw e;
@@ -206,18 +206,10 @@ BlocklyDomEditor.backupBlocks_ = function (workspace, $htmlTextarea, id) {
   }
 };
 
-/**
- * Bind the localStorage backup function to the unload event.
- * @param {Blockly.WorkspaceSvg=} opt_workspace Workspace.
- */
-BlocklyDomEditor.backupOnUnload = function (workspace, $htmlTextarea, id) {
-  window.addEventListener(
-    "unload",
-    function () {
-      BlocklyDomEditor.backupBlocks_(workspace, $htmlTextarea, id);
-    },
-    false
-  );
+BlocklyDomEditor.registerSaveBlocks = function (workspace, $htmlTextarea, id) {
+  workspace.addChangeListener(() => {
+    BlocklyDomEditor.backupBlocks_(workspace, $htmlTextarea, id);
+  });
 };
 
 /**
