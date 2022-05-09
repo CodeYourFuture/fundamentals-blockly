@@ -23,6 +23,7 @@ Blockly.setLocale(locale);
 export default function App() {
   const {
     exercise,
+    toolbox,
     hasNextExercise,
     nextExercise,
     hasPrevExercise,
@@ -30,7 +31,7 @@ export default function App() {
   } = useExercise();
 
   const { BlocklyComponent, generate } = useBlockly({
-    toolbox: exercise.toolbox,
+    toolbox,
   });
 
   const [generated, setGenerated] = useState("");

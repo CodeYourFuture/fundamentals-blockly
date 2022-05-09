@@ -1,0 +1,9 @@
+.block {
+  padding: 3px;
+  border-radius: 5px;
+
+  &[data-category="values"] {
+    background-color: #498470; // No variable for this it seems
+    color: var(--theme-color--paper);
+  }
+}
