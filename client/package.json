@@ -16,7 +16,11 @@
     "react-markdown": "^8.0.0",
     "react-scripts": "5.0.0",
     "react-split-grid": "^1.0.4",
+    "remark": "^14.0.2",
+    "remark-directive": "^2.0.1",
     "sass": "^1.45.1",
+    "unist-util-filter": "^4.0.0",
+    "unist-util-visit": "^4.1.0",
     "use-deep-compare-effect": "^1.8.1",
     "web-vitals": "^2.1.4"
   },
