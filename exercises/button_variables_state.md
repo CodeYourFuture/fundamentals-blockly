@@ -5,7 +5,8 @@ Suppose we have a value that represents the number of times a user clicks on a g
 
 We can give this value a label like `click_count` and refer to `click_count` when we need to get the number of clicks. In programming, we call this label a variable. 
 
-ℹ️ A variable is a label for some value.
+ℹ️ A **variable** is a label for some value.
+ℹ️ The **state** is any data that gets updated during the running of a program. We use variables to refer to the state in our program.
 
 In this exercise, we're going to create a variable `click_count` and update it when a user clicks on a particular button.
  
