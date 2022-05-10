@@ -343,27 +343,7 @@
       <div class="exercise" id="exercise_button_variables_state">
         <h2>Variables: keeping track of the number of clicks</h2>
         <div class="instructions">
-        <p>
-          A variable is a name into which a value can be stored. There are several reasons for which we might want to do this. The first is when we want to keep track of a value that changes over time. Let's keep track of the number of times a button is clicked.
-        </p>
-        <ol>
-            <li>Start with a button (<code>&lt;button&gt;</code>) that has been clicked 0 times in the static html. <code class="start_code">&lt;button id="button"&gt;0&lt;/button&gt;</code></li>
-            <li>Add an <span class="blockname">"at the start"</span> block. Inside we are going to add a variable that will keep track of the number of times the button was clicked.</li>
-                <ol>
-                    <li>In the Variables menu, click "create variable..." to create a variable called <code>click_count</code></li>
-                    <li>From the Variables menu, create a <span class="blockname">"set click_count to"</span> block and place it inside the <span class="blockname">"at the start"</span></li>
-                    <li>Set the value to 0 (from the Values menu)</li>
-                </ol>
-            </li>
-            <li>When the button is clicked, we are going to do two things: increase the value of <code>click_count</code> by 1; and change the text of the button to the new value of click_count.</li>
-                <ol>
-                    <li>Add an <span class="blockname">"when the element with id ... is clicked"</span> block. </li>
-                    <li>Inside this block, add a <span class="blockname">"change click_count by 1"</span> block from the Variables menu.</li>
-                    <li>Add the necessary blocks to set the text content of the button to the value of <code>click_count</code>. (You can get this value by selecting the <span class="blockname">"click_count"</span> block from the Variables menu)</li>
-                </ol>
-            </li>
-        </ol>
-        <p>Note that it will be a common pattern that you first set a variable in the <span class="blockname">"at the start"</span> block and then modify it in at <span class="blockname">"when the element with id ... is clicked"</span> block. This first setting of the variable is called "initialisation".</p>
+          <zero-md src="exercises/button_variables_state.md"></zero-md>
        </div>
        <xml class="toolbox" style="display: none">
           <category name="Values" colour='%{BKY_TEXTS_HUE}'>
