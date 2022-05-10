@@ -84,6 +84,28 @@ Blockly.Blocks["arrays_getFirst"] = {
   },
 
   /**
+   * Returns the state of this block as a JSON serializable object.
+   * @return {{isStatement: boolean}} Whether the block is a statment, otherwise null.
+   */
+  saveExtraState: function () {
+    if (!this.outputConnection) {
+      return {
+        isStatement: true,
+      };
+    }
+    return null;
+  },
+  /**
+   * Applies the given state to this block.
+   * @param {*} state The state to apply to this block, ie whether it's a statement.
+   */
+  loadExtraState: function (state) {
+    if (state["isStatement"]) {
+      this.updateStatement_(true);
+    }
+  },
+
+  /**
    * Switch between a value block and a statement block.
    * @param {boolean} newStatement True if the block should be a statement.
    *     False if the block should be a value.
