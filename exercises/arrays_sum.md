@@ -46,8 +46,8 @@ We will need the following steps to implement the game described above. Notice t
 2. Add that number to the array of rolls
 3. Display each roll in the array
 4. Calculate the total of all rolls
-  - If it is greater than 11, display "You lost" 
-  - If it is equal to 11, display "You won"
+    - If it is greater than 11, display "You lost" 
+    - If it is equal to 11, display "You won"
 5. Display the total of all rolls
 
 #### When a user clicks on "Start again": (this is the same as at the beginning)
@@ -60,9 +60,9 @@ We will need the following steps to implement the game described above. Notice t
 1. Remove the last roll from the array of rolls
 2. Display each roll in the array
 3. Calculate the total of all rolls
-  - If it is greater than 11, display "You lost"
-  - If it is equal to 11, display "You won"
-  - If it is less than 11, display "Keep playing"
+    - If it is greater than 11, display "You lost"
+    - If it is equal to 11, display "You won"
+    - If it is less than 11, display "Keep playing"
 4. Display the total of all rolls
 
 ### Writing our program
