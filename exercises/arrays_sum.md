@@ -90,7 +90,7 @@ Slightly more tricky: implementing the "roll the dice" button. Before following 
 
 In order to create a dice, we'll do the following:
 
-1. We'll create a new array in the `At the start` block, called "dice",setting the values as the numbers 1, 2, 3, 4, 5, and 6. (Be careful to select the `array` variable, not the `rolls` variable before renaming to `dice`). We can select a random item from this array when we want to roll a dice.
+1. We'll create a new array in the `At the start` block, called "dice", setting the values as the numbers 1, 2, 3, 4, 5, and 6. (Be careful to select the `array` variable, not the `rolls` variable before renaming to `dice`). We can select a random item from this array when we want to roll a dice.
 2. Add a `When the element with id ... is clicked` for the button
 3. Let's roll the dice and add the result to the list. Use the `add ... to the start/end of the array` block, setting the "end" of the "rolls" array. Use the `get random item from the array` block to specify the value you are setting for the end of the array.
 We could now add a new `<li>` to the list and set the total. Instead, we are going to re-display the whole list from the array - you will see why in the next step.
@@ -105,7 +105,7 @@ We can actually write this code so that is exactly the same all the time. When w
 
 1. From the Functions menu, select a <span class="blockname">"To <i>do something</i>"</span> block and change it "to <i>display the rolls</i>"
 2. Take all the display code you wrote in the previous step and move it inside this function.
-3. In the Functions menu, there is now a `display the rolls` block. You can us it as a replacement for the code you moved. That block will "call" the function you created (this means it will execute all the blocks inside that function). You can replace the 2 other versions of your display code with the `display the rolls` block.
+3. In the Functions menu, there is now a `display the rolls` block. You can us it as a replacement for the code you moved. That block will **call** the function you created (this means it will execute all the blocks inside that function). You can replace the 2 other versions of your display code with the `display the rolls` block.
 4. Now you can add the logic that decides what to put into the `<span id="info">`.
 
 - Hint: You can calculate the sum of the array only once and store the result in a variable.
