@@ -71,16 +71,16 @@ In order to check that anything is working, we'll start by displaying an array o
 
 #### Displaying the dice rolls
 
-1. In an `At the start` block, create an array called `rolls` and put 3 numbers in the array.(Afterwards we will start with an empty array, but for now having numbers helps.)
+1. In an `At the start` block, create an array called `rolls` and put 3 numbers in the array. (Afterwards we will start with an empty array, but for now having numbers helps.)
 2. Using a loop, display each of the numbers in the array in the list. Check that your code works.
 3. Set the `<span id="total">` to the sum of the numbers in the `rolls` array.
 
-We will put in the "you won"/"you lost"/"keep playing" logic in last (but you could also do it now if you like)
+We will put in the "you won" / "you lost" / "keep playing" logic in last (but you could also do it now if you like).
 
 Next, let's go with the simplest: the restart button 
 
 4. Add a `When the element with id ... is clicked` block for this button
-5. We want to set the `rolls` variable to an empty list. (Use the same blocks as you did to initialise the rolls variable, then use the gear icon to remove all the items from the array)
+5. We want to set the `rolls` variable to an empty list. (Use the same blocks as you did to initialise the `rolls` variable, then use the gear icon to remove all the items from the array)
 6. We now want to remove the displayed rolls from the list. (You will need to use the `Remove the contents of the element` block)
 7. And we want to set the text in the `<span id="total">` to 0
 
@@ -92,9 +92,7 @@ In order to create a dice, we'll do the following:
 
 1. We'll create a new array in the `At the start` block, called "dice",setting the values as the numbers 1, 2, 3, 4, 5, and 6. (Be careful to select the `array` variable, not the `rolls` variable before renaming to `dice`). We can select a random item from this array when we want to roll a dice.
 2. Add a `When the element with id ... is clicked` for the button
-
-Let's roll the dice and add the result to the list.
-3. Use the `add ... to the start/end of the array` block, setting the "end" of the "rolls" array. Use the `get random item from the array` block to specify the value you are setting for the end of the array.
+3. Let's roll the dice and add the result to the list. Use the `add ... to the start/end of the array` block, setting the "end" of the "rolls" array. Use the `get random item from the array` block to specify the value you are setting for the end of the array.
 
 We could now add a new `<li>` to the list and set the total. Instead, we are going to re-display the whole list from the array - you will see why in the next step.
 
