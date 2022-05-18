@@ -31,9 +31,6 @@ The requirements are as follows:
 6. The total so far should be displayed in the `<span id="total">`
 7. When a user clicks on "start again", we should return to the initial state
 
-
- 
-
 ### Detailed steps
 
 We will need the following steps to implement the game described above. Notice that some of them repeat, some of them are similar, and that the game has a "state" which is the array of dice rolls.
