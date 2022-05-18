@@ -33,7 +33,7 @@ The requirements are as follows:
 
 ### Detailed steps
 
-We will need the following steps to implement the game described above. Notice that some of them repeat, some of them are similar, and that the game has a "state" which is the array of dice rolls.
+We will need the following steps to implement the game described above. Notice that some of them repeat, some of them are similar, and that the game has a **state** which is the array of dice rolls.
 
 #### At the beginning
 
