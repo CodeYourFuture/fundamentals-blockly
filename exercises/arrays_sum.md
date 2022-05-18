@@ -50,7 +50,7 @@ We will need the following steps to implement the game described above. Notice t
     - If it is equal to 11, display "You won"
 5. Display the total of all rolls
 
-#### When a user clicks on "Start again" - (this is the same as at the beginning)
+#### When a user clicks on "Start again" - (this is the same as the beginning)
 
 1. Display each roll in the array (there are currently no rolls)
 2. Display the total of all rolls (it is currently 0)
