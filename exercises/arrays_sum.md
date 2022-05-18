@@ -23,7 +23,7 @@ In this section, we're going to define all the requirements of the game. Before 
 The requirements are as follows:
 
 
-1. When a user clicks on "roll the dice", a new random number between 1 and 6 should be generated and added to t
+1. When a user clicks on "roll the dice", a new random number between 1 and 6 should be generated and added to the total.
 2. If the total of all the dice rolls is exactly 11, display "You won" in the `<span id="info">`
 3. If the total of all the dice rolls is over 11, display "You lost" in the `<span id="info">`
 4. When a user clicks on "remove the last roll", we should undo the last roll (this is a cheat button so that we can always win!)
