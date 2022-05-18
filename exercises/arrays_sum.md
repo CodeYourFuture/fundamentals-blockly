@@ -93,16 +93,15 @@ In order to create a dice, we'll do the following:
 1. We'll create a new array in the `At the start` block, called "dice",setting the values as the numbers 1, 2, 3, 4, 5, and 6. (Be careful to select the `array` variable, not the `rolls` variable before renaming to `dice`). We can select a random item from this array when we want to roll a dice.
 2. Add a `When the element with id ... is clicked` for the button
 3. Let's roll the dice and add the result to the list. Use the `add ... to the start/end of the array` block, setting the "end" of the "rolls" array. Use the `get random item from the array` block to specify the value you are setting for the end of the array.
-
 We could now add a new `<li>` to the list and set the total. Instead, we are going to re-display the whole list from the array - you will see why in the next step.
 
 4. To re-display the whole list (and set the total), we need a combination of the two previous steps: find the list, remove its contents, loop over the items in the array and add them to the list, set the total to the sum of the array.
 
 #### Refactoring our program with functions
 
-Notice that at this point, we have 3 different versions of the same steps to display the list contents and total. Now imagine we want to change something (like add the "you won"/"you lost"/"keep playing" information). We would have to add it in 3 different places! (And we still have a "remove last roll" button to implement - so it would be 4 places)
+Notice that at this point, we have 3 different versions of the same steps to display the list contents and total. Now imagine we want to change something (like add the "you won" / "you lost" / "keep playing" information). We would have to add it in 3 different places! (And we still have a "remove last roll" button to implement - so it would be 4 places)
 
-We can actually write this code so that is exactly the same all the time. When we see a piece of code we would like to use many times, we create a function.
+We can actually write this code so that is exactly the same all the time. When we see a piece of code we would like to reuse many times, we create a function.
 
 1. From the Functions menu, select a <span class="blockname">"To <i>do something</i>"</span> block and change it "to <i>display the rolls</i>"
 2. Take all the display code you wrote in the previous step and move it inside this function.
