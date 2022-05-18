@@ -84,7 +84,7 @@ Next, let's go with the simplest: the restart button
 
 4. Add a `When the element with id ... is clicked` block for this button
 5. We want to set the `rolls` variable to an empty list. (Use the same blocks as you did to initialise the rolls variable, then use the gear icon to remove all the items from the array)
-6. We now want to remove the displayed rolls from the list (You will need to use the `Remove the contents of the element` block)
+6. We now want to remove the displayed rolls from the list. (You will need to use the `Remove the contents of the element` block)
 7. And we want to set the text in the `<span id="total">` to 0
 
 #### Implementing roll the dice
@@ -93,7 +93,7 @@ Slightly more tricky: implementing the "roll the dice" button. Before following 
 
 In order to create a dice, we'll do the following:
 
-1. We'll create a new array in the `At the start` block, called "dice",setting the values as the numbers 1, 2, 3, 4, 5, and 6. (Be careful to select the `array` variable, not the `rolls` variable before renaming to `dice`.) We can select a random item from this array when we want to roll a dice.
+1. We'll create a new array in the `At the start` block, called "dice",setting the values as the numbers 1, 2, 3, 4, 5, and 6. (Be careful to select the `array` variable, not the `rolls` variable before renaming to `dice`). We can select a random item from this array when we want to roll a dice.
 2. Add a `When the element with id ... is clicked` for the button
 
 Let's roll the dice and add the result to the list.
