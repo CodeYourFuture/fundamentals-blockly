@@ -108,8 +108,8 @@ We can actually write this code so that is exactly the same all the time. When w
 3. In the Functions menu, there is now a `display the rolls` block. You can us it as a replacement for the code you moved. That block will "call" the function you created (this means it will execute all the blocks inside that function). You can replace the 2 other versions of your display code with the `display the rolls` block.
 4. Now you can add the logic that decides what to put into the `<span id="info">`.
 
-Hint: You can calculate the sum of the array only once and store the result in a variable.
-Hint: You can add else if and else conditions to the `if` block by clicking on the gear icon.
+- Hint: You can calculate the sum of the array only once and store the result in a variable.
+- Hint: You can add else if and else conditions to the `if` block by clicking on the gear icon.
 
 To test all the logic, put different values into the initial rolls array. Once this is working, you can set the initial rolls array to an empty list.
 
