@@ -1,0 +1,17 @@
+@import "../theme/utilities.scss";
+
+.c-output {
+  max-width: 80ch;
+  overflow: hidden;
+  pre {
+    margin: 0;
+    padding: var(--theme-spacing--2);
+    padding-bottom: 25ch;
+    width: 100%;
+    min-height: 50vh;
+    overflow: auto;
+    border: var(--theme-border--thick);
+    border-radius: var(--theme-border-radius--subtle);
+    border-color: var(--theme-color--pop);
+  }
+}
