@@ -1,0 +1,16 @@
+@import "../theme/utilities.scss";
+
+.c-textpanel {
+  @include grid-assign(nav, text);
+  grid-template:
+    "nav" auto
+    "text" 1fr / 1fr;
+  gap: var(--theme-spacing--2);
+
+  &__text {
+    background: var(--theme-color--paper);
+    padding: var(--theme-spacing--2) var(--theme-spacing--3);
+    max-width: 55ch;
+    line-height: 1.5;
+  }
+}
