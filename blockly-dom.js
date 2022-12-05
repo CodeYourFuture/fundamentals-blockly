@@ -291,8 +291,17 @@ Blockly.defineBlocksWithJsonArray([
   },
   {
     type: "get_input_value_with_id",
-    message0: "get the value of the <input> with id %1",
+    message0: "get the %1 value of the <input> with id %2",
     args0: [
+      {
+        type: "field_dropdown",
+        name: "TYPE",
+        text: "text",
+        options: [
+          ["text", "string"],
+          ["numerical", "number"],
+        ],
+      },
       {
         type: "field_input",
         name: "ID",
@@ -618,26 +627,26 @@ Blockly.JavaScript["set_content"] = function (block) {
 
 Blockly.JavaScript["get_input_value_with_id"] = function (block) {
   let elementId = block.getFieldValue("ID");
-  let getNumberOrString = Blockly.JavaScript.provideFunction_(
-    "getNumberOrString",
-    [
-      "function " + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + "(value) {",
-      "  // Convert a string value to a number if possible",
-      "  let number_value = Number(value);",
-      "  if (Number.isNaN(number_value)) {",
-      "    return value",
-      "  } else {",
-      "    return number_value",
-      "  }",
-      "}",
-    ]
-  );
-  return [
-    `getNumberOrString(document.getElementById(${Blockly.JavaScript.quote_(
-      elementId
-    )}).value)`,
-    Blockly.JavaScript.ORDER_MEMBER,
-  ];
+  let inputType = block.getFieldValue("TYPE");
+
+  Blockly.JavaScript.provideFunction_("convertToNumber", [
+    "function " + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + "(value) {",
+    "  // Convert a string value to a number if possible",
+    "  let number_value = Number(value);",
+    "  if (Number.isNaN(number_value)) {",
+    "    return 0",
+    "  } else {",
+    "    return number_value",
+    "  }",
+    "}",
+  ]);
+  const element = `document.getElementById(${Blockly.JavaScript.quote_(
+    elementId
+  )})`;
+  if (inputType === "string") {
+    return [`${element}.value`, Blockly.JavaScript.ORDER_MEMBER];
+  }
+  return [`convertToNumber(${element}.value)`, Blockly.JavaScript.ORDER_MEMBER];
 };
 
 Blockly.JavaScript["remove_contents"] = function (block) {
