@@ -643,10 +643,13 @@ Blockly.JavaScript["get_input_value_with_id"] = function (block) {
   const element = `document.getElementById(${Blockly.JavaScript.quote_(
     elementId
   )})`;
-  if (inputType === "string") {
-    return [`${element}.value`, Blockly.JavaScript.ORDER_MEMBER];
+  if (inputType === "number") {
+    return [
+      `convertToNumber(${element}.value)`,
+      Blockly.JavaScript.ORDER_MEMBER,
+    ];
   }
-  return [`convertToNumber(${element}.value)`, Blockly.JavaScript.ORDER_MEMBER];
+  return [`${element}.value`, Blockly.JavaScript.ORDER_MEMBER];
 };
 
 Blockly.JavaScript["remove_contents"] = function (block) {
