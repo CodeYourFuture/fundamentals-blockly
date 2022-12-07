@@ -289,8 +289,8 @@ Blockly.defineBlocksWithJsonArray([
     colour: 60,
     extensions: ["validate_in_with_context"],
   },
-  {
-    type: "get_input_value_with_id",
+    {
+    type: "get_input_string_or_number_with_id",
     message0: "get the %1 value of the <input> with id %2",
     args0: [
       {
@@ -298,10 +298,23 @@ Blockly.defineBlocksWithJsonArray([
         name: "TYPE",
         text: "text",
         options: [
+          ['numerical','number'],
           ["text", "string"],
-          ["numerical", "number"],
         ],
       },
+      {
+        type: "field_input",
+        name: "ID",
+        text: "text",
+      },
+    ],
+    output: "String",
+    colour: 60,
+  },
+  {
+    type: "get_input_value_with_id",
+    message0: "get the value of the <input> with id %1",
+    args0: [
       {
         type: "field_input",
         name: "ID",
@@ -627,6 +640,34 @@ Blockly.JavaScript["set_content"] = function (block) {
 
 Blockly.JavaScript["get_input_value_with_id"] = function (block) {
   let elementId = block.getFieldValue("ID");
+  let inputType = block.getFieldValue("VALUE");
+
+  const actualName = Blockly.JavaScript.provideFunction_("convertToNumber", [
+    "function " + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + "(value) {",
+    "  // Convert a string value to a number if possible",
+    "  let number_value = Number(value);",
+    "  if (Number.isNaN(number_value)) {",
+    "    return 0",
+    "  } else {",
+    "    return number_value",
+    "  }",
+    "}",
+  ]);
+  const element = `document.getElementById(${Blockly.JavaScript.quote_(
+    elementId
+  )})`;
+  if (inputType === "number") {
+    return [
+      `${actualName}(${element}.value)`,
+      Blockly.JavaScript.ORDER_MEMBER,
+    ];
+  }
+  return [`${element}.value`, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+} 
+
+
+Blockly.JavaScript["get_input_string_or_number_with_id"] = function (block) {
+  let elementId = block.getFieldValue("ID");
   let inputType = block.getFieldValue("TYPE");
 
   const actualName = Blockly.JavaScript.provideFunction_("convertToNumber", [
@@ -700,3 +741,4 @@ ${branch}
 ${withContextVariable}.appendChild(${newElementVar});
 `;
 };
+
