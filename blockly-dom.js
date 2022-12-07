@@ -639,30 +639,27 @@ Blockly.JavaScript["set_content"] = function (block) {
 };
 
 Blockly.JavaScript["get_input_value_with_id"] = function (block) {
-  let elementId = block.getFieldValue("ID");
-  let inputType = block.getFieldValue("VALUE");
-
-  const actualName = Blockly.JavaScript.provideFunction_("convertToNumber", [
-    "function " + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + "(value) {",
-    "  // Convert a string value to a number if possible",
-    "  let number_value = Number(value);",
-    "  if (Number.isNaN(number_value)) {",
-    "    return 0",
-    "  } else {",
-    "    return number_value",
-    "  }",
-    "}",
-  ]);
-  const element = `document.getElementById(${Blockly.JavaScript.quote_(
-    elementId
-  )})`;
-  if (inputType === "number") {
-    return [
-      `${actualName}(${element}.value)`,
-      Blockly.JavaScript.ORDER_MEMBER,
-    ];
-  }
-  return [`${element}.value`, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+ let elementId = block.getFieldValue("ID");
+  let actualName = Blockly.JavaScript.provideFunction_(
+    "getNumberOrString",
+    [
+      "function " + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + "(value) {",
+      "  // Convert a string value to a number if possible",
+      "  let number_value = Number(value);",
+      "  if (Number.isNaN(number_value)) {",
+      "    return value",
+      "  } else {",
+      "    return number_value",
+      "  }",
+      "}",
+    ]
+  );  
+  return [
+    `${actualName}(document.getElementById(${Blockly.JavaScript.quote_(
+      elementId
+    )}).value)`,
+    Blockly.JavaScript.ORDER_MEMBER,
+  ];
 } 
 
 
