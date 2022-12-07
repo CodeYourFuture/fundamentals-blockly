@@ -629,7 +629,7 @@ Blockly.JavaScript["get_input_value_with_id"] = function (block) {
   let elementId = block.getFieldValue("ID");
   let inputType = block.getFieldValue("TYPE");
 
-  Blockly.JavaScript.provideFunction_("convertToNumber", [
+  const actualName = Blockly.JavaScript.provideFunction_("convertToNumber", [
     "function " + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + "(value) {",
     "  // Convert a string value to a number if possible",
     "  let number_value = Number(value);",
@@ -645,11 +645,11 @@ Blockly.JavaScript["get_input_value_with_id"] = function (block) {
   )})`;
   if (inputType === "number") {
     return [
-      `convertToNumber(${element}.value)`,
+      `${actualName}(${element}.value)`,
       Blockly.JavaScript.ORDER_MEMBER,
     ];
   }
-  return [`${element}.value`, Blockly.JavaScript.ORDER_MEMBER];
+  return [`${element}.value`, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
 Blockly.JavaScript["remove_contents"] = function (block) {
