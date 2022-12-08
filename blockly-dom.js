@@ -290,7 +290,7 @@ Blockly.defineBlocksWithJsonArray([
     extensions: ["validate_in_with_context"],
   },
     {
-    type: "get_input_string_or_number_with_id",
+    type: "get_input_data_with_id",
     message0: "get the %1 value of the <input> with id %2",
     args0: [
       {
@@ -663,7 +663,7 @@ Blockly.JavaScript["get_input_value_with_id"] = function (block) {
 } 
 
 
-Blockly.JavaScript["get_input_string_or_number_with_id"] = function (block) {
+Blockly.JavaScript["get_input_data_with_id"] = function (block) {
   let elementId = block.getFieldValue("ID");
   let inputType = block.getFieldValue("TYPE");
 
