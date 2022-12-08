@@ -662,7 +662,6 @@ Blockly.JavaScript["get_input_value_with_id"] = function (block) {
   ];
 } 
 
-
 Blockly.JavaScript["get_input_data_with_id"] = function (block) {
   let elementId = block.getFieldValue("ID");
   let inputType = block.getFieldValue("TYPE");
