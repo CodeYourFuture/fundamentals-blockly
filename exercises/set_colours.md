@@ -18,6 +18,7 @@ For example:
 
 2.  Click `run` to see the rendered output
 
+You can also [inspect the html](https://developer.chrome.com/docs/devtools/dom/) you've generated using dev tools ( assuming you're using a Chrome broswer ). 
 
 Let's change the banana element's colour to yellow
 
@@ -28,6 +29,8 @@ Let's change the banana element's colour to yellow
 5.  Inside this block, add a `set the attribute` block. Select the _attribute_ "color" from the dropdown.
 
 6.  <span class="test-checkbox"></span>You can find a color picker block in the `Values` menu and set its colour to yellow. Add the yellow colour block to the previous `set the attribute` block, to set the colour to yellow.
+
+At this point, go back to [dev tools](https://developer.chrome.com/docs/devtools/dom/) and inspect the html again to observe the changes to the styling.
 
 The colour for a banana is probably not easy to see against a white background.
 
