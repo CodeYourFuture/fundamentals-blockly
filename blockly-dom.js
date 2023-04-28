@@ -291,15 +291,15 @@ Blockly.defineBlocksWithJsonArray([
   },
     {
     type: "get_input_data_with_id",
-    message0: "get the text value of input with id %1",
+    message0: "get the %1 value of input with id %2",
     args0: [
       {
         type: "field_dropdown",
         name: "TYPE",
         text: "text",
         options: [
-          ["text", "string"],
           ['numerical','number'],
+          ["text", "string"],
         ],
       },
       {
