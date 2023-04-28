@@ -297,9 +297,9 @@ Blockly.defineBlocksWithJsonArray([
         type: "field_dropdown",
         name: "TYPE",
         text: "text",
-        options: [
-          ['numerical','number'],
+        options: [ 
           ["text", "string"],
+          ['numerical','number'],
         ],
       },
       {
