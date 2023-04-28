@@ -22,4 +22,4 @@ As with the previous exercise, we're going to start by programming the visible t
 
 2. First find the list element ( id: `list` ) and add a new `<li>` with your own text value ( for example, "do cyf homework" ). Check that this works.
 
-3. Now, instead of adding an  `<li>` element with your own text value, we'll use the value from the input. Use the `get the text value of input with id ...` block to add an `<li>` element with the value from the input box.
+3. Now, instead of adding an  `<li>` element with your own text value, we'll use the value from the input. Use the `get the ... value of input with id ...` block to add an `<li>` element with the value from the input box.
