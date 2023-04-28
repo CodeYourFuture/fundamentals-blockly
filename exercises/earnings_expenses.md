@@ -14,6 +14,8 @@ Your project should do the following things:
 - display a list of all the expenses and a total of all expenses
 - display the total overall balance
 
+In this project, users should be able to add an earning/expense one at a time. The project should provide an input box where users can enter an earning/expense. They should then be able to press a button to add their inputted earning/expense to the user interface.
+
 For example, if the user inputs 5, -2, 25, -10, -7, the result should look something like: 
 
 
@@ -31,3 +33,5 @@ For example, if the user inputs 5, -2, 25, -10, -7, the result should look somet
   </ul>
     Balance: 11
 </div>
+
+You should make use of the `get numerical value` block for this project.

@@ -289,6 +289,28 @@ Blockly.defineBlocksWithJsonArray([
     colour: 60,
     extensions: ["validate_in_with_context"],
   },
+    {
+    type: "get_input_data_with_id",
+    message0: "get the %1 value of input with id %2",
+    args0: [
+      {
+        type: "field_dropdown",
+        name: "TYPE",
+        text: "text",
+        options: [ 
+          ["text", "string"],
+          ['numerical','number'],
+        ],
+      },
+      {
+        type: "field_input",
+        name: "ID",
+        text: "text",
+      },
+    ],
+    output: "String",
+    colour: 60,
+  },
   {
     type: "get_input_value_with_id",
     message0: "get the value of the <input> with id %1",
@@ -617,8 +639,8 @@ Blockly.JavaScript["set_content"] = function (block) {
 };
 
 Blockly.JavaScript["get_input_value_with_id"] = function (block) {
-  let elementId = block.getFieldValue("ID");
-  let getNumberOrString = Blockly.JavaScript.provideFunction_(
+ let elementId = block.getFieldValue("ID");
+  let getNumberOrStringActualName = Blockly.JavaScript.provideFunction_(
     "getNumberOrString",
     [
       "function " + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + "(value) {",
@@ -631,13 +653,40 @@ Blockly.JavaScript["get_input_value_with_id"] = function (block) {
       "  }",
       "}",
     ]
-  );
+  );  
   return [
-    `getNumberOrString(document.getElementById(${Blockly.JavaScript.quote_(
+    `${getNumberOrStringActualName}(document.getElementById(${Blockly.JavaScript.quote_(
       elementId
     )}).value)`,
     Blockly.JavaScript.ORDER_MEMBER,
   ];
+} 
+
+Blockly.JavaScript["get_input_data_with_id"] = function (block) {
+  let elementId = block.getFieldValue("ID");
+  let inputType = block.getFieldValue("TYPE");
+
+  const convertToNumberActualName = Blockly.JavaScript.provideFunction_("convertToNumber", [
+    "function " + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + "(value) {",
+    "  // Convert a string value to a number if possible",
+    "  let number_value = Number(value);",
+    "  if (Number.isNaN(number_value)) {",
+    "    return 0",
+    "  } else {",
+    "    return number_value",
+    "  }",
+    "}",
+  ]);
+  const element = `document.getElementById(${Blockly.JavaScript.quote_(
+    elementId
+  )})`;
+  if (inputType === "number") {
+    return [
+      `${convertToNumberActualName}(${element}.value)`,
+      Blockly.JavaScript.ORDER_MEMBER,
+    ];
+  }
+  return [`${element}.value`, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
 Blockly.JavaScript["remove_contents"] = function (block) {
@@ -688,3 +737,4 @@ ${branch}
 ${withContextVariable}.appendChild(${newElementVar});
 `;
 };
+

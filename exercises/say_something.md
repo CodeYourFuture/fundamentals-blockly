@@ -28,7 +28,7 @@ Check that a random word gets said when you click `speak`
  
 Now that a word gets said out loud when we click the button, we can make it say the word entered in the input box. 
 
-4. Replace the `get a random word` block with a `get the value of <input> with id` block, using the input's id
+4. Replace the `get a random word` block with a `get the ... value of <input> with id ...` block, using the input's id
 
 Check that whatever word you write in the input box gets said when you click `speak`.
 Do you see why it was useful to solve this problem in reverse order?
