@@ -277,7 +277,7 @@ Blockly.defineBlocksWithJsonArray([
   },
   {
     type: "toggle_attribute",
-    message0: "toggle the attribute %1 = %2",
+    message0: "toggle the class %1",
     args0: [
       {
         type: "field_dropdown",
