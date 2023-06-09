@@ -280,11 +280,6 @@ Blockly.defineBlocksWithJsonArray([
     message0: "toggle the class %1",
     args0: [
       {
-        type: "field_dropdown",
-        name: "PROPERTY",
-        options: [["class", "class"]],
-      },
-      {
         type: "input_value",
         name: "VALUE",
       },
