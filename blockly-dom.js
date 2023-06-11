@@ -276,6 +276,20 @@ Blockly.defineBlocksWithJsonArray([
     extensions: ["validate_in_with_context"],
   },
   {
+    type: "toggle_attribute",
+    message0: "toggle the class %1",
+    args0: [
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    colour: 60,
+    extensions: ["validate_in_with_context"],
+  },
+  {
     type: "set_content",
     message0: "set the text content to %1",
     args0: [
@@ -626,6 +640,16 @@ Blockly.JavaScript["set_attribute"] = function (block) {
       ");\n"
     );
   }
+};
+
+Blockly.JavaScript["toggle_attribute"] = function (block) {
+  let value = Blockly.JavaScript.valueToCode(
+    block,
+    "VALUE",
+    Blockly.JavaScript.ORDER_NONE
+  );
+  let withContextVariable = Blockly.JavaScript.getWithContextVariable();
+  return withContextVariable + `.classList.toggle(${value});\n`;
 };
 
 Blockly.JavaScript["set_content"] = function (block) {
