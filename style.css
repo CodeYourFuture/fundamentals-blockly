@@ -154,7 +154,7 @@ footer {
   border: var(--theme-border);
 }
 
-.exercise h2 {
+.exercise h2, .example h2 {
   font-size: 2em;
   margin: 40px auto;
 }
