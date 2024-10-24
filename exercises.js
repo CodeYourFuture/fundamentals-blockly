@@ -33,7 +33,7 @@ function findExercises() {
   return $exercises.map(($exercise) => {
     $h2 = $exercise.querySelector("h2");
     title = $h2.innerText;
-    return { $exercise, $h2, title };
+    return {$exercise, $h2, title};
   });
 }
 
@@ -58,6 +58,8 @@ function addDomElements(exercises) {
   for (let i = 0; i < exercises.length; i++) {
     let exercise = exercises[i];
     let $nav = document.createElement("nav");
+    let $instructions = exercise.$exercise.querySelector(".instructions");
+    console.log("instructions", $instructions);
     $nav.setAttribute("class", "nav-buttons");
     if (i > 0) {
       $nav.appendChild(createNavElement("previous exercise", exercises[i - 1]));
@@ -67,10 +69,7 @@ function addDomElements(exercises) {
     }
     exercise.$exercise.insertBefore($nav, exercise.$h2);
     exercise.$blockly = document.createElement("div");
-    exercise.$exercise.insertBefore(
-      exercise.$blockly,
-      exercise.$h2.nextSibling
-    );
+    exercise.$exercise.insertBefore(exercise.$blockly, exercise.$instructions);
     exercise.id = i;
     if (exercise.$exercise.id) {
       exercise.id = exercise.$exercise.id;
