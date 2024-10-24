@@ -109,6 +109,7 @@ footer {
 
 #toc.open {
   transform: translateX(0);
+  overflow: scroll;
 }
 
 #toc li {
@@ -126,6 +127,11 @@ footer {
 #toc li:focus {
   text-decoration: underline;
   color: var(--theme-color--pop);
+}
+
+body:has(#toc.open) {
+  height: 100svh;
+  overflow: hidden;
 }
 /* MAIN stuff */
 #exercises {
