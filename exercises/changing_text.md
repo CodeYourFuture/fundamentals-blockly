@@ -2,7 +2,7 @@
 
 ### Preparation ###
 Study this 
-<a href="../index-examples.html#example_1_changing_text_content" target=_blank>example</a>
+<a href="../examples.html#example_changing_text_content" target=_blank>example: changing text content</a>
 to learn how to change the text content of an element.
 
 ### Challenge #1 ###

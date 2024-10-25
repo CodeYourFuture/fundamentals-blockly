@@ -27,7 +27,10 @@ BlocklyDomEditor.prototype.getElementId = function (elementId) {
   return elementId + this.id;
 };
 
-BlocklyDomEditor.prototype.init = function (initHtml, initJsonBlockly) {
+// useLocalStorage: 
+// true: use window.localStorage to automatically save/restore HTML code+blocks
+// false: Initialise editor with initHtml and initJsonBlockly, and don't auto save. (Meant for setting up example page)
+BlocklyDomEditor.prototype.init = function (initHtml, initJsonBlockly, useLocalStorage=true) {
   this.root.classList.add("interface");
 
   this.root.innerHTML = `
@@ -99,21 +102,32 @@ BlocklyDomEditor.prototype.init = function (initHtml, initJsonBlockly) {
     $htmlTextarea.value = initHtml;
   }
 
-  setTimeout(() => {
-    try {
-      if (initJsonBlockly !== undefined) {
-        // don't use storage at all
-        Blockly.serialization.workspaces.load(initJsonBlockly, workspace);
-      } else {
-        BlocklyDomEditor.restoreBlocks(workspace, $htmlTextarea, id);
+  if (useLocalStorage) {
+    // This part is used by "exercises"
+    setTimeout(() => {
+      try {
+        if (initJsonBlockly !== undefined) {
+          // don't use storage at all
+          Blockly.serialization.workspaces.load(initJsonBlockly, workspace);
+        } else {
+          BlocklyDomEditor.restoreBlocks(workspace, $htmlTextarea, id);
+        }
+        // don't register backup unless we successfully restored blocks to avoid losing data
+        BlocklyDomEditor.registerSaveBlocks(workspace, $htmlTextarea, id);
+      } catch (e) {
+        console.log("couldn't restore blocks for " + id);
+        throw e;
       }
-      // don't register backup unless we successfully restored blocks to avoid losing data
-      BlocklyDomEditor.registerSaveBlocks(workspace, $htmlTextarea, id);
-    } catch (e) {
-      console.log("couldn't restore blocks for " + id);
-      throw e;
+    }, 0);
+  } else {
+    // This part is used by "examples"
+
+    if (initJsonBlockly) {
+      Blockly.serialization.workspaces.load(initJsonBlockly, workspace);    
     }
-  }, 0);
+    
+    BlocklyDomEditor.restoreBlocks(workspace, $htmlTextarea, id);
+  }
 
   let code = "";
   workspace.addChangeListener(() => {
@@ -158,16 +172,20 @@ BlocklyDomEditor.prototype.init = function (initHtml, initJsonBlockly) {
     let json = Blockly.serialization.workspaces.save(workspace);
     let html = $htmlTextarea.value;
     let data = JSON.stringify({ j: json, h: html });
-    console.log(data);
     let minifiedData = JSONCrush.crush(data);
-    var url = window.location.href
-      .split("#")[0]
-      .replace("index.html", "share.html");
-    if (!url.endsWith("share.html")) {
-      url += "share.html";
-    }
+
+    let url = new URL(window.location.href);
+    // Convert http://domain/paths/somefile.html[?....][#.... to]
+    //         http://domain/paths/share.html 
+    // So that the "SHARE" button works in all HTML file
+    let pathComponents = url.pathname.split('/');
+    pathComponents[pathComponents.length - 1] = "share.html";
+    url.pathname = pathComponents.join('/');
+    url.search = url.hash = '';                       // Clear query string and hash
+
     let uri = url + "?v=" + encodeURIComponent(minifiedData);
     navigator.clipboard.writeText(uri);
+
     if (uri) {
       // a little toast
       let toast = document.getElementById("toast");

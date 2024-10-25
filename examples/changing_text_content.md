@@ -1,6 +1,6 @@
 ## Changing Text Content
 
-This example introduces the **Html blocks** to find an element, and then change the text content of the element.
+This example introduces the **HTML blocks** to find an element, and then change the text content of the element.
 
 ### The blocks
 - **`at the start (when run is clicked)`**

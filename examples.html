@@ -13,7 +13,7 @@
   <script src="blockly-dom.js"></script>
   <script src="blockly-cyf.js"></script>
   <script src="jsoncrush.js"></script>
-  <script src="editor-examples.js"></script>
+  <script src="editor.js"></script>
 
   <header>
     <h1>CYF Blocks</h1>
@@ -31,7 +31,7 @@
 
   <div id="exercises">
 
-    <div class="example" id="understanding_cyf_blocks_interface">
+    <div class="exercise" id="understanding_cyf_blocks_interface">
       <h2>Understanding the CYF Blocks interface</h2>
       <div class="instructions">
         <zero-md src="examples/understanding_cyf_blocks_interface.md"
@@ -41,7 +41,7 @@
     </div>
 
 
-    <div class="example" id="example_1_changing_text_content">
+    <div class="exercise" id="example_changing_text_content">
       <h2>Example 1: Changing text content of an element</h2>
       <div class="instructions">
         <zero-md src="examples/changing_text_content.md"
@@ -231,7 +231,10 @@
     </xml>
 
 
-    <script src="examples.js"></script>
+    <script src="exercises.js"></script>
+    <script>
+      pageSetup(true);
+    </script>
 </body>
 
 </html>
