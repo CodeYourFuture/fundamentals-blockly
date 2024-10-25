@@ -3,7 +3,7 @@
 ![image](cyf_blocks_ui.png)
 
 ### 1. STATIC HTML Textarea ###
-This is where you edit the initial HTML code. The **Html blocks** mainly operate on the HTML elements specified here.
+This is where you edit the initial HTML code. The **HTML blocks** mainly operate on the HTML elements specified here.
 
 ### 2. Code Blocks Editor ###
 You can construct your block program here.
@@ -20,10 +20,10 @@ Select a block here.
 Combine the blocks here.
 
 ### 3. RUN ###
-Click this button to render the HTML code specified in (1) and execute the code blocks specified in (2).
+Click the RUN button to render the HTML code specified in (1) and execute the code blocks specified in (2).
 
 ### 4. The Output Area ###
-This area emulate a browser window where the HTML code is rendered, and
+This area emulates a browser window where the HTML code is rendered, and
 where the program is running.
 
 ### 5. SHARE ###
