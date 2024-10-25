@@ -59,7 +59,6 @@ function addDomElements(exercises) {
     let exercise = exercises[i];
     let $nav = document.createElement("nav");
     let $instructions = exercise.$exercise.querySelector(".instructions");
-    console.log("instructions", $instructions);
     $nav.setAttribute("class", "nav-buttons");
     if (i > 0) {
       $nav.appendChild(createNavElement("previous exercise", exercises[i - 1]));
