@@ -14,7 +14,7 @@ This example introduces the **HTML blocks** to find an element, and then change 
   - Set the text content of the selected element to `Hello`.
 
 ### What does the code block in this example do?
-The code block converts the static HTML from
+Conceptually, the code block converts the static HTML from
 ```
 <p id="word1">First word</p>
 <p id="word2">Second word</p>
