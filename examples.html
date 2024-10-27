@@ -155,6 +155,103 @@
       </xml>      
     </div>
 
+    <div class="exercise" id="example_handling_mouse_click">
+      <h2>Example: Handling mouse click</h2>
+      <div class="instructions">
+        <zero-md src="examples/handling_mouse_click.md"
+          start_code=
+          "('j!('blocks!('languageVersion!0~blocks!%5B%C2%81%7BIb%2C'GvrqcBFWySjzO%7B4E'~x!26~y!57%24adj%26%C2%83tPIR(%3F%60S%3B%2Ce3BIZ_0%2BR'%3A'%40ID!'adj%7F!'aiLaRtTrF%3F'%3AwE)2%5E%2F%2C'9t'~inputs!('VALUE%22'%40%C2%80!'%3AVutui-J9%3DPV7%2C'%3A6S-%7D'%40TYPE!'ADJECTIVE')))))))))))%2C%C2%81btWLw(LDhvSk%3FZZGYbP%2F'~x!27~y!180%24noun%26%C2%831FVG42%23%25NUGCB8%7DA%2C'2Up'%40ID!'noun%7F!'%5Bvt1Ur%23(T%7CX%7DouW01h8f'~inputs!('VALUE%22'%40%C2%80'jWhhN%5D%3FCbVAFT7EG%2C'*o%2B'%40TYPE!'NOUN')))))))))))%5D))~h!'%3Cspa%C2%85adj%5C'%3Einitial%C2%86spa%C2%85noun%5C'%3Enoun%C2%86hr%C2%82adj%C2%84verb%3C%2Fbutton%C2%82noun%C2%84noun%3C%2Fbutton%3E%5Cn%5Cn').block!('type!'%22!('shadow!('type!'text'~id!'3wNQ%2BVNB6gx%2CoM%2F7ONZ'%3A%24%40TEXT1!'when%20the%20element%20with%20id'~ID!'%26Button'~TEXT2!'is%20clicked')~inputs!('HANDLER!('%40~fields!('%7F')~inputs!('STACK!('.set_content'~id%C2%80TEXT!''))~.get_randomWord'~id!%C2%81('type!'element_clicked'~id!'%C2%82%3E%5Cn%3Cbutto%C2%85%C2%83.with_element_by_id'~id!'%C2%84Button%5C'%3EChange%20%C2%85n%20id%3D%5C'%C2%86%3C%2Fspan%3E%5Cn%3C%01%C2%86%C2%85%C2%84%C2%83%C2%82%C2%81%C2%80%7F%40%26%24%22._"          
+          >
+        </zero-md> 
+      </div>
+      <xml class="toolbox" style="display: none">
+        <category name="Values" colour='%{BKY_TEXTS_HUE}'>
+          <block type="text"></block>
+          <block type="colour_picker"></block>          
+          <block type="get_randomWord"></block>
+        </category>
+        <category name="Html" colour="%{BKY_COLOUR_HUE}">
+          <block type="on_start"></block>
+          <block type="element_clicked"></block>          
+          <block type="with_element_by_id"></block>
+          <block type="set_content">
+            <value name="VALUE">
+              <shadow type="text"> </shadow>
+            </value>
+          </block>
+          <block type="set_attribute"></block>
+          <block type="add_element"></block>
+          <block type="remove_contents"></block>
+               
+        </category>
+      </xml>      
+    </div>
+
+    <div class="exercise" id="example_reading_input">
+      <h2>Example: Reading input</h2>
+      <div class="instructions">
+        <zero-md src="examples/reading_input.md"
+          start_code=
+          "('j8blocks8languageVersion!0~blocks!%5B('type!'%7B_clickedMOrij%25O%7C%7D%252vU%3FD%7DVx2%5EZ'~x!27~y!50%23TEXT1!'when%20the%20%7B%20with%20id'~ID!'greetButton'~TEXT2!'is%20clicked')%26HANDLER8%22with_%7B_by_idMU%24HscTvl9xN%25FBsq7g%5B.'%23ID!'nameOutput')%26STACK8%22set_contentM%3BR3%40%5Bk'%3AjzRo%2BpOqAXkgh'%26VALUE8shadow8type!'textMo6OWnZEAPg15UuLGZkl%2B'%23TEXT!'%7F'))~%22get_input_data_with_idMJOk4lL%3F*o%3F1VNw%3AdIY6*'%23TYPE!'string'~ID!'nameInput')))))))))))%5D)~variables!%5B('name!'nameMUS%5D%3DJjwd%3Ap.%5EpFLNg3%5E~)%5D)~h!'%3Clabel%3EName%3A%60label%3E%3Cinput-nameInput%5C'Q%3Cbutton-greetButton%5C'%3EGreet%60buttonQ%3ChrQ%3Cdiv-msg%5C'Q%20%20%7F%3Cspan-nameOutput%5C'%3E________%60span%3E'%3A%5Cn%60divQ%5Cn%5Cn')-%20id%3D%5C'8!('M'~id!'Q%3E%5Cn%22block8type!'%23~fields8%26~inputs8%60%3C%2F%7Belement%7FHello%2C%20%01%7F%7B%60%26%23%22QM8-_"        ></zero-md>
+      </div>
+      <xml class="toolbox" style="display: none">
+        <category name="Values" colour='%{BKY_TEXTS_HUE}'>
+          <block type="text"></block>
+          <block type="colour_picker"></block>          
+          <block type="get_randomWord"></block>
+        </category>
+        <category name="Html" colour="%{BKY_COLOUR_HUE}">
+          <block type="on_start"></block>
+          <block type="element_clicked"></block>          
+          <block type="with_element_by_id"></block>
+          <block type="set_content">
+            <value name="VALUE">
+              <shadow type="text"> </shadow>
+            </value>
+          </block>
+          <block type="set_attribute"></block>
+          <block type="add_element"></block>
+          <block type="remove_contents"></block>
+          <block type="get_input_data_with_id"></block>          
+        </category>
+        <category name="Variables" colour="330" custom="VARIABLE"></category>        
+      </xml>      
+    </div>
+
+
+
+    <div class="exercise" id="example_using_variables">
+      <h2>Example: Using variables</h2>
+      <div class="instructions">
+        <zero-md src="examples/using_variables.md"
+          start_code=
+          "('j!('blocks!('languageVersion!0~blocks!%5B('type!'element_clicked'~id!'Orij%25O%7C%7D%252vU%3FD%7DVx2%5EZ'~x!32~y!45~fields!('TEXT1!'when%20the%20element%20with%20id'~ID!'sumButton'~TEXT2!'is%20clicked')%C2%87HANDLER!('%C2%84set'~id!'%2C%7BR8%3B%5EW%60mZ%5DC-%7D%5EeBx)-%22%C2%81th_id'~id!'JOk4lL%3F*o%3F1VNw%3AdIY6*%C2%851'))))~next!('%C2%84set'~id!'KK2H5Fq(%40Nak0%3FQEmDwa%C2%80VAR!('%7F)%C2%81th_id'~id!'cf%3F%7CFKowVh%5EWxtrk%5E.cH%C2%852'))))~next!('%26math_change'~id!'R%2F%7C%23%40.DyG%2C'%3FKY5K%3A2'%3Aqm%22%C2%87DELTA!('shadow!('type!'math_number'~id!'%7Bo(%7B%23'%3A%7C.xyI-IMD%3DstC7%C2%80NUM!1))~%C2%84get'~id!'%2FMUFMhCoV%3F4_.7V1E%7D4K%C2%80VAR!('%7F))))~next!('%26with_element_by_id'~id!'U%24HscTvl9xN%25FBsq7g%5B.%C2%80ID!'sum')%C2%87STACK!('%26set_content'~id!'%3BR3%40%5Bk'%3AjzRo%2BpOqAXkgh'%C2%87VALUE!('shadow!('type!'text'~id!'o6OWnZEAPg15UuLGZkl%2B%C2%80TEXT!'Hello%2C%20'))~%C2%84get'~id!'%23rnd42foTOq(577Jw%5DR6%22))))))))))))))))%5D)~variables!%5B('name!'num1'~%C2%82%2C('name!'num2'~%7F%5D)~h!'%3Cinput%C2%86num1%C2%83%2B%5Cn%3Cinput%C2%86num2%C2%83%3D%5Cn%3Cspan%C2%86sum%5C'%3E%3C%2Fspan%3E%5Cn%5Cn%3Chr%3E%5Cn%3Cbutton%C2%86sumButton%5C'%3ESum%3C%2Fbutton%3E%5Cn%5Cn%5Cn%5Cn')%22%C2%80VAR!('%C2%82)%26block!('type!'%7Fid!'%3B0oB%7C%7BnA%2C)7h(%5DQ25N%7Bp')%C2%80'~fields!('%C2%81%C2%87VALUE!('%26get_input_data_wi%C2%82id!'DJ3%2B0hsEH%7DrCb%25AF%3DKM%7B')%C2%83%5C'%20type%3D%5C'number%5C'%3E%20%C2%84%26variables_%C2%85%C2%80TYPE!'number'~ID!'num%C2%86%20id%3D%5C'%C2%87~inputs!('%01%C2%87%C2%86%C2%85%C2%84%C2%83%C2%82%C2%81%C2%80%7F%26%22_"        ></zero-md>
+      </div>
+      <xml class="toolbox" style="display: none">
+        <category name="Values" colour='%{BKY_TEXTS_HUE}'>
+          <block type="math_number"></block>          
+          <block type="text"></block>
+          <block type="colour_picker"></block>          
+          <block type="get_randomWord"></block>
+        </category>
+        <category name="Html" colour="%{BKY_COLOUR_HUE}">
+          <block type="on_start"></block>
+          <block type="element_clicked"></block>          
+          <block type="with_element_by_id"></block>
+          <block type="set_content">
+            <value name="VALUE">
+              <shadow type="text"> </shadow>
+            </value>
+          </block>
+          <block type="set_attribute"></block>
+          <block type="add_element"></block>
+          <block type="remove_contents"></block>
+          <block type="get_input_data_with_id"></block>          
+        </category>
+        <category name="Variables" colour="330" custom="VARIABLE"></category>        
+      </xml>       
+    </div>
+
 
 
     <footer>

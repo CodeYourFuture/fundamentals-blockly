@@ -4,17 +4,17 @@ This example shows how to add or change attributes of an element.
 
 ### The block
 - **`set the attribute [<attribute_name>] to {<attribute_value>}`**
-  - Set or change the named attribute of the selected element to the specified value.
+  - It sets or changes the named attribute of the selected element to the specified value.
     
-### What does the code block in this example do?
+### What do the code blocks in this example do?
 
-The block selects an element, and then set its `color` and `background` attributes.
+The block selects an element, and then sets its `color` and `background` attributes.
 
-For an attribute value that is a color, we can use a <i>color picker block</i> to pick a color, or 
+For an attribute value that is a color, we can use a _color picker block_ to pick a color, or 
 specify a valid color value as a string.
 
 ### Conceptual View ###
-The code block changes
+The code blocks change
 ```
 <span id="message">Hello!</span>
 ```

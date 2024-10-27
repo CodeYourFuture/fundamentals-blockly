@@ -11,7 +11,7 @@ You can construct your block program here.
 #### (2a) Block categories ####
 Select a category to reveal the available blocks in that category.
 
-In some exercises, only a subsets of blocks are available.
+In some exercises, only a subset of blocks are available.
 
 #### (2b) Available blocks in a category ####
 Select a block here.
@@ -32,4 +32,4 @@ Click this button to obtain a representation of your code blocks as a URL.
 **When you need to submit or share your CYF Blocks Project, this is how you obtain the URL of your project.**
 
 ### 6. GENERATE CODE ###
-JavaScript code that appears in this tab is generated automatically from the code blocks. You do not have to understand them. You only need to copy them when you need to integrate your code blocks into a webpage.
+JavaScript code that appears in this tab is generated automatically from the code blocks. You do not have to understand it. You only need to copy it when you need to integrate your code blocks into a webpage.

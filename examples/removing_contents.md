@@ -18,7 +18,7 @@ If we add a new `<li>` element to the second list without clearing its contents 
 `<li>` element will become the second `<li>` element in the list. (Go ahead and try this in this example)
 
 ### Conceptual View ###
-The code block changes
+The code blocks change
 ```
 <ol id="list1">
   <li>Original item 1</li>
@@ -37,5 +37,5 @@ to
 </ol>
 ```
 
-The conversion is done "internally in the program". You won't see the converted HTML code, but you can see the changes in the the rendered view.
+The conversion is done "internally in the program". You won't see the converted HTML code, but you can see the changes in the rendered view.
 
