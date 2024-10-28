@@ -6,18 +6,18 @@ This example introduces how to create a new element and add it inside another el
 - **`create a new [<element_name>] element`**
   - It creates an element inside the selected element.
     
-### What do the code blocks in this example do?
+### What does this blockly program do?
 
-The blocks add two `<li>` elements inside a `<ul>` element.
+The program adds two `<li>` elements inside a `<ul>` element.
 
 When creating a new element, we can immediately set its attributes and text content.
 
 We can also add another element inside a newly created element.
-In this example, the blocks add an `<a>` element inside the second `<li>` element.
+In this example, the program adds an `<a>` element inside the second `<li>` element.
 
 
-### Conceptual View ###
-The code blocks change
+### Conceptual View
+The blockly program changes
 ```
 <ul id="mylist"></ul>
 ```

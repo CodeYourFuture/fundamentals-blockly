@@ -14,8 +14,8 @@ This example introduces the **HTML blocks** to find an element, and then change 
 - **`set the text content to "Hello"`**
   - It sets the text content of the selected element to `Hello`.
 
-### What do the code blocks in this example do?
-Conceptually, the code blocks convert the static HTML from
+### What does this blockly program do?
+Conceptually, the program converts the static HTML from
 ```
 <p id="word1">First word</p>
 <p id="word2">Second word</p>

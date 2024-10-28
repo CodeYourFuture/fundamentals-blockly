@@ -8,11 +8,11 @@ This example demonstrates how to specify code blocks that execute only when the 
     when the element with the specified `id` attribute is clicked.
     
 - **`get a random [word]`**
-  - This fun block can generate a random word. 
+  - This fun block generates a random word. 
   - We can also specify the generated word to be a verb, noun, or adjective.
   - Note: This block has nothing to do with handling mouse click.
 
-### What do the code blocks in this example do?
+### What does this blockly program do?
 
 Whenever the first button (`<button id="adjButton">`) is clicked, the text inside 
 `<span id="adj">` is replaced by a random adjective.

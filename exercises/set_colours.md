@@ -1,5 +1,10 @@
 ## Setting colours
 
+You may want to study the following example to prepare for this exercise.
+- <a href="../examples.html#example_changing_attribute" target=_blank>Changing or setting attributes</a>
+
+---
+
 We've seen how to change the text content of html elements, but we can also change the colour (and other attributes) of elements. Different kinds of **Values blocks** provide ways of setting texts, numbers and colours.
 
 Let's start with an html list of our favourite fruit in the html section.

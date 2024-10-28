@@ -1,12 +1,17 @@
 ## Using Variables
 
-This example demonstrates how to use a variable and read a numerical value from an `<input>` element.
+This example demonstrates how to 
+- use a variable, and 
+- read a numerical value from an `<input>` element.
 
 ### Creating variables
 
+A ***variable*** is a storage location with a **name**. By referencing a variable's name
+in the program, we can change or use the data stored in the variable.
+
 Before we can use a variable, we have to create the variable. 
 
-To create a variable, click _Create variable..._ in the **Variables** category, 
+To create a variable, click _`Create variable...`_ in the **`Variables`** category, 
 and give a name to the variable.
 
 ### The blocks
@@ -23,11 +28,11 @@ and give a name to the variable.
 - **`change [<variable name>] by {value}`**
   - It increases the value of the named variable by the specified value.
 
-### What do the code blocks in this example do?
+### What does this blockly program do?
 
-Whenever the SUM button is clicked, the code blocks
-- get the numerical values in the `<input>` elements, and store them in
+Whenever the SUM button is clicked, the program
+- gets the numerical values in the `<input>` elements, and store them in
   variables **`num1`** and **`num2`**, and
-- increase the value of **`num1`** by the value of **`num2`** 
+- increases the value of **`num1`** by the value of **`num2`** 
   (to calculate **`num1`** + **`num2`**), and
-- show the calculated sum in `<span id="sum">`.
+- shows the calculated sum in `<span id="sum">`.

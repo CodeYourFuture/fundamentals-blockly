@@ -1,6 +1,12 @@
 
 ## Say something
 
+### Preparation ###
+You may want to study the following example to prepare for this exercise.
+- <a href="../examples.html#example_reading_input" target=_blank>Reading input</a>
+
+---
+
 We can get user input whenever a user clicks a button.
 In this exercise, we'll get the browser to say a word or sentence that the user enters, when the user clicks a button.
 

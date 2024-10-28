@@ -2,6 +2,13 @@
 ## A button to add apples
 
 
+### Preparation ###
+You may want to study the following examples to prepare for this exercise.
+1. <a href="../examples.html#example_handling_mouse_click" target=_blank>Handling mouse click</a>
+2. <a href="../examples.html#example_removing_contents" target=_blank>Removing the contents of an element</a>
+
+---
+
 JavaScript is often "event-driven". This means some code runs when a user interacts with the page (clicking, typing, etc). 
 We're going to write a program with the following functionality:
 Every time a user clicks on the `add an apple` button, an apple will be added to the list.

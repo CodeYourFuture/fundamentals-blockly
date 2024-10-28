@@ -1,5 +1,11 @@
 ## Lists of links
 
+### Preparation ###
+You may want to study the following example to prepare for this exercise.
+- <a href="../examples.html#example_adding_child_element" target=_blank>Adding a child element</a>
+
+---
+
 In this exercise, we're going to consolidate our knowledge of the blocks we've learnt so far.
 
 

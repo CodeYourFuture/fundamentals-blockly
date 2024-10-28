@@ -240,12 +240,13 @@ BlocklyDomEditor.restoreBlocks = function (workspace, $htmlTextarea, id) {
     let serialised = window.localStorage[id];
 
     let json = JSON.parse(serialised);
-    console.log(
+    
+    /*console.log(
       "chars",
       id,
       serialised.length,
       JSONCrush.crush(serialised).length
-    );
+    );*/
     Blockly.serialization.workspaces.load(json, workspace);
 
     let html = window.localStorage["html" + id];
