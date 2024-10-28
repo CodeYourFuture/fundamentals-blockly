@@ -1,4 +1,7 @@
 ## Changes made by CJ Yuan
+
+Mainly added examples to demonstrate how to use **Html blocks** and **Variables**
+
 ### New files ###
 - `examples.html`
   - Copy of index.html, with exercises replaced by examples.
@@ -13,12 +16,13 @@
 
 ### Modified files ###
 - `index.html`
+  - Only added a line to execute a necessary JS statement.
+
+- `exercises/`
+  - Added links in some of the exercises to related examples. The instructions in the exercises remain unchanged.
 
 - `exercises.js`
 - `editor.js`
   - Parameterised some functions so that for "examples.html"
     - The initial code will always be loaded from the `start_code` attribute of `<zero-md>`.
     - window.localStorage won't be used to remember edited codes.
-
-- `exercises/changing_text.md`
-  - Change the description in the exercise.
