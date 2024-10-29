@@ -1,5 +1,11 @@
 ## Changing text
 
+### Preparation ###
+You may want to study the following example to prepare for this exercise.
+- <a href="../examples.html#example_changing_text_content" target=_blank>Changing text content</a>
+
+---
+
 This exercise introduces the **Html blocks** you can use to find and update the text of html elements.
 
 Let's start with the sentence below.

@@ -1,5 +1,10 @@
 ## Variables consolidation
 
+### Preparation ###
+You may want to study the following example to prepare for this exercise.
+- <a href="../examples.html#example_using_variables" target=_blank>Using variables</a>
+
+---
 
 Let's use variables to keep track of information about some user interactions. We would like to track how many times the user adds the word "sheep" and how many times they add any other word.
 

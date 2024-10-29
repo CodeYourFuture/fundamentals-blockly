@@ -1,0 +1,426 @@
+<html>
+
+<head>
+  <title>CYF Blocks - Unblock your future!</title>
+
+
+  <link rel="stylesheet" href="./style.css" />
+  <script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@2/dist/zero-md.min.js"></script>
+</head>
+
+<body>
+  <script src="https://unpkg.com/blockly@7.20211209.0/blockly.min.js"></script>
+  <script src="blockly-dom.js"></script>
+  <script src="blockly-cyf.js"></script>
+  <script src="jsoncrush.js"></script>
+  <script src="editor.js"></script>
+
+  <header>
+    <h1>CYF Blocks</h1>
+    <button onclick="getElementById('toc').classList.toggle('open')">
+      <span style="position: absolute;transform: translateY(-100vh);">Menu</span>
+      <svg viewBox="0 0 100 80" width="30" height="30">
+        <rect width="100" height="10" fill="currentColor"></rect>
+        <rect y="30" width="100" height="10" fill="currentColor"></rect>
+        <rect y="60" width="100" height="10" fill="currentColor"></rect>
+      </svg>
+    </button>
+  </header>
+  <nav id="toc"></nav>
+
+
+  <div id="exercises">
+
+    <div class="exercise" id="understanding_cyf_blocks_interface">
+      <h2>Understanding the CYF Blocks interface</h2>
+      <div class="instructions">
+        <zero-md src="examples/understanding_cyf_blocks_interface.md"
+          start_code="('j!()~h!'Name%3A%20%3Cinput*input-0.*.-Click%20Me%3C%2F.%3E0div*msg-%3C%2Fdiv%3E')*%20id%3D1-1%3E.button0%5Cn%3C1%5C'%0110.-*_"
+        ></zero-md>
+      </div>
+    </div>
+
+    <div class="exercise" id="example_changing_text_content">
+      <h2>Example: Changing text content of an element</h2>
+      <div class="instructions">
+        <zero-md src="examples/changing_text_content.md"
+          start_code='(%27j.Ys.languageVersion!0~Ys!%5B(%27Jon_startMb%25%2F%60*lX6fD%25X8%3F%5B%24-kNW%27~x!195~y!93OTEXT1!%27at%20the%20start%20%7Bwhen%20run%20is%20clicked%7D%27)QHANDLER.Y.Jwith_element_by_idMtPIR(%3F%60S%3B%2Ce3BIZ_0%2BR%27%3A%27OID!%27v2%27)QSTACK.Y.Jset_contentM%3F%7D0%2C%27%3FKh*z%5DUS)I%7DeIuU_%27QVALUE.shadow.JtextM7DD3_NhkzP%7C6kA%2F%2FE%7C0c%27OTEXT!%27Hello%27)))))))))))%5D))~h!%2741q>FirstG%5Cn42q>SecondG%27).!(%274<p%20id%3DqvG%20v<%2Fp>Jtype!%27M%27~id!%27O~fields.Q~inputs.Yblockq%5C%27vword%01vqYQOMJG4._'
+        >
+        </zero-md> 
+      </div>
+      <xml class="toolbox" style="display: none">
+        <category name="Values" colour='%{BKY_TEXTS_HUE}'>
+          <block type="text"></block>
+          <block type="get_randomWord"></block>
+        </category>
+        <category name="Html" colour="%{BKY_COLOUR_HUE}">
+          <block type="on_start"></block>
+          <block type="with_element_by_id"></block>
+          <block type="set_content">
+            <value name="VALUE">
+              <shadow type="text"> </shadow>
+            </value>
+          </block>
+        </category>
+      </xml>      
+    </div>
+
+
+    <div class="exercise" id="example_changing_attribute">
+      <h2>Example: Changing attributes of an element</h2>
+      <div class="instructions">
+        <zero-md src="examples/changing_attribute.md"
+          start_code=
+          '(%27j!(%27blocks!(%27languageVersion!0~blocks!%5B(%27type!%27on_start%26b%25%2F%60*lX6fD%25X8%3F%5B%24-kNW%27~x!76~y!67qTEXT1!%27at%20the%20start%20%7Bwhen%20run%20is%20clicked%7DvHANDLERFwith_element_by_id%26tPIR(%3F%60S%3B%2Ce3BIZ_0%2BR%27%3A%27qID!%27messagevSTACK"PRae%2F%2C%27tG8)%2F.-Gz9%2C%27rWC%40c%5Ecolour_picker%26I%2CByAz%2C%270a%2C%27yp(I45%3DDaQ%27qCOLOUR!%27%23ffcc00%27))))~next"B%7DwL%23R%7B9%7Be2cHG%2C%27%3FJoa%3A%40backgroundC%5Etext%26B)faG3f%242M%23upHU%5D%25mR%25%27qTEXT!%27blue%27)))))))))))))%5D))~h!%27<span%20id%3D%5C%27message%5C%27>Hello%27%3A<%2Fspan>%5Cn%27)F!(%27block!(%27type!%27q~fields!(%27v%27)~inputs!(%27"Fset_attribute%26%26%27~id!%27%40%27qPROPERTY!%27%5EolorvVALUEF%01%5E%40%26"vqF_'
+        >
+        </zero-md> 
+      </div>
+      <xml class="toolbox" style="display: none">
+        <category name="Values" colour='%{BKY_TEXTS_HUE}'>
+          <block type="text"></block>
+          <block type="colour_picker"></block>          
+          <block type="get_randomWord"></block>
+        </category>
+        <category name="Html" colour="%{BKY_COLOUR_HUE}">
+          <block type="on_start"></block>
+          <block type="with_element_by_id"></block>
+          <block type="set_content">
+            <value name="VALUE">
+              <shadow type="text"> </shadow>
+            </value>
+          </block>
+          <block type="set_attribute"></block>          
+        </category>
+      </xml>      
+    </div>
+    
+
+    <div class="exercise" id="example_adding_child_element">
+      <h2>Example: Adding a child element</h2>
+      <div class="instructions">
+        <zero-md src="examples/adding_child_element.md"
+          start_code=
+          "('j!('blocks!('languageVersion!0~blocks!%5B('type!'on_start'~id!'b%25%2F%60*lX6fD%25X8%3F%5B%24-kNW'~x!46~y!19QTEXT1!'at%20the%20start%20%7Bwhen%20run%20is%20clicked%7D')%22HANDLERGwith_element_by_id'~id!'tPIR(%3F%60S%3B%2Ce3BIZ_0%2BR'%3A'QID!'mylist')%22STACK%7FMRb'%3A5F.8xn%25o%3APTW%2FS*2%C2%80Gset_content'~id!'U%5EL%3FZCXrX(JdiF66gl%5DI%26Cama4EEvTb%7C(z%3Dr%23SJqy'QTEXT!'Apple')))))))~next%7Fa9%5Ddw%7Cn%3Fn0Krfpw%251%237n%C2%80%7FwcwcbnJpueq8dV%3FvBd_K'QELEMENT!'a')%22STACKGset_attribute'~id!'%2Bgq0J2dl%3BK5%24%2F1b11xUR'QPROPERTY!'href')%22VALUEGtext'~id!'*rrC.%5E%5Exs%23aY%2CB%3B3Bf%7B5'QTEXT!'https%3A%2F%2Fblocks.codeyourfuture.io%2F'))))~nextGset_content'~id!'f%5E%40B%25b4NbzL%3F%25kz%7BTZ_N%26PV7Y26v3bdx01%3Df%7D%5D%252%3D'QTEXT!'CYF%20Blocks')))))))))))))))))))))%5D))~h!'%3Cul%20id%3D%5C'mylist%5C'%3E%3C%2Ful%3E%5Cn')G!('block!('type!'Q~fields!('%22~inputs!('%26'%22VALUE!('shadow!('type!'text'~id!'%7FGadd_element'~id!'%C2%80'QELEMENT!'li')%22STACK%01%C2%80%7F%26%22QG_"
+          >
+        </zero-md> 
+      </div>
+      <xml class="toolbox" style="display: none">
+        <category name="Values" colour='%{BKY_TEXTS_HUE}'>
+          <block type="text"></block>
+          <block type="colour_picker"></block>          
+          <block type="get_randomWord"></block>
+        </category>
+        <category name="Html" colour="%{BKY_COLOUR_HUE}">
+          <block type="on_start"></block>
+          <block type="with_element_by_id"></block>
+          <block type="set_content">
+            <value name="VALUE">
+              <shadow type="text"> </shadow>
+            </value>
+          </block>
+          <block type="set_attribute"></block>
+          <block type="add_element"></block>
+        </category>
+      </xml>      
+    </div>
+
+
+    <div class="exercise" id="example_removing_contents">
+      <h2>Example: Removing the contents of an element</h2>
+      <div class="instructions">
+        <zero-md src="examples/removing_contents.md"
+          start_code=
+          "('j!('blocks!('languageVersion!0~blocks!%5B('type!'on_start'~id!'b%25%2F%60*lX6fD%25X8%3F%5B%24-kNW'~x!46~y!25qTEXT1!'at%20the%20start%20%7Bwhen%20run%20is%20clicked%7D')~inputs!('HANDLER%7FtPIR(%3F%60S%3B%2Ce3BIZ_0%2BR'%3A'qID!'list1%22%C2%81T*prFX%7DccDT'%3AaavPK%7CYH')))~next%7Ffvl%3B3oD%25B%242%5Dr4SJNuVy'qID!'list2%22%C2%81%23-%40_%40%3Fn%7D%3A%603_n.cZYi9*'~nextGadd_element'~id!'UNUI%24%2B%7DtSEXWp%7DMbm%7DO8'qELEMENT!'li%22set_content'~id!'%40WgWRUMlK%24VN*nrzHCbd'~inputs!('VALUE!('shadow!('type!'text'~id!'%2C'vPs7fDmYU%24up%3D%5ETREnv'qTEXT!'New%20item'))))))))))))))))))%5D))~h!'%C2%801Q1%26%5Cn%C2%802Q2%26')G!('block!('type!'Q%5C'%3E%5Cn%20%20%3Cli%3EOriginal%20item%20q~fields!('%22')~inputs!('STACKG%26%3C%2Fli%3E%5Cn%3C%2Fol%3E%5Cn%7FGwith_element_by_id'~id!'%C2%80%3Col%20id%3D%5C'list%C2%81remove_contents'~id!'%01%C2%81%C2%80%7F%26%22qQG_"          
+          >
+        </zero-md> 
+      </div>
+      <xml class="toolbox" style="display: none">
+        <category name="Values" colour='%{BKY_TEXTS_HUE}'>
+          <block type="text"></block>
+          <block type="colour_picker"></block>          
+          <block type="get_randomWord"></block>
+        </category>
+        <category name="Html" colour="%{BKY_COLOUR_HUE}">
+          <block type="on_start"></block>
+          <block type="with_element_by_id"></block>
+          <block type="set_content">
+            <value name="VALUE">
+              <shadow type="text"> </shadow>
+            </value>
+          </block>
+          <block type="set_attribute"></block>
+          <block type="add_element"></block>
+          <block type="remove_contents"></block>          
+        </category>
+      </xml>      
+    </div>
+
+    <div class="exercise" id="example_handling_mouse_click">
+      <h2>Example: Handling mouse click</h2>
+      <div class="instructions">
+        <zero-md src="examples/handling_mouse_click.md"
+          start_code=
+          "('j!('blocks!('languageVersion!0~blocks!%5B%C2%81%7BIb%2C'GvrqcBFWySjzO%7B4E'~x!26~y!57%24adj%26%C2%83tPIR(%3F%60S%3B%2Ce3BIZ_0%2BR'%3A'%40ID!'adj%7F!'aiLaRtTrF%3F'%3AwE)2%5E%2F%2C'9t'~inputs!('VALUE%22'%40%C2%80!'%3AVutui-J9%3DPV7%2C'%3A6S-%7D'%40TYPE!'ADJECTIVE')))))))))))%2C%C2%81btWLw(LDhvSk%3FZZGYbP%2F'~x!27~y!180%24noun%26%C2%831FVG42%23%25NUGCB8%7DA%2C'2Up'%40ID!'noun%7F!'%5Bvt1Ur%23(T%7CX%7DouW01h8f'~inputs!('VALUE%22'%40%C2%80'jWhhN%5D%3FCbVAFT7EG%2C'*o%2B'%40TYPE!'NOUN')))))))))))%5D))~h!'%3Cspa%C2%85adj%5C'%3Einitial%C2%86spa%C2%85noun%5C'%3Enoun%C2%86hr%C2%82adj%C2%84verb%3C%2Fbutton%C2%82noun%C2%84noun%3C%2Fbutton%3E%5Cn%5Cn').block!('type!'%22!('shadow!('type!'text'~id!'3wNQ%2BVNB6gx%2CoM%2F7ONZ'%3A%24%40TEXT1!'when%20the%20element%20with%20id'~ID!'%26Button'~TEXT2!'is%20clicked')~inputs!('HANDLER!('%40~fields!('%7F')~inputs!('STACK!('.set_content'~id%C2%80TEXT!''))~.get_randomWord'~id!%C2%81('type!'element_clicked'~id!'%C2%82%3E%5Cn%3Cbutto%C2%85%C2%83.with_element_by_id'~id!'%C2%84Button%5C'%3EChange%20%C2%85n%20id%3D%5C'%C2%86%3C%2Fspan%3E%5Cn%3C%01%C2%86%C2%85%C2%84%C2%83%C2%82%C2%81%C2%80%7F%40%26%24%22._"          
+          >
+        </zero-md> 
+      </div>
+      <xml class="toolbox" style="display: none">
+        <category name="Values" colour='%{BKY_TEXTS_HUE}'>
+          <block type="text"></block>
+          <block type="colour_picker"></block>          
+          <block type="get_randomWord"></block>
+        </category>
+        <category name="Html" colour="%{BKY_COLOUR_HUE}">
+          <block type="on_start"></block>
+          <block type="element_clicked"></block>          
+          <block type="with_element_by_id"></block>
+          <block type="set_content">
+            <value name="VALUE">
+              <shadow type="text"> </shadow>
+            </value>
+          </block>
+          <block type="set_attribute"></block>
+          <block type="add_element"></block>
+          <block type="remove_contents"></block>
+               
+        </category>
+      </xml>      
+    </div>
+
+    <div class="exercise" id="example_reading_input">
+      <h2>Example: Reading input</h2>
+      <div class="instructions">
+        <zero-md src="examples/reading_input.md"
+          start_code=
+          "('j8blocks8languageVersion!0~blocks!%5B('type!'%7B_clickedMOrij%25O%7C%7D%252vU%3FD%7DVx2%5EZ'~x!27~y!50%23TEXT1!'when%20the%20%7B%20with%20id'~ID!'greetButton'~TEXT2!'is%20clicked')%26HANDLER8%22with_%7B_by_idMU%24HscTvl9xN%25FBsq7g%5B.'%23ID!'nameOutput')%26STACK8%22set_contentM%3BR3%40%5Bk'%3AjzRo%2BpOqAXkgh'%26VALUE8shadow8type!'textMo6OWnZEAPg15UuLGZkl%2B'%23TEXT!'%7F'))~%22get_input_data_with_idMJOk4lL%3F*o%3F1VNw%3AdIY6*'%23TYPE!'string'~ID!'nameInput')))))))))))%5D)~variables!%5B('name!'nameMUS%5D%3DJjwd%3Ap.%5EpFLNg3%5E~)%5D)~h!'%3Clabel%3EName%3A%60label%3E%3Cinput-nameInput%5C'Q%3Cbutton-greetButton%5C'%3EGreet%60buttonQ%3ChrQ%3Cdiv-msg%5C'Q%20%20%7F%3Cspan-nameOutput%5C'%3E________%60span%3E'%3A%5Cn%60divQ%5Cn%5Cn')-%20id%3D%5C'8!('M'~id!'Q%3E%5Cn%22block8type!'%23~fields8%26~inputs8%60%3C%2F%7Belement%7FHello%2C%20%01%7F%7B%60%26%23%22QM8-_"        ></zero-md>
+      </div>
+      <xml class="toolbox" style="display: none">
+        <category name="Values" colour='%{BKY_TEXTS_HUE}'>
+          <block type="text"></block>
+          <block type="colour_picker"></block>          
+          <block type="get_randomWord"></block>
+        </category>
+        <category name="Html" colour="%{BKY_COLOUR_HUE}">
+          <block type="on_start"></block>
+          <block type="element_clicked"></block>          
+          <block type="with_element_by_id"></block>
+          <block type="set_content">
+            <value name="VALUE">
+              <shadow type="text"> </shadow>
+            </value>
+          </block>
+          <block type="set_attribute"></block>
+          <block type="add_element"></block>
+          <block type="remove_contents"></block>
+          <block type="get_input_data_with_id"></block>          
+        </category>
+        <category name="Variables" colour="330" custom="VARIABLE"></category>        
+      </xml>      
+    </div>
+
+
+
+    <div class="exercise" id="example_using_variables">
+      <h2>Example: Using variables</h2>
+      <div class="instructions">
+        <zero-md src="examples/using_variables.md"
+          start_code=
+          "('j!('blocks!('languageVersion!0~blocks!%5B('type!'element_clicked'~id!'Orij%25O%7C%7D%252vU%3FD%7DVx2%5EZ'~x!32~y!45~fields!('TEXT1!'when%20the%20element%20with%20id'~ID!'sumButton'~TEXT2!'is%20clicked')%C2%87HANDLER!('%C2%84set'~id!'%2C%7BR8%3B%5EW%60mZ%5DC-%7D%5EeBx)-%22%C2%81th_id'~id!'JOk4lL%3F*o%3F1VNw%3AdIY6*%C2%851'))))~next!('%C2%84set'~id!'KK2H5Fq(%40Nak0%3FQEmDwa%C2%80VAR!('%7F)%C2%81th_id'~id!'cf%3F%7CFKowVh%5EWxtrk%5E.cH%C2%852'))))~next!('%26math_change'~id!'R%2F%7C%23%40.DyG%2C'%3FKY5K%3A2'%3Aqm%22%C2%87DELTA!('shadow!('type!'math_number'~id!'%7Bo(%7B%23'%3A%7C.xyI-IMD%3DstC7%C2%80NUM!1))~%C2%84get'~id!'%2FMUFMhCoV%3F4_.7V1E%7D4K%C2%80VAR!('%7F))))~next!('%26with_element_by_id'~id!'U%24HscTvl9xN%25FBsq7g%5B.%C2%80ID!'sum')%C2%87STACK!('%26set_content'~id!'%3BR3%40%5Bk'%3AjzRo%2BpOqAXkgh'%C2%87VALUE!('shadow!('type!'text'~id!'o6OWnZEAPg15UuLGZkl%2B%C2%80TEXT!'Hello%2C%20'))~%C2%84get'~id!'%23rnd42foTOq(577Jw%5DR6%22))))))))))))))))%5D)~variables!%5B('name!'num1'~%C2%82%2C('name!'num2'~%7F%5D)~h!'%3Cinput%C2%86num1%C2%83%2B%5Cn%3Cinput%C2%86num2%C2%83%3D%5Cn%3Cspan%C2%86sum%5C'%3E%3C%2Fspan%3E%5Cn%5Cn%3Chr%3E%5Cn%3Cbutton%C2%86sumButton%5C'%3ESum%3C%2Fbutton%3E%5Cn%5Cn%5Cn%5Cn')%22%C2%80VAR!('%C2%82)%26block!('type!'%7Fid!'%3B0oB%7C%7BnA%2C)7h(%5DQ25N%7Bp')%C2%80'~fields!('%C2%81%C2%87VALUE!('%26get_input_data_wi%C2%82id!'DJ3%2B0hsEH%7DrCb%25AF%3DKM%7B')%C2%83%5C'%20type%3D%5C'number%5C'%3E%20%C2%84%26variables_%C2%85%C2%80TYPE!'number'~ID!'num%C2%86%20id%3D%5C'%C2%87~inputs!('%01%C2%87%C2%86%C2%85%C2%84%C2%83%C2%82%C2%81%C2%80%7F%26%22_"        ></zero-md>
+      </div>
+      <xml class="toolbox" style="display: none">
+        <category name="Values" colour='%{BKY_TEXTS_HUE}'>
+          <block type="math_number"></block>          
+          <block type="text"></block>
+          <block type="colour_picker"></block>          
+          <block type="get_randomWord"></block>
+        </category>
+        <category name="Html" colour="%{BKY_COLOUR_HUE}">
+          <block type="on_start"></block>
+          <block type="element_clicked"></block>          
+          <block type="with_element_by_id"></block>
+          <block type="set_content">
+            <value name="VALUE">
+              <shadow type="text"> </shadow>
+            </value>
+          </block>
+          <block type="set_attribute"></block>
+          <block type="add_element"></block>
+          <block type="remove_contents"></block>
+          <block type="get_input_data_with_id"></block>          
+        </category>
+        <category name="Variables" colour="330" custom="VARIABLE"></category>        
+      </xml>       
+    </div>
+
+
+
+    <footer>
+      <h3>CYF Blocks is a project of <a href="https://codeyourfuture.io">Code Your Future</a></h3>
+    </footer>
+     <section role="dialog" aria-live="assertive" class="toast" id="toast" aria-labelledby="toast-title">
+      <h4 class="toast-title"></h4>
+    </section>
+    <xml id="toolbox" style="display: none">
+      <category name="Loops" colour="120">
+        <block type="controls_whileUntil"></block>
+        <block type="arrays_forEach">
+          <field name="VAR">item</field>
+          </value>
+          <value name="LIST">
+            <block type="variables_get">
+                <field name="VAR">array</field>
+            </block>
+          </value>
+        </block>
+        <block type="controls_for"></block>
+      </category>
+      <category name="Logic" colour="210">
+        <block type="controls_if"></block>
+        <block type="logic_negate"></block>
+        <block type="logic_compare"></block>
+      </category>
+      <category name="Values" colour='%{BKY_TEXTS_HUE}'>
+        <block type="math_number"></block>
+        <block type="text"></block>
+        <block type="colour_picker"></block>
+        <block type="logic_boolean"></block>
+        <block type="get_randomWord"></block>
+        <block type="text_to_speech"></block>
+      </category>
+      <category name="Html" colour="%{BKY_COLOUR_HUE}">
+        <block type="on_start"></block>
+        <block type="element_clicked"></block>
+        <block type="with_element_by_id"></block>
+        <block type="add_element"></block>
+        <block type="set_content">
+          <value name="VALUE">
+            <shadow type="text"> </shadow>
+          </value>
+        </block>
+        <block type="set_attribute"></block>
+        <block type="toggle_attribute"></block>
+        <block type="remove_contents"></block>
+        <block type="get_input_data_with_id"></block>
+        <block type="element_clicked_current"></block>
+        <block type="with_elements_by_selector"></block>
+      </category>
+      <category name="Arrays" colour="%{BKY_LISTS_HUE}"" >
+        <block type="variables_set">
+          <field name="VAR">array</field>
+          <value name="VALUE">
+            <block type="lists_create_with">
+              <!--
+              would be nice but the shadow blocks don't know what to do with themselves when the list
+              is mutated -> https://github.com/google/blockly/issues/4939
+              <value name="ADD0">
+                <shadow type="text"> </shadow>
+              </value>
+              <value name="ADD1">
+                <shadow type="text"> </shadow>
+              </value>
+              <value name="ADD2">
+                <shadow type="text"> </shadow>
+              </value>-->
+            </block>
+          </value>
+        </block>
+        <block type="arrays_getFirst">
+          <value name="VALUE">
+            <block type="variables_get">
+                <field name="VAR">array</field>
+            </block>
+          </value>
+        </block>
+        <block type="arrays_push">
+          <value name="LIST">
+            <block type="variables_get">
+                <field name="VAR">array</field>
+            </block>
+          </value>
+        </block>
+        <block type="lists_isEmpty">
+          <value name="VALUE">
+            <block type="variables_get">
+                <field name="VAR">array</field>
+            </block>
+          </value>
+        </block>
+        <block type="arrays_forEach">
+          <field name="VAR">item</field>
+          </value>
+          <value name="LIST">
+            <block type="variables_get">
+                <field name="VAR">array</field>
+            </block>
+          </value>
+        </block>
+        <block type="get_randomMember">
+          <value name="ARRAY">
+            <block type="variables_get">
+                <field name="VAR">array</field>
+            </block>
+          </value>
+        </block>
+        <block type="get_sum">
+          <value name="ARRAY">
+            <block type="variables_get">
+                <field name="VAR">array</field>
+            </block>
+          </value>
+        </block>
+      </category>
+      <!--<category name="Lists" colour="%{BKY_LISTS_HUE}"" >
+        <block type="variables_set">
+          <field name="VAR">list</field>
+          <value name="VALUE">
+            <block type="linked_lists_create_with"> </block>
+          </value>
+        </block>
+        <block type="linked_lists_get_current">
+          <value name="VALUE">
+            <block type="variables_get">
+                <field name="VAR">list</field>
+            </block>
+          </value>
+        </block>
+        <block type="linked_lists_set_current">
+          <value name="VALUE">
+            <block type="variables_get">
+                <field name="VAR">list</field>
+            </block>
+          </value>
+        </block>
+        <block type="linked_lists_has_current">
+          <value name="VALUE">
+            <block type="variables_get">
+                <field name="VAR">list</field>
+            </block>
+          </value>
+        </block>
+        <block type="linked_lists_has_next">
+          <value name="VALUE">
+            <block type="variables_get">
+                <field name="VAR">list</field>
+            </block>
+          </value>
+        </block>
+        <block type="linked_lists_has_previous">
+          <value name="VALUE">
+            <block type="variables_get">
+                <field name="VAR">list</field>
+            </block>
+          </value>
+        </block>
+      </category>-->
+      <category name="Variables" colour="330" custom="VARIABLE"></category>
+      <category name="Functions" colour="290" custom="PROCEDURE"></category>
+    </xml>
+
+
+    <script src="exercises.js"></script>
+    <script>
+      pageSetup(true);
+    </script>
+</body>
+
+</html>

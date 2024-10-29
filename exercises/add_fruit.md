@@ -1,5 +1,10 @@
 ## Adding fruit
 
+### Preparation ###
+You may want to study the following example to prepare for this exercise.
+- <a href="../examples.html#example_adding_child_element" target=_blank>Adding a child element</a>
+
+---
 
 Not only can we update existing html elements, we can also create new ones and set their text and properties.
       

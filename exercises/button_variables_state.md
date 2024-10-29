@@ -1,5 +1,10 @@
 ## Variables
 
+### Preparation ###
+You may want to study the following example to prepare for this exercise.
+- <a href="../examples.html#example_using_variables" target=_blank>Using variables</a>
+
+---
 
 Suppose we have a value that represents the number of times a user clicks on a given button. Every time a user clicks on this button then this value increases by 1. We will need to keep track of this value so that we can update it. 
 
