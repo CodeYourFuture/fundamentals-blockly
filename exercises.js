@@ -1,155 +1,169 @@
 /* jshint esversion: 6 */
 
 function pageSetup(isExample = false) {
-
-const zeroMdRendered = Promise.all(
-  [...document.querySelectorAll("zero-md")].map((zeroMd) => {
-    return new Promise((resolve, reject) => {
-      addEventListener("zero-md-rendered", (ev) => {
-        // ev.detail.stamped.body says true even when there is no markdow-body?
-        // could be a bug in zero-md - or a misunderstanding of the apoi
-        if (zeroMd.shadowRoot.querySelector("div.markdown-body")) {
-          resolve(true);
-        }
+  const zeroMdRendered = Promise.all(
+    [...document.querySelectorAll("zero-md")].map((zeroMd) => {
+      return new Promise((resolve, reject) => {
+        addEventListener("zero-md-rendered", (ev) => {
+          // ev.detail.stamped.body says true even when there is no markdow-body?
+          // could be a bug in zero-md - or a misunderstanding of the apoi
+          if (zeroMd.shadowRoot.querySelector("div.markdown-body")) {
+            resolve(true);
+          }
+        });
       });
+    })
+  );
+  // wait for all zeroMd to be rendered before initialising
+  zeroMdRendered.then(initExercises);
+
+  function initExercises() {
+    let exercises = findExercises();
+    setupToc(exercises);
+    addDomElements(exercises);
+    exercises.forEach(hideExercise);
+    let exerciseIdFromUrl = window.location.hash.substring(1);
+    let initialExercise =
+      exercises.find((exercise) => exercise.id === exerciseIdFromUrl) ||
+      exercises[0];
+    selectExercise(initialExercise);
+  }
+
+  function findExercises() {
+    let $exercises = [...document.querySelectorAll(".exercise")];
+    return $exercises.map(($exercise) => {
+      $h2 = $exercise.querySelector("h2");
+      title = $h2.innerText;
+      return {$exercise, $h2, title};
     });
-  })
-);
-// wait for all zeroMd to be rendered before initialising
-zeroMdRendered.then(initExercises);
+  }
 
-function initExercises() {
-  let exercises = findExercises();
-  setupToc(exercises);
-  addDomElements(exercises);
-  exercises.forEach(hideExercise);
-  let exerciseIdFromUrl = window.location.hash.substring(1);
-  let initialExercise =
-    exercises.find((exercise) => exercise.id === exerciseIdFromUrl) ||
-    exercises[0];
-  selectExercise(initialExercise);
-}
-
-function findExercises() {
-  let $exercises = [...document.querySelectorAll(".exercise")];
-  return $exercises.map(($exercise) => {
-    $h2 = $exercise.querySelector("h2");
-    title = $h2.innerText;
-    return {$exercise, $h2, title};
-  });
-}
-
-function setupToc(exercises) {
-  let $toc = document.getElementById("toc");
-  let $ol = document.createElement("ol");
-  exercises.forEach((exercise) => {
-    $li = document.createElement("li");
-    $li.setAttribute("role", "button");
-    $li.innerText = exercise.title;
-    $li.addEventListener("click", () => {
-      selectExercise(exercise);
-      $toc.classList.toggle("open");
+  function setupToc(exercises) {
+    let $toc = document.getElementById("toc");
+    let $ol = document.createElement("ol");
+    exercises.forEach((exercise) => {
+      $li = document.createElement("li");
+      $li.setAttribute("role", "button");
+      $li.innerText = exercise.title;
+      $li.addEventListener("click", () => {
+        selectExercise(exercise);
+        $toc.classList.toggle("open");
+      });
+      $ol.appendChild($li);
+      exercise.$li = $li;
     });
-    $ol.appendChild($li);
-    exercise.$li = $li;
-  });
-  $toc.appendChild($ol);
-}
+    $toc.appendChild($ol);
+  }
 
-function addDomElements(exercises) {
-  const exercise_or_example = isExample ? "example" : "exercise";
+  function addDomElements(exercises) {
+    const exercise_or_example = isExample ? "example" : "exercise";
 
-  for (let i = 0; i < exercises.length; i++) {
-    let exercise = exercises[i];
-    let $nav = document.createElement("nav");
-    let $instructions = exercise.$exercise.querySelector(".instructions");
-    $nav.setAttribute("class", "nav-buttons");
-    if (i > 0) {
-      $nav.appendChild(createNavElement(`previous ${exercise_or_example}`, exercises[i - 1]));
-    }
-    if (i < exercises.length - 1) {
-      $nav.appendChild(createNavElement(`next ${exercise_or_example}`, exercises[i + 1]));
-    }
-    exercise.$exercise.insertBefore($nav, exercise.$h2);
-    exercise.$blockly = document.createElement("div");
-    exercise.$exercise.insertBefore(exercise.$blockly, exercise.$instructions);
-    exercise.id = i;
-    if (exercise.$exercise.id) {
-      exercise.id = exercise.$exercise.id;
-    }
-    exercise.blocklyDomEditor = new BlocklyDomEditor(
-      exercise.$blockly,
-      exercise.id
-    );
-
-    let initJsonBlockly = undefined;
-    let initHtml = undefined;
-    let useLocalStorage = isExample ? false : true;
-
-    if (isExample) {
-      let $zeroMd = exercise.$exercise.querySelector("zero-md");
-
-      // Start code is a string value of "v" in the querystring generated by "Share" button.      
-      let start_code = $zeroMd.getAttribute("start_code");
-      
-      if (start_code) {
-        let data = JSON.parse(JSONCrush.uncrush(decodeURIComponent(start_code)));
-        initHtml = data.h;
-        initJsonBlockly = data.j;
+    for (let i = 0; i < exercises.length; i++) {
+      let exercise = exercises[i];
+      let $nav = document.createElement("nav");
+      let $instructions = exercise.$exercise.querySelector(".instructions");
+      $nav.setAttribute("class", "nav-buttons");
+      if (i > 0) {
+        $nav.appendChild(
+          createNavElement(`previous ${exercise_or_example}`, exercises[i - 1])
+        );
       }
-    }
-    else {
-      let $startCode = exercise.$exercise.querySelector(".start_code"); // can be removed when all migrated to markdown
-      if (!$startCode) {
-        // get the first <pre class="language-html"> inside rendered markdown
+      if (i < exercises.length - 1) {
+        $nav.appendChild(
+          createNavElement(`next ${exercise_or_example}`, exercises[i + 1])
+        );
+      }
+      exercise.$exercise.insertBefore($nav, exercise.$h2);
+      exercise.$blockly = document.createElement("div");
+      exercise.$exercise.insertBefore(
+        exercise.$blockly,
+        exercise.$instructions
+      );
+      exercise.id = i;
+      if (exercise.$exercise.id) {
+        exercise.id = exercise.$exercise.id;
+      }
+      // let the exercise render before creating the BlocklyDomEditor
+      // TODO write a mutation observer to detect when the zero-md has rendered
+      setTimeout(
+        (exercise.blocklyDomEditor = new BlocklyDomEditor(
+          exercise.$blockly,
+          exercise.id
+        )),
+        1000
+      );
+
+      let initJsonBlockly = undefined;
+      let initHtml = undefined;
+      let useLocalStorage = isExample ? false : true;
+
+      if (isExample) {
         let $zeroMd = exercise.$exercise.querySelector("zero-md");
-        if ($zeroMd) {
-          let $instructionsRoot = $zeroMd.shadowRoot;
-          $startCode = $instructionsRoot.querySelector("pre.language-html");
+
+        // Start code is a string value of "v" in the querystring generated by "Share" button.
+        let start_code = $zeroMd.getAttribute("start_code");
+
+        if (start_code) {
+          let data = JSON.parse(
+            JSONCrush.uncrush(decodeURIComponent(start_code))
+          );
+          initHtml = data.h;
+          initJsonBlockly = data.j;
         }
+      } else {
+        let $startCode = exercise.$exercise.querySelector(".start_code"); // can be removed when all migrated to markdown
+        if (!$startCode) {
+          // get the first <pre class="language-html"> inside rendered markdown
+          let $zeroMd = exercise.$exercise.querySelector("zero-md");
+          if ($zeroMd) {
+            let $instructionsRoot = $zeroMd.shadowRoot;
+            $startCode = $instructionsRoot.querySelector("pre.language-html");
+          }
+        }
+
+        if ($startCode) initHtml = $startCode.innerText;
       }
 
-      if ($startCode)
-        initHtml = $startCode.innerText;
+      exercise.blocklyDomEditor.init(
+        initHtml,
+        initJsonBlockly,
+        useLocalStorage
+      );
     }
-
-    exercise.blocklyDomEditor.init(initHtml, initJsonBlockly, useLocalStorage);
   }
-}
 
-function createNavElement(name, exercise) {
-  $navElement = document.createElement("button");
-  $navElement.innerText = name;
-  $navElement.addEventListener("click", (e) => {
-    e.preventDefault();
-    selectExercise(exercise);
-  });
-  return $navElement;
-}
-
-let currentExercise = null;
-
-function selectExercise(exercise) {
-  if (currentExercise) {
-    hideExercise(currentExercise);
+  function createNavElement(name, exercise) {
+    $navElement = document.createElement("button");
+    $navElement.innerText = name;
+    $navElement.addEventListener("click", (e) => {
+      e.preventDefault();
+      selectExercise(exercise);
+    });
+    return $navElement;
   }
-  showExercise(exercise);
-  window.location.hash = exercise.id;
-  currentExercise = exercise;
-  document.body.scrollTop = 0; // For Safari
-  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-}
 
-function hideExercise(exercise) {
-  exercise.$exercise.style.display = "none";
-  exercise.$li.classList.remove("current");
-  exercise.blocklyDomEditor.hide();
-}
+  let currentExercise = null;
 
-function showExercise(exercise) {
-  exercise.$exercise.style.display = "block";
-  exercise.$li.classList.add("current");
-  exercise.blocklyDomEditor.show();
-}
+  function selectExercise(exercise) {
+    if (currentExercise) {
+      hideExercise(currentExercise);
+    }
+    showExercise(exercise);
+    window.location.hash = exercise.id;
+    currentExercise = exercise;
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
 
+  function hideExercise(exercise) {
+    exercise.$exercise.style.display = "none";
+    exercise.$li.classList.remove("current");
+    exercise.blocklyDomEditor.hide();
+  }
+
+  function showExercise(exercise) {
+    exercise.$exercise.style.display = "block";
+    exercise.$li.classList.add("current");
+    exercise.blocklyDomEditor.show();
+  }
 }
