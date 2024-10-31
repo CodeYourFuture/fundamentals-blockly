@@ -1,0 +1,14 @@
+// utils, or abstracts, also importable into components
+@import "./utilities.scss";
+
+// css variables made available globally so you can call them in any component
+// you can redefine them inside a css class for that component and it won't leak out
+@import "./colors.scss";
+@import "./fonts.scss";
+@import "./type-scale.scss";
+@import "./spacing.scss";
+@import "./borders.scss";
+
+//global html styles
+@import "./base.scss";
+@import "./invisible.scss";

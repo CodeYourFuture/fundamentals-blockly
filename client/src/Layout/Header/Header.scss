@@ -1,0 +1,17 @@
+@import "../../theme/utilities.scss";
+
+.c-header {
+  @include grid-assign(title, text, output, menu);
+  gap: var(--theme-spacing--2);
+  grid-template:
+    ". ..... .... ...... .... . " 0
+    ". title text output menu ." auto
+    ". ..... .... ...... .... ." 0 / 0 1fr auto auto auto 0;
+
+  align-items: center;
+
+  &__title {
+    text-transform: lowercase;
+    letter-spacing: 4px;
+  }
+}

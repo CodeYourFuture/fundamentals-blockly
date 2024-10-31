@@ -1,0 +1,6 @@
+@mixin gradient(
+  $from: var(--theme-color--pop),
+  $to: var(--theme-color--accent)
+) {
+  background-image: linear-gradient(to right, $from, $to);
+}
