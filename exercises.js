@@ -77,20 +77,17 @@ function pageSetup(isExample = false) {
       exercise.$blockly = document.createElement("div");
       exercise.$exercise.insertBefore(
         exercise.$blockly,
-        exercise.$instructions
+        exercise.$h2.nextElementSibling
       );
       exercise.id = i;
       if (exercise.$exercise.id) {
         exercise.id = exercise.$exercise.id;
       }
-      // let the exercise render before creating the BlocklyDomEditor
-      // TODO write a mutation observer to detect when the zero-md has rendered
-      setTimeout(
-        (exercise.blocklyDomEditor = new BlocklyDomEditor(
-          exercise.$blockly,
-          exercise.id
-        )),
-        1000
+      // TODO write a mutation observer to detect when the zero-md has rendered so we can
+      // write a better layout
+      exercise.blocklyDomEditor = new BlocklyDomEditor(
+        exercise.$blockly,
+        exercise.id
       );
 
       let initJsonBlockly = undefined;
